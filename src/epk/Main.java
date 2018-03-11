@@ -1,5 +1,7 @@
 package epk;
 
+import users.*;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -9,13 +11,9 @@ public class Main {
 		users[0] = new User("tomas", "heslo");
 		users[1] = new Administrator("admin", "heslo");
 		
-		String message;
-		
-		message = ("meno: " + users[0].username + " heslo: " + users[0].password);		
-		System.out.println(message);
-		
-		message = ("meno: " + users[1].username + " heslo: " + users[1].password);		
-		System.out.println(message);
+			
+		System.out.println(users[0].printLoginInfo());
+		System.out.println(users[1].printLoginInfo());
 	}
 
 }

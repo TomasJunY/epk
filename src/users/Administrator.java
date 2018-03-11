@@ -1,4 +1,4 @@
-package epk;
+package users;
 
 public class Administrator extends User {
 
@@ -7,6 +7,6 @@ public class Administrator extends User {
 		// TODO Auto-generated constructor stub
 
 	}
-
+	
 
 }

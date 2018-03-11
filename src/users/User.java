@@ -1,4 +1,4 @@
-package epk;
+package users;
 
 public class User {
 	
@@ -14,6 +14,11 @@ public class User {
 	public User(String username, String password) {
 		this.username = username;
 		this.password = password;
+		this.name = "";
+		this.surname = "";
+		this.gender = "";
+		this.age = 0;
+		this.position = "";
 	}
 	//set info
 	public void setInfo(String name, String surname) {
@@ -26,6 +31,12 @@ public class User {
 		this.gender = gender;
 		this.age = age;
 		this.position = position;
+	}
+	//send info
+	public String printLoginInfo() {
+		String message;
+		message = "meno: " + this.username + " heslo: " + this.password;
+		return message;
 	}
 
 }
