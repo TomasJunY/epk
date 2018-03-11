@@ -35,7 +35,12 @@ public class User {
 	//send info
 	public String printLoginInfo() {
 		String message;
-		message = "meno: " + this.username + " heslo: " + this.password;
+		message = "meno: " + this.username + ", heslo: " + this.password;
+		return message;
+	}
+	public String printFullInfo() {
+		String message;
+		message = "meno: " + this.name + ", priezvisko: " + this.surname + ", pohlavie: " + this.gender + ", vek: " + this.age + ", pozicia: " + this.position;
 		return message;
 	}
 
