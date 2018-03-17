@@ -2,6 +2,7 @@ package epk;
 
 import users.*;
 import courses.*;
+import java.io.*;
 
 public class Main {
 
@@ -20,7 +21,7 @@ public class Main {
 		System.out.println(users[1].printLoginInfo());
 		System.out.println(users[1].printFullInfo());
 		
-		System.out.println("-----------------");
+		System.out.println("--------------------------------------------------");
 		
 		//testy
 		Test tests[] = new Test[2];
@@ -114,6 +115,9 @@ public class Main {
 			}
 					
 		}
-	}
+		
+		File directory = new File("../files/users.txt");
+		System.out.println(directory.getAbsolutePath());
+	}	
 
 }
