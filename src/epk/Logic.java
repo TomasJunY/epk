@@ -18,6 +18,7 @@ public class Logic {
 		//System.out.println("pocet: " + pocet);
 		loadUsersFileToArray();
 		writeUsersToFileFromArray();
+		System.out.println(userLogin("admin", "heslo"));
 	}
 	
 	//pocet uzivatelov s subore
@@ -121,7 +122,7 @@ public class Logic {
         }
 	}
 	
-	//yapis do textaku - zatial ineho
+	//zapis do textaku - zatial ineho
 	public static void writeUsersToFileFromArray() {
         //nazov suboru
         String fileName = "./files/users_write.txt";
@@ -162,5 +163,17 @@ public class Logic {
         catch(IOException ex) {
             System.out.println("Error writing to file: " + fileName);
         }
+	}
+	
+	//prihlasi alebo vrati false ked ne
+	public static boolean userLogin(String loginName, String loginPassword) {	
+		for (int a=0; a<getFileUserCount(); a++) {			
+			if(loginName.equals(users[a].getUsername())) {
+				loggedUser = new User(users[a].getUsername(),users[a].getPassword());
+				loggedUser.setInfo(users[a].getName(), users[a].getUsername(), users[a].getGender(), users[a].getAge(), users[a].getPosition());
+				return true;
+			}
+		}
+		return false;
 	}
 }
