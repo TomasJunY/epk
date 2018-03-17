@@ -43,6 +43,30 @@ public class User {
 		message = "meno: " + this.name + ", priezvisko: " + this.surname + ", pohlavie: " + this.gender + ", vek: " + this.age + ", pozicia: " + this.position;
 		return message;
 	}
+	public String getUsername() {
+		return this.username;
+	}
+	public String getPassword() {
+		return this.password;
+	}
+	public String getName() {
+		return this.name;
+	}
+	public String getSurname() {
+		return this.surname;
+	}
+	public String getGender() {
+		return this.gender;
+	}
+	public int getAge() {
+		return this.age;
+	}
+	public String getPosition() {
+		return this.position;
+	}
+	public boolean isAdmin() {
+		return false;
+	}
 
 }
 

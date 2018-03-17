@@ -8,5 +8,8 @@ public class Administrator extends User {
 
 	}
 	
+	public boolean isAdmin() {
+		return true;
+	}
 
 }

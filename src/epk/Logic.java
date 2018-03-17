@@ -16,7 +16,8 @@ public class Logic {
 		
 		//int pocet = getFileUserCount();
 		//System.out.println("pocet: " + pocet);
-		loadFileToArray();
+		loadUsersFileToArray();
+		writeUsersToFileFromArray();
 	}
 	
 	//pocet uzivatelov s subore
@@ -57,11 +58,9 @@ public class Logic {
 	}
 	
 	//nacitanie do pola
-	public static void loadFileToArray() {
-		
+	public static void loadUsersFileToArray() {	
 		//nazov suboru
         String fileName = "./files/users.txt";
-
         //citrane udaje
         String readedUsername = null;
         String readedPassword = null;
@@ -121,5 +120,47 @@ public class Logic {
             System.out.println("Chyba pri citani suboru: " + fileName);  
         }
 	}
-
+	
+	//yapis do textaku - zatial ineho
+	public static void writeUsersToFileFromArray() {
+        //nazov suboru
+        String fileName = "./files/users_write.txt";
+        //zapisuj
+        try {
+        	//zapisovac
+            FileWriter fileWriter = new FileWriter(fileName);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            //zapisuj
+            for (int a=0; a<getFileUserCount(); a++) {
+            	//zapisuj
+            	bufferedWriter.write(users[a].getUsername());
+            	bufferedWriter.newLine();
+            	bufferedWriter.write(users[a].getPassword());
+            	bufferedWriter.newLine();
+            	//admin
+            	if(users[a].isAdmin()) {
+            		bufferedWriter.write("1");                	
+            	}
+            	else {
+            		bufferedWriter.write("0");
+            	}
+            	bufferedWriter.newLine();
+            	bufferedWriter.write(users[a].getName());
+            	bufferedWriter.newLine();
+            	bufferedWriter.write(users[a].getSurname());
+            	bufferedWriter.newLine();
+            	bufferedWriter.write(users[a].getGender());
+            	bufferedWriter.newLine();
+            	bufferedWriter.write(String.valueOf(users[a].getAge()));
+            	bufferedWriter.newLine();
+            	bufferedWriter.write(users[a].getPosition());
+            	bufferedWriter.newLine();
+            }
+            //zavri
+            bufferedWriter.close();
+        }
+        catch(IOException ex) {
+            System.out.println("Error writing to file: " + fileName);
+        }
+	}
 }
