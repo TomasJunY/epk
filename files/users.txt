@@ -9,11 +9,11 @@ pozicia
 admin
 heslo
 1
-
-
-
-
-
+meno
+priezvisko
+pohlavie
+15
+pozicia
 uz1
 heslo
 0
