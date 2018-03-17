@@ -18,7 +18,8 @@ public class Logic {
 		//System.out.println("pocet: " + pocet);
 		loadUsersFileToArray();
 		writeUsersToFileFromArray();
-		System.out.println(userLogin("admin", "heslo"));
+		//System.out.println(userLogin("admin", "heslo"));
+		System.out.println(users.length);
 	}
 	
 	//pocet uzivatelov s subore
@@ -132,6 +133,63 @@ public class Logic {
             FileWriter fileWriter = new FileWriter(fileName);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             //zapisuj
+            for (int a=0; a<users.length; a++) {
+            	//zapisuj
+            	bufferedWriter.write(users[a].getUsername());
+            	bufferedWriter.newLine();
+            	bufferedWriter.write(users[a].getPassword());
+            	bufferedWriter.newLine();
+            	//admin
+            	if(users[a].isAdmin()) {
+            		bufferedWriter.write("1");                	
+            	}
+            	else {
+            		bufferedWriter.write("0");
+            	}
+            	bufferedWriter.newLine();
+            	bufferedWriter.write(users[a].getName());
+            	bufferedWriter.newLine();
+            	bufferedWriter.write(users[a].getSurname());
+            	bufferedWriter.newLine();
+            	bufferedWriter.write(users[a].getGender());
+            	bufferedWriter.newLine();
+            	bufferedWriter.write(String.valueOf(users[a].getAge()));
+            	bufferedWriter.newLine();
+            	bufferedWriter.write(users[a].getPosition());
+            	if (a < users.length-1) {
+            		bufferedWriter.newLine();
+            	}
+            }
+            //zavri         
+            bufferedWriter.close();
+        }
+        catch(IOException ex) {
+            System.out.println("Error writing to file: " + fileName);
+        }
+	}
+	
+	//prihlasi alebo vrati false ked ne
+	public static boolean userLogin(String loginName, String loginPassword) {	
+		for (int a=0; a<getFileUserCount(); a++) {			
+			if(loginName.equals(users[a].getUsername())) {
+				loggedUser = new User(users[a].getUsername(),users[a].getPassword());
+				loggedUser.setInfo(users[a].getName(), users[a].getUsername(), users[a].getGender(), users[a].getAge(), users[a].getPosition());
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	//pridanie usera - zapisanie do suboru a nacitanie
+	public static void addUser(String addedUsername, String addedPassword, String addedAdmin, String addedName, String addedSurname, String addedGender, String addedAge, String addedPosition) {
+        //nazov suboru
+        String fileName = "./files/users.txt";
+        //zapisuj
+        try {
+        	//zapisovac
+            FileWriter fileWriter = new FileWriter(fileName);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            //zapisuj povodne
             for (int a=0; a<getFileUserCount(); a++) {
             	//zapisuj
             	bufferedWriter.write(users[a].getUsername());
@@ -157,23 +215,34 @@ public class Logic {
             	bufferedWriter.write(users[a].getPosition());
             	bufferedWriter.newLine();
             }
+            //pridaj nove
+            bufferedWriter.write(addedUsername);
+        	bufferedWriter.newLine();
+        	bufferedWriter.write(addedPassword);
+        	bufferedWriter.newLine();
+        	bufferedWriter.write(addedAdmin);
+        	bufferedWriter.newLine();
+        	bufferedWriter.write(addedName);
+        	bufferedWriter.newLine();
+        	bufferedWriter.write(addedSurname);
+        	bufferedWriter.newLine();
+        	bufferedWriter.write(addedGender);
+        	bufferedWriter.newLine();
+        	bufferedWriter.write(addedAge);
+        	bufferedWriter.newLine();
+        	bufferedWriter.write(addedPosition);
+        	bufferedWriter.newLine();
             //zavri
             bufferedWriter.close();
         }
         catch(IOException ex) {
             System.out.println("Error writing to file: " + fileName);
         }
-	}
-	
-	//prihlasi alebo vrati false ked ne
-	public static boolean userLogin(String loginName, String loginPassword) {	
-		for (int a=0; a<getFileUserCount(); a++) {			
-			if(loginName.equals(users[a].getUsername())) {
-				loggedUser = new User(users[a].getUsername(),users[a].getPassword());
-				loggedUser.setInfo(users[a].getName(), users[a].getUsername(), users[a].getGender(), users[a].getAge(), users[a].getPosition());
-				return true;
-			}
-		}
-		return false;
-	}
+        
+        users = null;
+        users = new User[getFileUserCount()];
+        //loadni
+        loadUsersFileToArray();
+	}	
+
 }
