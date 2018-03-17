@@ -1,6 +1,9 @@
 package epk;
 
 import java.io.*;
+import java.nio.*;
+import java.nio.file.Files;
+
 import users.*;
 
 public class Logic {
@@ -19,6 +22,7 @@ public class Logic {
 		loadUsersFileToArray();
 		writeUsersToFileFromArray();
 		//System.out.println(userLogin("admin", "heslo"));
+		addUser("uz2","gelo","0","meno","priz","muz","25","asfa");
 		System.out.println(users.length);
 	}
 	
@@ -49,7 +53,7 @@ public class Logic {
         }
         catch(FileNotFoundException ex) {
         	//nenasiel sa subor
-            System.out.println("nepodarilo sa otvorit subor: " + fileName);                
+            System.out.println("Nepodarilo sa otvorit subor: " + fileName);                
         }
         catch(IOException ex) {
         	//chyba pri citani
@@ -115,7 +119,7 @@ public class Logic {
         }
         catch(FileNotFoundException ex) {
         	//nenasiel sa subor
-            System.out.println("nepodarilo sa otvorit subor: " + fileName);                
+            System.out.println("Nepodarilo sa otvorit subor: " + fileName);                
         }
         catch(IOException ex) {
         	//chyba pri citani
@@ -126,7 +130,7 @@ public class Logic {
 	//zapis do textaku - zatial ineho
 	public static void writeUsersToFileFromArray() {
         //nazov suboru
-        String fileName = "./files/users_write.txt";
+        String fileName = "./files/users.txt";
         //zapisuj
         try {
         	//zapisovac
@@ -160,17 +164,18 @@ public class Logic {
             		bufferedWriter.newLine();
             	}
             }
-            //zavri         
+            //zavri 
+            bufferedWriter.flush();
             bufferedWriter.close();
         }
         catch(IOException ex) {
-            System.out.println("Error writing to file: " + fileName);
+            System.out.println("Chyba pri zapisovani do suboru: " + fileName);
         }
 	}
 	
 	//prihlasi alebo vrati false ked ne
 	public static boolean userLogin(String loginName, String loginPassword) {	
-		for (int a=0; a<getFileUserCount(); a++) {			
+		for (int a=0; a<users.length; a++) {			
 			if(loginName.equals(users[a].getUsername())) {
 				loggedUser = new User(users[a].getUsername(),users[a].getPassword());
 				loggedUser.setInfo(users[a].getName(), users[a].getUsername(), users[a].getGender(), users[a].getAge(), users[a].getPosition());
@@ -190,7 +195,7 @@ public class Logic {
             FileWriter fileWriter = new FileWriter(fileName);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             //zapisuj povodne
-            for (int a=0; a<getFileUserCount(); a++) {
+            for (int a=0; a<users.length; a++) {
             	//zapisuj
             	bufferedWriter.write(users[a].getUsername());
             	bufferedWriter.newLine();
@@ -231,14 +236,15 @@ public class Logic {
         	bufferedWriter.write(addedAge);
         	bufferedWriter.newLine();
         	bufferedWriter.write(addedPosition);
-        	bufferedWriter.newLine();
             //zavri
+        	bufferedWriter.flush();
             bufferedWriter.close();
+            
         }
         catch(IOException ex) {
-            System.out.println("Error writing to file: " + fileName);
+            System.out.println("Chyba pri zapisovani do suboru: " + fileName);
         }
-        
+        //reset uziv
         users = null;
         users = new User[getFileUserCount()];
         //loadni
