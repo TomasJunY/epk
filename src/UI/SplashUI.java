@@ -12,6 +12,10 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
+
+import java.util.concurrent.TimeUnit;
+import javafx.animation.*;
 
 public class SplashUI extends Application {
 
@@ -38,5 +42,18 @@ public class SplashUI extends Application {
 		window.initStyle(StageStyle.TRANSPARENT);
 		window.setScene(scene);		
 		window.show();
+		
+		//load udajov a zmena sceny
+		PauseTransition pause = new PauseTransition();
+		pause.setDuration(Duration.seconds(3));
+		pause.setOnFinished(e -> {
+			//load
+			
+			//
+			LoginUI.show("login");
+			window.close();
+			} );
+		pause.play();
 	}
+	
 }

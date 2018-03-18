@@ -10,17 +10,11 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
-public class LoginUI extends Application {
+public class LoginUI {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		//launch(args);
-	}
-	
-	@Override
-	public void start(Stage primaryStage) throws Exception {
-		Stage window = primaryStage;
-		window.setTitle("login");
+	public static void show(String title) {
+		Stage window = new Stage();
+		window.setTitle(title);
 		
 		GridPane grid = new GridPane();
 		grid.setPadding(new Insets(10, 10, 10, 10));
