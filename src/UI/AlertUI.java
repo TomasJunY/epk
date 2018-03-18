@@ -16,10 +16,6 @@ public class AlertUI {
 	public static void show(String title, String message, int windowX, int windowY) {
 		Stage window = new Stage();
 		
-		window.initModality(Modality.APPLICATION_MODAL);
-		window.setTitle(title);
-		//window.setMinWidth(500);
-		
 		Label L_message = new Label();
 		L_message.setText(message);
 		
@@ -33,8 +29,10 @@ public class AlertUI {
 		layout.setAlignment(Pos.CENTER);
 		
 		Scene scene = new Scene(layout, windowX, windowY);
-		window.setScene(scene);
 		
+		window.setScene(scene);
+		window.initModality(Modality.APPLICATION_MODAL);
+		window.setTitle(title);
 		window.showAndWait();
 		
 	}

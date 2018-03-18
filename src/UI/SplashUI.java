@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
-import java.util.concurrent.TimeUnit;
+//import java.util.concurrent.TimeUnit;
 
 import epk.Logic;
 import javafx.animation.*;
@@ -48,7 +48,7 @@ public class SplashUI extends Application {
 		
 		//load udajov a zmena sceny
 		PauseTransition pause = new PauseTransition();
-		pause.setDuration(Duration.seconds(0));
+		pause.setDuration(Duration.seconds(3));
 		pause.setOnFinished(e -> {
 			//load
 			Logic.loadUsersFileToArray();
