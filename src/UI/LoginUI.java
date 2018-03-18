@@ -1,6 +1,7 @@
 package UI;
 
 import epk.Logic;
+
 import javafx.*;
 import javafx.application.Application;
 import javafx.geometry.*;
@@ -14,8 +15,7 @@ import javafx.stage.Stage;
 public class LoginUI {
 
 	public static void show(String title) {
-		Stage window = new Stage();
-		window.setTitle(title);
+		Stage window = new Stage();		
 		
 		GridPane grid = new GridPane();
 		grid.setPadding(new Insets(10, 10, 10, 10));
@@ -25,13 +25,13 @@ public class LoginUI {
 		Label L_username = new Label("username");
 		GridPane.setConstraints(L_username, 0, 0);
 		
-		TextField E_username = new TextField();
+		TextField E_username = new TextField("admin");
 		GridPane.setConstraints(E_username, 1, 0);
 		
 		Label L_password = new Label("password");
 		GridPane.setConstraints(L_password, 0, 1);
 		
-		TextField E_password = new TextField();
+		TextField E_password = new TextField("heslo");
 		GridPane.setConstraints(E_password, 1, 1);
 			
 		
@@ -43,7 +43,9 @@ public class LoginUI {
 			//AlertUI.show("chyba", "daco sa stalo", 200, 100);
 			if ( Logic.userLogin( E_username.getText(), E_password.getText() ) == true ) {
 				//prihlas
-				AlertUI.show("ok", "sicko v poradku", 200, 100);
+				//AlertUI.show("ok", "sicko v poradku", 200, 100);
+				DashboardUI.show("dashboard");
+				window.close();
 			}
 			else {
 				AlertUI.show("chyba", "zle meno alebo heslo", 200, 100);
@@ -58,8 +60,8 @@ public class LoginUI {
 		
 		Scene scene = new Scene(grid, 250, 150);
 		
-		window.setScene(scene);
-		
+		window.setTitle(title);
+		window.setScene(scene);	
 		window.show();		
 	 }
 

@@ -48,7 +48,7 @@ public class SplashUI extends Application {
 		
 		//load udajov a zmena sceny
 		PauseTransition pause = new PauseTransition();
-		pause.setDuration(Duration.seconds(3));
+		pause.setDuration(Duration.seconds(1));
 		pause.setOnFinished(e -> {
 			//load
 			Logic.loadUsersFileToArray();
