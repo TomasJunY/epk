@@ -185,16 +185,16 @@ public class Logic {
 	}
 	
 	//prihlasi alebo vrati false ked ne
-		public static boolean userLogin(String loginName, String loginPassword) {	
-			for (int a=0; a<users.length; a++) {			
-				if(loginName.equals(users[a].getUsername())) {
-					loggedUser = new User(users[a].getUsername(),users[a].getPassword());
-					loggedUser.setInfo(users[a].getName(), users[a].getSurname(), users[a].getGender(), users[a].getAge(), users[a].getPosition());
-					return true;
-				}
+	public static boolean userLogin(String loginName, String loginPassword) {	
+		for (int a=0; a<users.length; a++) {			
+			if(loginName.equals(users[a].getUsername())) {
+				loggedUser = new User(users[a].getUsername(),users[a].getPassword());
+				loggedUser.setInfo(users[a].getName(), users[a].getSurname(), users[a].getGender(), users[a].getAge(), users[a].getPosition());
+				return true;
 			}
-			return false;
 		}
+		return false;
+	}
 	
 	//pridanie usera - zapisanie do suboru a nacitanie
 	public static void addUser(String addedUsername, String addedPassword, String addedAdmin, String addedName, String addedSurname, String addedGender, String addedAge, String addedPosition) {

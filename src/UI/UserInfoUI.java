@@ -14,12 +14,10 @@ public class UserInfoUI {
 	public static void show(String title) {
 		Stage window = new Stage();
 		
-		window.initModality(Modality.APPLICATION_MODAL);
-		window.setTitle(title);
-		
 		Button B_passwordChange = new Button("zmen heslo");
 		B_passwordChange.setOnAction(e -> {
-			//
+			//men heslo
+			PasswordChangeUI.show("zmena hesla");
 		} );
 		B_passwordChange.setPrefWidth(80);
 		
@@ -54,8 +52,10 @@ public class UserInfoUI {
 		layout.setAlignment(Pos.CENTER);
 		
 		Scene scene = new Scene(layout, 300, 250);
-		window.setScene(scene);
 		
+		window.setScene(scene);
+		window.initModality(Modality.APPLICATION_MODAL);
+		window.setTitle(title);
 		window.showAndWait();
 		
 	}
