@@ -44,6 +44,7 @@ public class LoginUI {
 			if ( Logic.userLogin( E_username.getText(), E_password.getText() ) == true ) {
 				//prihlas
 				//AlertUI.show("ok", "sicko v poradku", 200, 100);
+				//Logic.userLogin(loginName, loginPassword)
 				DashboardUI.show("dashboard");
 				window.close();
 			}

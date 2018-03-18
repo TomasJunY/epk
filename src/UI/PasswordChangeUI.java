@@ -35,10 +35,10 @@ public class PasswordChangeUI {
 		GridPane.setConstraints(E_new, 1, 1);
 		
 		Label L_new2 = new Label("nove znova");
-		GridPane.setConstraints(L_new, 0, 2);
+		GridPane.setConstraints(L_new2, 0, 2);
 		
 		TextField E_new2 = new TextField("");
-		GridPane.setConstraints(E_new, 1, 2);
+		GridPane.setConstraints(E_new2, 1, 2);
 			
 		
 		Button B_change = new Button("zmen");
@@ -51,15 +51,16 @@ public class PasswordChangeUI {
 				//pokial je rovnake povodne			
 				if ( (E_orig.getText().equals(Logic.loggedUser.getPassword()) ) == true ) {
 					//men heslo
-					
+					Logic.changePassword(Logic.loggedUser.getUsername(), E_new.getText());
+					window.close();
 				}
 				else {
 					AlertUI.show("chyba", "povodne sa nezhoduje", 200, 100);
 				}
 				
 				//AlertUI.show("ok", "sicko v poradku", 200, 100);
-				DashboardUI.show("dashboard");
-				window.close();
+				//DashboardUI.show("dashboard");
+				//window.close();
 			}
 			else {
 				AlertUI.show("chyba", "hesla sa lisia", 200, 100);
@@ -74,7 +75,7 @@ public class PasswordChangeUI {
 		grid.getChildren().add(E_new2);
 		grid.getChildren().add(B_change);
 		
-		Scene scene = new Scene(grid, 250, 150);
+		Scene scene = new Scene(grid, 500, 400);
 		
 		window.setTitle(title);
 		window.initModality(Modality.APPLICATION_MODAL);

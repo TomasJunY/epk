@@ -19,11 +19,12 @@ public class Logic {
 		
 		//int pocet = getFileUserCount();
 		//System.out.println("pocet: " + pocet);
-		loadUsersFileToArray();
+		//loadUsersFileToArray();
 		//writeUsersToFileFromArray();
 		//System.out.println(userLogin("admin", "heslo"));
 		//addUser("uz2", "heslo", "0", "meno", "priz", "muz", "25", "asfa");
-		System.out.println(users.length);
+		//changePassword("admin", "new");
+		//System.out.println(users.length);
 	}
 	
 	//pocet uzivatelov s subore
@@ -187,13 +188,30 @@ public class Logic {
 	//prihlasi alebo vrati false ked ne
 	public static boolean userLogin(String loginName, String loginPassword) {	
 		for (int a=0; a<users.length; a++) {			
-			if(loginName.equals(users[a].getUsername())) {
+			if(loginName.equals(users[a].getUsername()) && loginPassword.equals(users[a].getPassword())  ) {
 				loggedUser = new User(users[a].getUsername(),users[a].getPassword());
 				loggedUser.setInfo(users[a].getName(), users[a].getSurname(), users[a].getGender(), users[a].getAge(), users[a].getPosition());
 				return true;
 			}
 		}
 		return false;
+	}
+	
+	//men heslo
+	public static void changePassword(String username, String newPassword ) {
+		for (int a=0; a<users.length; a++) {			
+			if(username.equals(users[a].getUsername())) {
+				//loggedUser = new User(users[a].getUsername(),users[a].getPassword());
+				//loggedUser.setInfo(users[a].getName(), users[a].getSurname(), users[a].getGender(), users[a].getAge(), users[a].getPosition());			
+				
+				//zmen heslo v poli
+				users[a].setPassword(newPassword);
+				//zapis
+				writeUsersToFileFromArray();
+				//odhla
+				userLogoff();
+			}
+		}
 	}
 	
 	//pridanie usera - zapisanie do suboru a nacitanie

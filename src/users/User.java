@@ -32,6 +32,9 @@ public class User {
 		this.age = age;
 		this.position = position;
 	}
+	public void setPassword(String password){
+		this.password = password;
+	}
 	//send info
 	public String printLoginInfo() {
 		String message;
