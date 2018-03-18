@@ -75,7 +75,7 @@ public class PasswordChangeUI {
 		grid.getChildren().add(E_new2);
 		grid.getChildren().add(B_change);
 		
-		Scene scene = new Scene(grid, 500, 400);
+		Scene scene = new Scene(grid, 250, 150);
 		
 		window.setTitle(title);
 		window.initModality(Modality.APPLICATION_MODAL);
