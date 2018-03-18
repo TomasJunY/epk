@@ -20,9 +20,9 @@ public class Logic {
 		//int pocet = getFileUserCount();
 		//System.out.println("pocet: " + pocet);
 		loadUsersFileToArray();
-		writeUsersToFileFromArray();
+		//writeUsersToFileFromArray();
 		//System.out.println(userLogin("admin", "heslo"));
-		addUser("uz2","gelo","0","meno","priz","muz","25","asfa");
+		//addUser("uz2", "heslo", "0", "meno", "priz", "muz", "25", "asfa");
 		System.out.println(users.length);
 	}
 	
