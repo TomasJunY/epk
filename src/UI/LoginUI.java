@@ -1,5 +1,6 @@
 package UI;
 
+import epk.Logic;
 import javafx.*;
 import javafx.application.Application;
 import javafx.geometry.*;
@@ -40,6 +41,13 @@ public class LoginUI {
 		B_login.setOnAction(e -> {
 			//rob
 			//AlertUI.show("chyba", "daco sa stalo", 200, 100);
+			if ( Logic.userLogin( E_username.getText(), E_password.getText() ) == true ) {
+				//prihlas
+				AlertUI.show("ok", "sicko v poradku", 200, 100);
+			}
+			else {
+				AlertUI.show("chyba", "zle meno alebo heslo", 200, 100);
+			}
 		});
 		
 		grid.getChildren().add(L_username);

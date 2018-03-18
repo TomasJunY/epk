@@ -15,6 +15,8 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 import java.util.concurrent.TimeUnit;
+
+import epk.Logic;
 import javafx.animation.*;
 
 public class SplashUI extends Application {
@@ -29,11 +31,12 @@ public class SplashUI extends Application {
 		
 		Pane layout = new Pane();
 		layout.setPrefSize(400, 233);
+		//layout.setPrefSize(500, 500);
 		layout.setBackground(null);
 		
 		//Image splashImage = new Image(getClass().getResourceAsStream("splash.png"));
 		Image splashImage = new Image("file:images/splash.png");
-		
+		//Image splashImage = new Image("http://i.imgur.com/yBPMiCp.gif");
 		layout.getChildren().add(new ImageView(splashImage));
 		
 		Scene scene = new Scene(layout, Color.TRANSPARENT);
@@ -48,7 +51,7 @@ public class SplashUI extends Application {
 		pause.setDuration(Duration.seconds(3));
 		pause.setOnFinished(e -> {
 			//load
-			
+			Logic.loadUsersFileToArray();
 			//
 			LoginUI.show("login");
 			window.close();
