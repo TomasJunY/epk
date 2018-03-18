@@ -43,6 +43,10 @@ public class LoginUI extends Application {
 		Button B_login = new Button("login");
 		GridPane.setConstraints(B_login, 1, 2);
 		B_login.setPrefWidth(150);
+		B_login.setOnAction(e -> {
+			//rob
+			AlertUI.show("chyba", "daco sa stalo", 200, 100);
+		});
 		
 		grid.getChildren().add(L_username);
 		grid.getChildren().add(E_username);
