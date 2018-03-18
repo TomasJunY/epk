@@ -24,6 +24,14 @@ public class DashboardUI {
 		grid.setHgap(15);
 		//grid.setPrefSize(800, 600);
 		
+		Label L_userWelcome = new Label("si prihlaseny ako: ");
+		GridPane.setConstraints(L_userWelcome, 0, 0);
+		String userWelcomeMessage = Logic.loggedUser.getName() + " " + Logic.loggedUser.getSurname();
+		Label L_userName = new Label(userWelcomeMessage);
+		GridPane.setConstraints(L_userName, 1, 0);
+		
+		grid.getChildren().add(L_userWelcome);
+		grid.getChildren().add(L_userName);
 		
 		Scene scene = new Scene(grid, 800, 600);
 		

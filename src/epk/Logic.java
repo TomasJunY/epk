@@ -9,9 +9,9 @@ import users.*;
 public class Logic {
 	
 	//db s usermi
-	static User users[] = new User[getFileUserCount()];
+	public static User users[] = new User[getFileUserCount()];
 	//prihlaseny user
-	static User loggedUser;
+	public static User loggedUser;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
