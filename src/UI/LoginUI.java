@@ -14,7 +14,7 @@ public class LoginUI extends Application {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		launch(args);
+		//launch(args);
 	}
 	
 	@Override
@@ -45,7 +45,7 @@ public class LoginUI extends Application {
 		B_login.setPrefWidth(150);
 		B_login.setOnAction(e -> {
 			//rob
-			AlertUI.show("chyba", "daco sa stalo", 200, 100);
+			//AlertUI.show("chyba", "daco sa stalo", 200, 100);
 		});
 		
 		grid.getChildren().add(L_username);
