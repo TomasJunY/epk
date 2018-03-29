@@ -42,6 +42,10 @@ public class Course {
 		return this.file[position];
 	}
 	
+	public int getFileLength() {
+		return this.file.length;
+	}
+	
 	public void setFile(int position, CustomFile file) {
 		this.file[position] = file;
 	}

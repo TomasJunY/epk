@@ -80,6 +80,21 @@ public class User {
 		return this.course[position];
 	}
 	
+	public int getCourseLength() {
+		return this.course.length;
+	}
+	
+	public int getCourseIndex(String find) {
+		int index = -1;
+		for (int a = 0; a < this.course.length ; a++) {
+			 if(this.getCourse(a).getName().equals(find)) {
+				 index = a;
+				 break;
+			 }			
+		}
+		return index;
+	}
+	
 	public void setCourse(int position, Course course) {
 		this.course[position] = course;
 	}

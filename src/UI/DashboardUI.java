@@ -73,11 +73,30 @@ public class DashboardUI {
 			Logic.loadCoursesList();
 		});
 		
+		ComboBox comboCourses = new ComboBox<>();
+		for (int a = 0; a < Logic.loggedUser.getCourseLength(); a++) {
+			comboCourses.getItems().add(Logic.loggedUser.getCourse(a).getName());
+		 }
+		//comboCourses.getItems().addAll("1", "2", "3");
+		comboCourses.setPromptText("vyber si kurz");
+		
+		Button B_Course = new Button("choc");
+		B_Course.setOnAction(e -> {
+			//
+			String selectedCName = (String) comboCourses.getValue();
+			int pos = Logic.loggedUser.getCourseIndex(selectedCName);
+			CourseUI.show(selectedCName, (String) comboCourses.getValue(), pos);
+			window.close();
+		});
+		
 		hboxTop.getChildren().add(L_userWelcome);
 		hboxTop.getChildren().add(L_userName);
 		hboxTop.getChildren().add(B_userInfo);
 		hboxTop.getChildren().add(B_logOff);
 		hboxTop.getChildren().add(B_debug);
+		hboxTop.getChildren().add(comboCourses);
+		hboxTop.getChildren().add(B_Course);
+		
 		/*
 		HBox hboxBottom = new HBox();
 		hboxBottom.setSpacing(8);

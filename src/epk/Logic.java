@@ -1,5 +1,6 @@
 package epk;
 
+import java.awt.Desktop;
 import java.io.*;
 import java.nio.*;
 import java.nio.file.Files;
@@ -499,5 +500,22 @@ public class Logic {
             System.out.println("Chyba pri citani suboru: " + fileName);  
         }
 	}
-
+	
+	public static void openFileOnDisk(String name) {
+		//
+		if (Desktop.isDesktopSupported()) {
+			try {
+				Desktop desktop = Desktop.getDesktop();
+				File myFile = new File("./data/courses/1_vodicak/material/documents/" + name);
+				//File myFile = new File(path);
+				desktop.open(myFile);
+			}		    
+			catch (IOException ex) {
+				//chzba
+	            System.out.println("Chyba pri otvarani suboru");  
+			}
+				
+		}
+	}
+	
 }

@@ -44,6 +44,8 @@ public class LoginUI {
 				//prihlas
 				//AlertUI.show("ok", "sicko v poradku", 200, 100);
 				//Logic.userLogin(loginName, loginPassword)
+				//load course
+				Logic.loadCoursesList();
 				DashboardUI.show("dashboard");
 				window.close();
 			}

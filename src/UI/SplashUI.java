@@ -52,8 +52,7 @@ public class SplashUI extends Application {
 		pause.setOnFinished(e -> {
 			//load
 			Logic.loadUsersFileToArray();
-			//
-			LoginUI.show("login");
+			LoginUI.show("login");			
 			window.close();
 			} );
 		pause.play();
