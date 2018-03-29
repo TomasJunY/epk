@@ -35,7 +35,7 @@ public class SplashUI extends Application {
 		layout.setBackground(null);
 		
 		//Image splashImage = new Image(getClass().getResourceAsStream("splash.png"));
-		Image splashImage = new Image("file:images/splash.png");
+		Image splashImage = new Image("file:data/images/splash.png");
 		//Image splashImage = new Image("http://i.imgur.com/yBPMiCp.gif");
 		layout.getChildren().add(new ImageView(splashImage));
 		
@@ -48,7 +48,7 @@ public class SplashUI extends Application {
 		
 		//load udajov a zmena sceny
 		PauseTransition pause = new PauseTransition();
-		pause.setDuration(Duration.seconds(3));
+		pause.setDuration(Duration.seconds(0));
 		pause.setOnFinished(e -> {
 			//load
 			Logic.loadUsersFileToArray();

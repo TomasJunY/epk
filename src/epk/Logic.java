@@ -30,7 +30,7 @@ public class Logic {
 	//pocet uzivatelov s subore
 	public static int getFileUserCount() {
 		//nazov suboru
-        String fileName = "./files/users.txt";
+        String fileName = "./data/users_data/list/users.txt";
         //citrany riadok
         String readedLine = null;        
         //pocty
@@ -67,7 +67,7 @@ public class Logic {
 	//nacitanie do pola
 	public static void loadUsersFileToArray() {	
 		//nazov suboru
-        String fileName = "./files/users.txt";
+        String fileName = "./data/users_data/list/users.txt";
         //citrane udaje
         String readedUsername = null;
         String readedPassword = null;
@@ -131,7 +131,7 @@ public class Logic {
 	//zapis do textaku - zatial ineho
 	public static void writeUsersToFileFromArray() {
         //nazov suboru
-        String fileName = "./files/users.txt";
+        String fileName = "./data/users_data/list/users.txt";
         //zapisuj
         try {
         	//zapisovac
@@ -217,7 +217,7 @@ public class Logic {
 	//pridanie usera - zapisanie do suboru a nacitanie
 	public static void addUser(String addedUsername, String addedPassword, String addedAdmin, String addedName, String addedSurname, String addedGender, String addedAge, String addedPosition) {
         //nazov suboru
-        String fileName = "./files/users.txt";
+        String fileName = "./data/users_data/list/users.txt";
         //zapisuj
         try {
         	//zapisovac
