@@ -354,7 +354,7 @@ public class Logic {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
                       
             CourseName = bufferedReader.readLine();
-            //CourseText = bufferedReader.readLine();
+            CourseText = bufferedReader.readLine();
             
             while( (readedLine = bufferedReader.readLine() ) != null) {
             	CourseText = CourseText + "\n" + readedLine;           
