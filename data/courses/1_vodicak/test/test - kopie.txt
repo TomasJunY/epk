@@ -1,4 +1,4 @@
-1_vodicak
+﻿1_vodicak
 informacie o teste, test 1
 5
 otazka1
@@ -10,7 +10,7 @@ osoba, ktora vedie vozidlo
 1
 osoba, ktora vedie najma motorove alebo nemotorove vozidlo, tlaci motocykel, pohybuje sa na lyziach, alebo kolieskovych korculiach, taha alebo tlaci sanky
 0
-len osoba ktora vedie motorove vozidlo
+len osoba ktorá vedie motorove vozidlo
 0
 otazka2
 3
