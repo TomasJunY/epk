@@ -4,6 +4,7 @@ public class CustomFile {
 	
 	private String name;
 	private String location;
+	private String path;
 	
 	//konstruktor
 	public CustomFile(String name){
@@ -23,6 +24,10 @@ public class CustomFile {
 		return this.location;
 	}
 	
+	public String getPath() {
+		return this.path;
+	}
+	
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -31,5 +36,8 @@ public class CustomFile {
 		this.location = location;
 	}
 	
-
+	public void setPath(String path) {
+		this.path = path;
+	}
+	
 }

@@ -394,7 +394,8 @@ public class Logic {
             
             while( (readedLine = bufferedReader.readLine() ) != null) {
             	//uloz
-            	loggedUser.getCourse(position).setFile(LinkIndex, new CustomFile(readedLine, readedLine));           	
+            	loggedUser.getCourse(position).setFile(LinkIndex, new CustomFile(readedLine, "./data/courses/" + location + "/material/documents/"));   
+            	loggedUser.getCourse(position).getFile(LinkIndex).setPath("./data/courses/" + location + "/material/documents/" + readedLine);
             	//zvacsi index
             	LinkIndex++;            
             }   
