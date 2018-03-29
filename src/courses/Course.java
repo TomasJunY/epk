@@ -2,9 +2,9 @@ package courses;
 
 public class Course {
 	
-	private String name;
-	private String text;
-	private Test test;
+	public String name;
+	public String text;
+	public Test test;
 	
 	//konstruktor
 	public Course(String name, String text){
