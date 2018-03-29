@@ -29,7 +29,7 @@ public class GlobalMessageUI {
 		vbox.getChildren().add(E_message);
 		vbox.getChildren().add(B_confirm);
 		
-		Scene scene = new Scene(vbox, 250, 200);
+		Scene scene = new Scene(vbox, 250, 150);
 		
 		window.setTitle(title);
 		window.initModality(Modality.APPLICATION_MODAL);

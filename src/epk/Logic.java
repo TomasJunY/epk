@@ -198,7 +198,16 @@ public class Logic {
 	public static boolean userLogin(String loginName, String loginPassword) {	
 		for (int a=0; a<users.length; a++) {			
 			if(loginName.equals(users[a].getUsername()) && loginPassword.equals(users[a].getPassword())  ) {
-				loggedUser = new User(users[a].getUsername(),users[a].getPassword());
+				if(users[a].isAdmin()) {
+					//
+					loggedUser = new Administrator(users[a].getUsername(),users[a].getPassword());
+				} 
+				else {
+					//
+					loggedUser = new User(users[a].getUsername(),users[a].getPassword());
+				}
+				//loggedUser = new User(users[a].getUsername(),users[a].getPassword());
+				
 				loggedUser.setInfo(users[a].getName(), users[a].getSurname(), users[a].getGender(), users[a].getAge(), users[a].getPosition());
 				return true;
 			}

@@ -97,6 +97,17 @@ public class DashboardUI {
 		hboxTop.getChildren().add(comboCourses);
 		hboxTop.getChildren().add(B_Course);
 		
+		if(Logic.loggedUser.isAdmin()) {
+			Button B_globalMessage = new Button("global sprava");
+			B_globalMessage.setOnAction(e -> {
+				//
+				GlobalMessageUI.show("nastav spravu");
+			});
+			hboxTop.getChildren().add(B_globalMessage);
+		}
+		
+		
+		
 		/*
 		HBox hboxBottom = new HBox();
 		hboxBottom.setSpacing(8);
