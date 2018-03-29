@@ -40,7 +40,6 @@ public class PasswordChangeUI {
 		TextField E_new2 = new TextField("");
 		GridPane.setConstraints(E_new2, 1, 2);
 			
-		
 		Button B_change = new Button("zmen");
 		GridPane.setConstraints(B_change, 1, 3);
 		B_change.setPrefWidth(80);
@@ -80,7 +79,6 @@ public class PasswordChangeUI {
 		window.setTitle(title);
 		window.initModality(Modality.APPLICATION_MODAL);
 		window.setScene(scene);	
-		window.show();
-		
+		window.show();		
 	}
 }

@@ -56,8 +56,7 @@ public class UserInfoUI {
 		window.setScene(scene);
 		window.initModality(Modality.APPLICATION_MODAL);
 		window.setTitle(title);
-		window.showAndWait();
-		
+		window.showAndWait();		
 	}
 
 }

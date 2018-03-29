@@ -67,11 +67,17 @@ public class DashboardUI {
 			}
 		});
 		
+		Button B_debug = new Button("debug");
+		B_debug.setOnAction(e -> {
+			//
+			Logic.loadCoursesList();
+		});
+		
 		hboxTop.getChildren().add(L_userWelcome);
 		hboxTop.getChildren().add(L_userName);
 		hboxTop.getChildren().add(B_userInfo);
 		hboxTop.getChildren().add(B_logOff);
-		
+		hboxTop.getChildren().add(B_debug);
 		/*
 		HBox hboxBottom = new HBox();
 		hboxBottom.setSpacing(8);

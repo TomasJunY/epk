@@ -1,5 +1,9 @@
 package users;
 
+import courses.Course;
+import courses.Option;
+import courses.Test;
+
 public class User {
 	
 	protected String username;
@@ -9,6 +13,7 @@ public class User {
 	protected String gender;
 	protected int age;
 	protected String position;
+	protected Course course[];	
 	
 	//konstuktor
 	public User(String username, String password) {
@@ -69,7 +74,21 @@ public class User {
 	}
 	public boolean isAdmin() {
 		return false;
+	}	
+	
+	public Course getCourse(int position) {
+		return this.course[position];
 	}
+	
+	public void setCourse(int position, Course course) {
+		this.course[position] = course;
+	}
+	
+	public void setCourseAll(int pocet) {
+		//this.course[position] = course;
+		this.course	= new Course[pocet];
+	}
+
 
 }
 

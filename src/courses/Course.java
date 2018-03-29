@@ -5,6 +5,7 @@ public class Course {
 	private String name;
 	private String text;
 	private Test test;
+	private boolean finished;
 	
 	//konstruktor
 	public Course(String name, String text){
@@ -27,5 +28,12 @@ public class Course {
 	public void setTest(Test test) {
 		this.test = test;
 	}
-
+	
+	public void setFinished(boolean finished) {
+		this.finished = finished;
+	}
+	
+	public boolean isFinished() {
+		return this.finished;
+	}
 }

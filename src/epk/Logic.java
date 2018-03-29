@@ -4,6 +4,10 @@ import java.io.*;
 import java.nio.*;
 import java.nio.file.Files;
 
+import courses.Course;
+import courses.Option;
+import courses.Question;
+import courses.Test;
 import users.*;
 
 public class Logic {
@@ -25,6 +29,7 @@ public class Logic {
 		//addUser("uz2", "heslo", "0", "meno", "priz", "muz", "25", "asfa");
 		//changePassword("admin", "new");
 		//System.out.println(users.length);
+		//loadCoursesList();
 	}
 	
 	//pocet uzivatelov s subore
@@ -40,7 +45,8 @@ public class Logic {
         try {
         	//citac
             FileReader fileReader = new FileReader(fileName);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);      
+            BufferedReader bufferedReader = new BufferedReader(fileReader);   
+                       
             //citaj po riadkoch
             while( (readedLine = bufferedReader.readLine() ) != null) {
                 //System.out.println(readedLine);
@@ -49,8 +55,7 @@ public class Logic {
             //vysledok
             userCount = lineCount/8;          
             //zavri
-            bufferedReader.close(); 
-           
+            bufferedReader.close();       
         }
         catch(FileNotFoundException ex) {
         	//nenasiel sa subor
@@ -88,6 +93,8 @@ public class Logic {
             //citac
             FileReader fileReader = new FileReader(fileName);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
+            
+            //readedUsername = bufferedReader.readLine();  
             
             //citaj po riadkoch
             while( (readedUsername = bufferedReader.readLine() ) != null) {
@@ -279,5 +286,139 @@ public class Logic {
         //loadni
         loadUsersFileToArray();
 	}	
+	
+	
+	//citanie courses
+	public static void loadCoursesList() {	
+		//nazov suboru
+        String fileName = "./data/courses/courses.txt";
+        //loggedUser.getCourse(0);
+        //citane udaje
+        String readedLine = null;
+        int pocetCourses = 0;
+        int CourseIndex = 0;
+
+        try {
+            //citac
+            FileReader fileReader = new FileReader(fileName);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            //readedLine = bufferedReader.readLine();
+            //pocet
+            readedLine = bufferedReader.readLine();   
+            pocetCourses = Integer.parseInt(readedLine);
+            loggedUser.setCourseAll(pocetCourses);
+            
+            //citaj po riadkoch
+            while( (readedLine = bufferedReader.readLine() ) != null) {
+            	//rob
+            	String location = readedLine;
+            	//nacitaj veci
+            	//course[0] = new Course("c1", "textas");
+            	loggedUser.setCourse(CourseIndex, new Course("c1", "textas"));
+            	loadCourseTest(CourseIndex, readedLine);
+            	//System.out.println(readedLine);
+            	//zvacsi index
+            	CourseIndex++;            
+            }   
+            //zavri
+            bufferedReader.close();         
+        }
+        catch(FileNotFoundException ex) {
+        	//nenasiel sa subor
+            System.out.println("Nepodarilo sa otvorit subor: " + fileName);                
+        }
+        catch(IOException ex) {
+        	//chyba pri citani
+            System.out.println("Chyba pri citani suboru: " + fileName);  
+        }
+	}
+	
+	//citanie course - test
+	public static void loadCourseTest(int position, String location) {	
+		//nazov suboru
+        String fileName = "./data/courses/" + location + "/test/test.txt";
+        //loggedUser.getCourse(0);
+        //citane udaje
+        String readedLine = null;
+        String TestName = null;
+        String TestText = null;
+        
+        String QPocet = null;
+        String QName = null;
+        String QText = null;
+        String QImage = null;
+        String QPoint = null;
+        
+        String OPocet = null; //moznosti
+        String OText = null;
+        String OCorrect = null;
+        
+        int QPocetNumber = 0;
+        int OPocetNumber = 0; 
+        int OCorrectNumber = 0;
+        
+        boolean OCorrectBool = false;
+        
+        int QuestionIndex = 0;
+
+        try {
+            //citac
+            FileReader fileReader = new FileReader(fileName);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            
+            //readedLine = bufferedReader.readLine();  
+            
+            TestName = bufferedReader.readLine();
+            TestText = bufferedReader.readLine();
+            QPocet = bufferedReader.readLine();
+            QPocetNumber = Integer.parseInt(QPocet);
+            
+            loggedUser.getCourse(position).setTest(new Test(QPocetNumber, TestName, TestText));
+            //citaj po riadkoch
+            while( (QName = bufferedReader.readLine() ) != null) {
+            	//nazov otazky
+            	
+            	//pocet moznosti
+            	OPocet = bufferedReader.readLine();
+            	OPocetNumber = Integer.parseInt(OPocet);
+            	//body
+            	QPoint = bufferedReader.readLine();
+            	//text otazky
+            	QText = bufferedReader.readLine();
+            	//obrazok
+            	QImage = bufferedReader.readLine();
+            	
+            	loggedUser.getCourse(position).getTest().setQuestion(QuestionIndex, new Question(OPocetNumber, QName, QText));
+            	
+            	//moznosti            	
+            	for(int a=0; a<OPocetNumber; a++) {
+            		//
+            		OText = bufferedReader.readLine();
+            		OCorrect = bufferedReader.readLine();
+            		OCorrectNumber = Integer.parseInt(OCorrect);
+            		if (OCorrectNumber==1) {
+            			OCorrectBool = true;
+            		}
+            		else {
+            			OCorrectBool = false;
+            		}
+            		
+            		loggedUser.getCourse(position).getTest().getQuestion(QuestionIndex).setOption(a, new Option(OText, OCorrectBool));
+            	}            	
+            	//zvacsi index
+            	QuestionIndex++;            
+            }   
+            //zavri
+            bufferedReader.close();         
+        }
+        catch(FileNotFoundException ex) {
+        	//nenasiel sa subor
+            System.out.println("Nepodarilo sa otvorit subor: " + fileName);                
+        }
+        catch(IOException ex) {
+        	//chyba pri citani
+            System.out.println("Chyba pri citani suboru: " + fileName);  
+        }
+	}
 
 }

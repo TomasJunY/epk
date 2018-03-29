@@ -33,8 +33,7 @@ public class LoginUI {
 		
 		TextField E_password = new TextField("heslo");
 		GridPane.setConstraints(E_password, 1, 1);
-			
-		
+					
 		Button B_login = new Button("login");
 		GridPane.setConstraints(B_login, 1, 2);
 		B_login.setPrefWidth(150);
