@@ -31,6 +31,7 @@ public class CourseUI {
 		TextArea M_cText = new TextArea();
 		M_cText.setText(Logic.loggedUser.getCourse(position).getText());
 		M_cText.setEditable(false);
+		M_cText.setWrapText(true);
 		
 		vbox.getChildren().add(L_cName);
 		vbox.getChildren().add(M_cText);
@@ -49,6 +50,7 @@ public class CourseUI {
 		}
 
 		Button B_test = new Button("Test");
+		B_test.setPrefWidth(80);
 		B_test.setOnAction(e -> {
 			//
 			//CourseUI.show("dashboard");

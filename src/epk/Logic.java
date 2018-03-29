@@ -345,6 +345,7 @@ public class Logic {
 
         //citane udaje
         String CourseName = null;
+        String readedLine = null;
         String CourseText = null;
 
         try {
@@ -353,7 +354,11 @@ public class Logic {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
                       
             CourseName = bufferedReader.readLine();
-            CourseText = bufferedReader.readLine();
+            //CourseText = bufferedReader.readLine();
+            
+            while( (readedLine = bufferedReader.readLine() ) != null) {
+            	CourseText = CourseText + "\n" + readedLine;           
+            } 
             
             loggedUser.setCourse(position, new Course(CourseName, CourseText));
             
@@ -511,7 +516,7 @@ public class Logic {
 				desktop.open(myFile);
 			}		    
 			catch (IOException ex) {
-				//chzba
+				//chyba
 	            System.out.println("Chyba pri otvarani suboru");  
 			}
 				
