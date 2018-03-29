@@ -2,9 +2,9 @@ package courses;
 
 public class Test {
 
-	public String name;
-	public String text;
-	public Question[] questions;
+	private String name;
+	private String text;
+	private Question[] questions;
 	
 	//konstruktor
 	public Test(int questionCount, String name, String text){
@@ -13,5 +13,28 @@ public class Test {
 		this.text = text;
 	}
 	
-
+	public void setInfo(String name, String text){
+		this.name = name;
+		this.text = text;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+	
+	public String getText() {
+		return this.text;
+	}
+	
+	public Question[] getAllQuestions() {
+		return this.questions;
+	}
+	
+	public Question getQuestion(int position) {
+		return this.questions[position];
+	}
+	
+	public void setQuestion(int position, Question questions) {
+		this.questions[position] = questions;
+	}
 }
