@@ -85,10 +85,8 @@ public class User {
 	}
 	
 	public void setCourseAll(int pocet) {
-		//this.course[position] = course;
 		this.course	= new Course[pocet];
 	}
-
 
 }
 

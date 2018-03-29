@@ -5,6 +5,7 @@ import java.nio.*;
 import java.nio.file.Files;
 
 import courses.Course;
+import courses.CustomFile;
 import courses.Option;
 import courses.Question;
 import courses.Test;
@@ -336,7 +337,7 @@ public class Logic {
         }
 	}
 	
-	//citanie course - test
+	//citanie course - material
 	public static void loadCourseMaterial(int position, String location) {	
 		//nazov suboru
         String fileName = "./data/courses/" + location + "/material/course.txt";
@@ -354,7 +355,50 @@ public class Logic {
             CourseText = bufferedReader.readLine();
             
             loggedUser.setCourse(position, new Course(CourseName, CourseText));
+            
+            bufferedReader.close();   
+            
+            //load custom files links
+            loadCourseMaterialDoc(position, location);
+        }
+        catch(FileNotFoundException ex) {
+        	//nenasiel sa subor
+            System.out.println("Nepodarilo sa otvorit subor: " + fileName);                
+        }
+        catch(IOException ex) {
+        	//chyba pri citani
+            System.out.println("Chyba pri citani suboru: " + fileName);  
+        }
+	}
+	
+	//citanie course - material - link
+	public static void loadCourseMaterialDoc(int position, String location) {	
+		//nazov suboru
+        String fileName = "./data/courses/" + location + "/material/links.txt";
 
+        //citane udaje
+        String readedLine = null;
+        String pocetLink = null;
+        int pocetLinkNumber = 0;
+        int LinkIndex = 0;
+
+        try {
+            //citac
+            FileReader fileReader = new FileReader(fileName);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+                      
+            pocetLink = bufferedReader.readLine();
+            pocetLinkNumber = Integer.parseInt(pocetLink);
+            
+            loggedUser.getCourse(position).setFileAll(pocetLinkNumber);
+            
+            while( (readedLine = bufferedReader.readLine() ) != null) {
+            	//uloz
+            	loggedUser.getCourse(position).setFile(LinkIndex, new CustomFile(readedLine, readedLine));           	
+            	//zvacsi index
+            	LinkIndex++;            
+            }   
+            //zavri
             bufferedReader.close();         
         }
         catch(FileNotFoundException ex) {

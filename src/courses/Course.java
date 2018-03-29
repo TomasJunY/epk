@@ -38,7 +38,16 @@ public class Course {
 		return this.finished;
 	}
 	
+	public CustomFile getFile(int position) {
+		return this.file[position];
+	}
+	
 	public void setFile(int position, CustomFile file) {
 		this.file[position] = file;
 	}
+	
+	public void setFileAll(int pocet) {
+		this.file	= new CustomFile[pocet];
+	}
+	
 }
