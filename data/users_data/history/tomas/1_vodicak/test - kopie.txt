@@ -1,0 +1,72 @@
+1_vodicak
+informacie o teste, test 1
+5
+otazka1
+3
+2
+Vodicom sa rozumie A odpovedal B
+$
+osoba, ktora vedie vozidlo
+1
+0
+osoba, ktora vedie najma motorove alebo nemotorove vozidlo, tlaci motocykel, pohybuje sa na lyziach, alebo kolieskovych korculiach, taha alebo tlaci sanky
+0
+1
+len osoba ktora vedie motorove vozidlo
+0
+0
+otazka2
+3
+2
+vodic sa nesmie otacat C odpovedal A
+$
+na ceste 1.triedy
+0
+1
+na ziadnej krizovatke
+0
+0
+na jednosmernej ceste
+1
+0
+otazka13
+3
+1
+ak sa pri vleceni motoroveho vozidla pouzije lano C odpovedal B
+$
+jeho dlzka nesme byt menisa ako 1,5m
+0
+0
+nesmie byz vzidalenost medzi vozidlami mensia ako 2 m
+0
+1
+nesmie byz vzidalenost medzi vozidlami mensia ako 2,5 m
+10
+otazka16
+3
+2
+tato dopravna znacka upozornuje na C odpovedal A
+q16.png
+miesto, kde priecny sklon vozovky presahuje 10% 
+0
+1
+priklonenu strmu stran sprava
+0
+0
+miesto, kde stupanie cesty presahuje 10%, alebo kde miestne podmienky robia stupanie nebezpecnym
+1
+0
+otazka27
+3
+2
+V poradi tretie prejde cez krizovatku A odpovedal B
+q27.png
+zlte vozidlo
+1
+0
+cervene vozidlo
+0
+1
+zelene vozidlo
+0
+1
