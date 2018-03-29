@@ -1,9 +1,9 @@
-tomas
+﻿tomas
 heslo
 0
-Tom�
+Tomáš
 Junas
-Mu�
+Muž
 20
 pozicia
 admin
