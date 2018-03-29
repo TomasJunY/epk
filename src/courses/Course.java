@@ -4,6 +4,7 @@ public class Course {
 	
 	private String name;
 	private String text;
+	private CustomFile[] file;
 	private Test test;
 	private boolean finished;
 	
@@ -35,5 +36,9 @@ public class Course {
 	
 	public boolean isFinished() {
 		return this.finished;
+	}
+	
+	public void setFile(int position, CustomFile file) {
+		this.file[position] = file;
 	}
 }

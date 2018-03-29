@@ -315,12 +315,46 @@ public class Logic {
             	//nacitaj veci
             	//course[0] = new Course("c1", "textas");
             	loggedUser.setCourse(CourseIndex, new Course("c1", "textas"));
+            	
+            	loadCourseMaterial(CourseIndex, readedLine);
+            	
             	loadCourseTest(CourseIndex, readedLine);
-            	//System.out.println(readedLine);
+            	System.out.println(readedLine);
             	//zvacsi index
             	CourseIndex++;            
             }   
             //zavri
+            bufferedReader.close();         
+        }
+        catch(FileNotFoundException ex) {
+        	//nenasiel sa subor
+            System.out.println("Nepodarilo sa otvorit subor: " + fileName);                
+        }
+        catch(IOException ex) {
+        	//chyba pri citani
+            System.out.println("Chyba pri citani suboru: " + fileName);  
+        }
+	}
+	
+	//citanie course - test
+	public static void loadCourseMaterial(int position, String location) {	
+		//nazov suboru
+        String fileName = "./data/courses/" + location + "/material/course.txt";
+
+        //citane udaje
+        String CourseName = null;
+        String CourseText = null;
+
+        try {
+            //citac
+            FileReader fileReader = new FileReader(fileName);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+                      
+            CourseName = bufferedReader.readLine();
+            CourseText = bufferedReader.readLine();
+            
+            loggedUser.setCourse(position, new Course(CourseName, CourseText));
+
             bufferedReader.close();         
         }
         catch(FileNotFoundException ex) {
