@@ -34,6 +34,10 @@ public class Test {
 		return this.questions[position];
 	}
 	
+	public int getQuestionsLength() {
+		return this.questions.length;
+	}
+	
 	public void setQuestion(int position, Question questions) {
 		this.questions[position] = questions;
 	}

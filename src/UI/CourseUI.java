@@ -32,6 +32,7 @@ public class CourseUI {
 		M_cText.setText(Logic.loggedUser.getCourse(position).getText());
 		M_cText.setEditable(false);
 		M_cText.setWrapText(true);
+		M_cText.setPrefHeight(200);
 		
 		vbox.getChildren().add(L_cName);
 		vbox.getChildren().add(M_cText);
@@ -53,7 +54,7 @@ public class CourseUI {
 		B_test.setPrefWidth(80);
 		B_test.setOnAction(e -> {
 			//
-			//CourseUI.show("dashboard");
+			TestUI.show(title, course_name, position);
 			window.close();
 		});
 		
@@ -68,7 +69,7 @@ public class CourseUI {
 		
 		vbox.getChildren().add(B_back);
 		
-		Scene scene = new Scene(vbox, 600, 400);
+		Scene scene = new Scene(vbox, 800, 600);
 		
 		window.setTitle(title);
 		window.setScene(scene);		

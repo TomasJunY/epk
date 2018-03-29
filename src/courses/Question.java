@@ -29,6 +29,10 @@ public class Question {
 		return this.options[position];
 	}
 	
+	public int getOptionsLength() {
+		return this.options.length;
+	}
+	
 	public void setOption(int position, Option options) {
 		this.options[position] = options;
 	}
