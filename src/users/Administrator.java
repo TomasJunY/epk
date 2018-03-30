@@ -11,5 +11,11 @@ public class Administrator extends User {
 	public boolean isAdmin() {
 		return true;
 	}
+	
+	public User addUser(String addedUsername, String addedPassword, String addedAdmin, String addedName, String addedSurname, String addedGender, int addedAge, String addedPosition) {
+		User newUser = new User(addedUsername, addedPassword);
+		newUser.setInfo(addedName, addedSurname, addedGender, addedAge, addedPosition);
+		return newUser;
+	}
 
 }

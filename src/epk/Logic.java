@@ -239,7 +239,7 @@ public class Logic {
 	}
 	
 	//pridanie usera - zapisanie do suboru a nacitanie
-	public static void addUser(String addedUsername, String addedPassword, String addedAdmin, String addedName, String addedSurname, String addedGender, String addedAge, String addedPosition) {
+	public static void addUser(User newUser) {
         //nazov suboru
         String fileName = "./data/users_data/list/users.txt";
         //zapisuj
@@ -274,21 +274,21 @@ public class Logic {
             	bufferedWriter.newLine();
             }
             //pridaj nove
-            bufferedWriter.write(addedUsername);
+            bufferedWriter.write(newUser.getUsername());
         	bufferedWriter.newLine();
-        	bufferedWriter.write(addedPassword);
+        	bufferedWriter.write(newUser.getPassword());
         	bufferedWriter.newLine();
-        	bufferedWriter.write(addedAdmin);
+        	bufferedWriter.write("0");
         	bufferedWriter.newLine();
-        	bufferedWriter.write(addedName);
+        	bufferedWriter.write(newUser.getName());
         	bufferedWriter.newLine();
-        	bufferedWriter.write(addedSurname);
+        	bufferedWriter.write(newUser.getSurname());
         	bufferedWriter.newLine();
-        	bufferedWriter.write(addedGender);
+        	bufferedWriter.write(newUser.getGender());
         	bufferedWriter.newLine();
-        	bufferedWriter.write(addedAge);
+        	bufferedWriter.write(Integer.toString(newUser.getAge()));
         	bufferedWriter.newLine();
-        	bufferedWriter.write(addedPosition);
+        	bufferedWriter.write(newUser.getPosition());
             //zavri
         	bufferedWriter.flush();
             bufferedWriter.close();
