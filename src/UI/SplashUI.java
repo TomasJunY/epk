@@ -48,30 +48,30 @@ public class SplashUI extends Application {
 		
 		//nite
 		class MainThread implements Runnable {
-			int index = 0;
+			String name = null;
 			
-			//konstruktor index=cislo nite
-			public MainThread (int index) {
-				this.index = index;
+			//konstruktor
+			public MainThread (String name) {
+				this.name = name;
 			}
-			
+			//hlavna vec
 			public void run () {
 				for (int a = 0 ; a < 5; a++) {
-					System.out.println ( "main: " + index + " : " + a);
+					System.out.println ( "thread-" + name + ": " + a);
 				}
 			}
 		}
 		class SecondaryThread implements Runnable {
-			int index = 0;
+			String name = null;
 			
-			//konstruktor index=cislo nite
-			public SecondaryThread (int index) {
-				this.index = index;
+			//konstruktor
+			public SecondaryThread (String name) {
+				this.name = name;
 			}
-			
+			//hlavna vec
 			public void run () {
 				for (int a = 0 ; a < 5; a++) {
-					System.out.println ( "secondary: " + index + " : " + a);
+					System.out.println ( "thread-" + name + ": " + a);
 				}
 			}
 		}
@@ -79,8 +79,8 @@ public class SplashUI extends Application {
 		//new Thread(new HlavnaNit(0)).start();
 		
 		for (int a = 0 ; a < 2; a++) {
-			new Thread(new MainThread(a)).start();
-			new Thread(new SecondaryThread(a)).start();
+			new Thread(new MainThread("jozko")).start();
+			new Thread(new SecondaryThread("ferko")).start();
 		}
 		//load udajov a zmena sceny
 		PauseTransition pause = new PauseTransition();
