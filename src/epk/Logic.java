@@ -211,7 +211,6 @@ public class Logic {
 					//
 					loggedUser = new User(users[a].getUsername(),users[a].getPassword());
 				}
-				//loggedUser = new User(users[a].getUsername(),users[a].getPassword());
 				
 				loggedUser.setInfo(users[a].getName(), users[a].getSurname(), users[a].getGender(), users[a].getAge(), users[a].getPosition());
 				loadMessageFromFile();
@@ -236,6 +235,16 @@ public class Logic {
 				//userLogoff();
 			}
 		}
+	}
+	
+	//find user by name
+	public static int findByUsername(String username) {
+		for (int a=0; a<users.length; a++) {			
+			if(username.equals(users[a].getUsername())) {		
+				return a;
+			}
+		}
+		return -1;
 	}
 	
 	//pridanie usera - zapisanie do suboru a nacitanie

@@ -192,13 +192,11 @@ public class DashboardUI {
 			for (int a = 0; a < Logic.users.length; a++) {
 				comboUsers.getItems().add(Logic.users[a].getUsername());
 			 }
-			comboUsers.setPromptText("edituj dakoho");			
+			comboUsers.setPromptText("vyber");			
 			Button B_editUser = new Button("edit");
 			B_editUser.setOnAction(e -> {
 				//
-				comboUsers.getValue().toString();
-				
-				EditUserUI.show(title, position);
+				EditUserUI.show(title, Logic.findByUsername(comboUsers.getValue().toString()));
 			});
 			
 			vboxRight.getChildren().add(L_admin);
