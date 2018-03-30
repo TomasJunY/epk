@@ -84,6 +84,8 @@ public class TestUI {
 			//
 			//CourseUI.show(title, course_name, position);
 			Logic.saveTestSelected(Qcombos, position);
+			Logic.saveMaxPoints(position);
+			Logic.saveAchievedPoints(position);
 			window.close();
 		});
 		

@@ -659,30 +659,16 @@ public class Logic {
 	
 	//narvi selected do pola podla pos
 	public static void saveTestSelected(ArrayList<ComboBox> combos, int position) {
-		//
 		for (int a = 0; a < loggedUser.getCourse(position).getTest().getQuestionsLength(); a++) {
-			//rob
-			/*
-			for (int b = 0; b < Logic.loggedUser.getCourse(position).getTest().getQuestion(a).getOptionsLength(); b++) {
-				//moznosti
-				//combos.getItems().add(Logic.loggedUser.getCourse(position).getTest().getQuestion(a).getOption(b).getText());
-				//System.out.println(combos.get(b).getSelectionModel().getSelectedItem().toString()); 
-				String combotext = combos.get(b).getSelectionModel().getSelectedItem().toString();
-			}*/
-			//String combotext = combos.get(a).getSelectionModel().getSelectedItem().toString();
-			//System.out.println("hehexd" + combos.get(a).toString());
-			//System.out.println("hnusna java" + combos.get(a).getSelectionModel().toString());
-			//System.out.println("asi" + combos.get(a).getSelectionModel().getSelectedItem().toString());
 			if (combos.get(a).getSelectionModel().getSelectedItem()==null) {
-				//nic nezaskrkol
+				//nic nezaskrkol bengavy je
 				System.out.println("skap");
 			}
 			else {
-				System.out.println(combos.get(a).getSelectionModel().getSelectedItem().toString());
+				//System.out.println(combos.get(a).getSelectionModel().getSelectedItem().toString());
 				String combosel = combos.get(a).getSelectionModel().getSelectedItem().toString();
 				for (int b = 0; b < loggedUser.getCourse(position).getTest().getQuestion(a).getOptionsLength(); b++) {
 					//prehlavadajmoznosti
-					//loggedUser.getCourse(position).getTest().getQuestion(a).getOption(b).getText()
 					if (loggedUser.getCourse(position).getTest().getQuestion(a).getOption(b).getText().equals(combosel)) {
 						//bem
 						loggedUser.getCourse(position).getTest().getQuestion(a).getOption(b).setSelected(true);
@@ -690,5 +676,28 @@ public class Logic {
 				}
 			}
 		}
+	}
+	
+	//max body
+	public static void saveMaxPoints(int position) {
+		int maxPoints = 0;
+		for (int a = 0; a < loggedUser.getCourse(position).getTest().getQuestionsLength(); a++) {
+			maxPoints += loggedUser.getCourse(position).getTest().getQuestion(a).getPoint();				
+		}
+		loggedUser.getCourse(position).getTest().setMaxPoints(maxPoints);	
+	}
+	
+	//scitaj body
+	public static void saveAchievedPoints(int position) {
+		int points = 0;
+		for (int a = 0; a < loggedUser.getCourse(position).getTest().getQuestionsLength(); a++) {	
+			for (int b = 0; b < loggedUser.getCourse(position).getTest().getQuestion(a).getOptionsLength(); b++) {
+				//ked je correct a selected
+				if( (loggedUser.getCourse(position).getTest().getQuestion(a).getOption(b).getSelected()) && (loggedUser.getCourse(position).getTest().getQuestion(a).getOption(b).getCorrect()) ) {
+					points +=loggedUser.getCourse(position).getTest().getQuestion(a).getPoint();
+				}
+			}
+		}
+		loggedUser.getCourse(position).getTest().setAchievedPoints(points);	
 	}
 }
