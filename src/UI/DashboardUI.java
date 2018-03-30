@@ -43,10 +43,21 @@ public class DashboardUI {
 		hboxTop.setPadding(new Insets(15, 12, 15, 12));
 		hboxTop.setStyle("-fx-background-color: #0099ff;");
 		
+		//AnchorPane anchor = new AnchorPane();
+		
 		HBox hboxCenter = new HBox();
 		hboxCenter.setSpacing(8);
 		hboxCenter.setPadding(new Insets(15, 12, 15, 12));
 		//hboxCenter.setStyle("-fx-background-color: #0099ff;");
+		
+		HBox hboxMessage = new HBox();
+		hboxMessage.setSpacing(8);
+		hboxMessage.setPadding(new Insets(15, 12, 15, 12));
+		//hboxCenter.setStyle("-fx-background-color: #0099ff;");
+		
+		VBox vboxCenter = new VBox();
+		//hboxCenter.setSpacing(8);
+		//hboxCenter.setPadding(new Insets(15, 12, 15, 12));
 		
 		VBox vboxRight = new VBox();
 		vboxRight.setSpacing(8);
@@ -65,6 +76,11 @@ public class DashboardUI {
 		//L_userWelcome.setFont(Font.font(12));
 		String userWelcomeMessage = Logic.loggedUser.getName() + " " + Logic.loggedUser.getSurname();
 		Label L_userName = new Label(userWelcomeMessage);
+		
+		Label L_message = new Label();
+		L_message.setText(Logic.loggedUser.getGlobalMessage().getMessage());
+		Button B_message = new Button("zavri spravu");
+		
 		Button B_userInfo = new Button("info");
 		B_userInfo.setPrefWidth(80);
 		B_userInfo.setOnAction(e -> {
@@ -116,19 +132,34 @@ public class DashboardUI {
 		
 		hboxTop.getChildren().add(L_userWelcome);
 		hboxTop.getChildren().add(L_userName);
-		hboxTop.getChildren().add(B_userInfo);
+		
 		
 		//hboxTop.getChildren().add(B_debug);
+		hboxMessage.getChildren().add(L_message);
+		hboxMessage.getChildren().add(B_message);
 		
 		hboxCenter.getChildren().add(comboCourses);
 		hboxCenter.getChildren().add(B_Course);
 		
+		//vboxCenter.getChildren().add(hboxMessage);
+		if (Logic.loggedUser.getGlobalMessage().isNotSeen()) {
+			vboxCenter.getChildren().add(hboxMessage);
+		}
+		
+		vboxCenter.getChildren().add(hboxCenter);
+		/*
+		anchor.getChildren().add(hboxMessage);
+		anchor.getChildren().add(hboxCenter);
+		anchor.setTopAnchor(hboxMessage, 0.0);
+		anchor.setBottomAnchor(hboxCenter, 100.0);
+		 */
+		hboxBotton.getChildren().add(B_userInfo);
 		hboxBotton.getChildren().add(B_logOff);
 		
 		BorderPane border = new BorderPane();
 		border.setTop(hboxTop);
 		border.setBottom(hboxBotton);
-		border.setCenter(hboxCenter);
+		border.setCenter(vboxCenter);
 		
 		if(Logic.loggedUser.isAdmin()) {
 			Label L_admin = new Label("nastroje na spravu");

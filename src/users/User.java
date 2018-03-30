@@ -105,11 +105,11 @@ public class User {
 		this.course	= new Course[pocet];
 	}
 	
-	public GlobalMessage getMessage() {
+	public GlobalMessage getGlobalMessage() {
 		return this.globalMessage;
 	}
 	
-	public void setMessage(String message) {
+	public void setGlobalMessage(String message) {
 		//
 		this.globalMessage = new GlobalMessage(message);
 	}

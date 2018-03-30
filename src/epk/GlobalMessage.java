@@ -22,6 +22,10 @@ public class GlobalMessage {
 		return this.seen;
 	}
 	
+	public boolean isNotSeen() {
+		return !this.seen;
+	}
+	
 	public void setSeen(boolean seen) {
 		this.seen = seen;
 	}

@@ -560,7 +560,7 @@ public class Logic {
 	}
 	
 	public static void loadMessageToUser(String message) {
-		loggedUser.setMessage(message);
+		loggedUser.setGlobalMessage(message);
 	}
 	
 }
