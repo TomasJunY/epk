@@ -72,11 +72,10 @@ public class SplashUI extends Application {
 			//vedlajsia vec - sucet cisiel od 1 po 1 000
 			public void run () {
 				int sum = 0;
-				for (int a = 0 ; a < 1000; a++) {
-					//System.out.println("thread-" + name + ": " + a);
+				for (int a = 1 ; a <= 1000; a++) {
 					sum += a;
 				}
-				System.out.println(sum);
+				//System.out.println(sum);
 			}
 		}
 		
