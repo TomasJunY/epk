@@ -83,6 +83,7 @@ public class DashboardUI {
 		B_message.setOnAction(e -> {
 			Logic.loggedUser.getGlobalMessage().setSeen(true);
 			//docasne vypnute zapisovanie historie - nesce sa mi riesit cfg, lastmsg, atd.. nemam cas = po vypnuti sa objavi vzdy
+			//docasny takedown cfg
 			//Logic.writeMessageSeenToFile(Logic.loggedUser.getUsername(), true);		
 			window.close();
 			show("dashboard");

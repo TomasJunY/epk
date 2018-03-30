@@ -556,7 +556,8 @@ public class Logic {
             //load do usera
             loadMessageToUser(readedLine);
             //load pref seen
-            loadMessageSeenFromFile(loggedUser.getUsername());
+            //docasny takedown cfg
+            //loadMessageSeenFromFile(loggedUser.getUsername());
         }
         catch(FileNotFoundException ex) {
         	//nenasiel sa subor
