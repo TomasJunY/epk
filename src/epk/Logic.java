@@ -298,8 +298,7 @@ public class Logic {
         //loadni
         loadUsersFileToArray();
 	}	
-	
-	
+		
 	//citanie courses
 	public static void loadCoursesList() {	
 		//nazov suboru
@@ -516,6 +515,7 @@ public class Logic {
         }
 	}
 	
+	//otvorenie materialu 
 	public static void openFileOnDisk(String name) {
 		//
 		if (Desktop.isDesktopSupported()) {
@@ -533,6 +533,7 @@ public class Logic {
 		}
 	}
 	
+	//load spravy zo suboru
 	public static void loadMessageFromFile() {
 		//
 		String fileName = "./data/message/message.txt";
@@ -546,8 +547,10 @@ public class Logic {
             readedLine = bufferedReader.readLine();                           
             //zavri
             bufferedReader.close();  
-            
+            //load do usera
             loadMessageToUser(readedLine);
+            //load pref seen
+            loadMessageSeenFromFile(loggedUser.getUsername());
         }
         catch(FileNotFoundException ex) {
         	//nenasiel sa subor
@@ -559,10 +562,12 @@ public class Logic {
         }
 	}
 	
+	//load spravy do usera
 	public static void loadMessageToUser(String message) {
 		loggedUser.setGlobalMessage(message);
 	}
 	
+	//save spravy do suboru
 	public static void writeMessageToFile(String message) {
         //nazov suboru
         String fileName = "./data/message/message.txt";
@@ -579,6 +584,43 @@ public class Logic {
         }
         catch(IOException ex) {
             System.out.println("Chyba pri zapisovani do suboru: " + fileName);
+        }
+	}
+	
+	//kukni ci ju videl
+	public static void loadMessageSeenFromFile(String username) {
+		//
+		String fileName = "./data/users_data/history/" + username  +"/closedMessage.txt";
+        //citane udaje
+        String readedLine = null;
+        int cislo = 0;
+        boolean seen = false;
+        try {
+            //citac
+            FileReader fileReader = new FileReader(fileName);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            
+            readedLine = bufferedReader.readLine();                           
+            //zavri
+            bufferedReader.close();  
+            
+            cislo = Integer.parseInt(readedLine);           
+            if (cislo == 0) {
+            	seen = false;
+            }
+            else {
+            	seen = true;
+            }
+            
+            loggedUser.getGlobalMessage().setSeen(seen);
+        }
+        catch(FileNotFoundException ex) {
+        	//nenasiel sa subor
+            System.out.println("Nepodarilo sa otvorit subor: " + fileName);                
+        }
+        catch(IOException ex) {
+        	//chyba pri citani
+            System.out.println("Chyba pri citani suboru: " + fileName);  
         }
 	}
 	
