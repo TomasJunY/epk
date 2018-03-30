@@ -3,6 +3,7 @@ package users;
 import courses.Course;
 import courses.Option;
 import courses.Test;
+import epk.GlobalMessage;
 
 public class User {
 	
@@ -14,6 +15,7 @@ public class User {
 	protected int age;
 	protected String position;
 	protected Course course[];	
+	protected GlobalMessage globalMessage;
 	
 	//konstuktor
 	public User(String username, String password) {
@@ -101,6 +103,15 @@ public class User {
 	
 	public void setCourseAll(int pocet) {
 		this.course	= new Course[pocet];
+	}
+	
+	public GlobalMessage getMessage() {
+		return this.globalMessage;
+	}
+	
+	public void setMessage(String message) {
+		//
+		this.globalMessage = new GlobalMessage(message);
 	}
 
 }

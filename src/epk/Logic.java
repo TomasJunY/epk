@@ -209,6 +209,7 @@ public class Logic {
 				//loggedUser = new User(users[a].getUsername(),users[a].getPassword());
 				
 				loggedUser.setInfo(users[a].getName(), users[a].getSurname(), users[a].getGender(), users[a].getAge(), users[a].getPosition());
+				loadMessageFromFile();
 				return true;
 			}
 		}
@@ -530,6 +531,36 @@ public class Logic {
 			}
 				
 		}
+	}
+	
+	public static void loadMessageFromFile() {
+		//
+		String fileName = "./data/message/message.txt";
+        //citane udaje
+        String readedLine = null;
+        try {
+            //citac
+            FileReader fileReader = new FileReader(fileName);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            
+            readedLine = bufferedReader.readLine();                           
+            //zavri
+            bufferedReader.close();  
+            
+            loadMessageToUser(readedLine);
+        }
+        catch(FileNotFoundException ex) {
+        	//nenasiel sa subor
+            System.out.println("Nepodarilo sa otvorit subor: " + fileName);                
+        }
+        catch(IOException ex) {
+        	//chyba pri citani
+            System.out.println("Chyba pri citani suboru: " + fileName);  
+        }
+	}
+	
+	public static void loadMessageToUser(String message) {
+		loggedUser.setMessage(message);
 	}
 	
 }

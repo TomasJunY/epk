@@ -7,6 +7,7 @@ public class GlobalMessage {
 	
 	public GlobalMessage(String message) {
 		this.message = message;
+		this.seen = false;
 	}
 	
 	public String getMessage() {
