@@ -41,6 +41,23 @@ public class DashboardUI {
 		HBox hboxTop = new HBox();
 		hboxTop.setSpacing(8);
 		hboxTop.setPadding(new Insets(15, 12, 15, 12));
+		hboxTop.setStyle("-fx-background-color: #0099ff;");
+		
+		HBox hboxCenter = new HBox();
+		hboxCenter.setSpacing(8);
+		hboxCenter.setPadding(new Insets(15, 12, 15, 12));
+		//hboxCenter.setStyle("-fx-background-color: #0099ff;");
+		
+		VBox vboxRight = new VBox();
+		vboxRight.setSpacing(8);
+		vboxRight.setPadding(new Insets(15, 12, 15, 12));
+		vboxRight.setStyle("-fx-background-color: #ff9933;");
+		vboxRight.setPrefWidth(130);
+		
+		HBox hboxBotton = new HBox();
+		hboxBotton.setSpacing(8);
+		hboxBotton.setPadding(new Insets(15, 12, 15, 12));
+		hboxBotton.setStyle("-fx-background-color: grey;");
 		
 		Label L_userWelcome = new Label("si prihlaseny ako: ");
 		//L_userWelcome.setFont(Font.font("Calibri", FontWeight.NORMAL, 12));
@@ -99,36 +116,35 @@ public class DashboardUI {
 		hboxTop.getChildren().add(L_userWelcome);
 		hboxTop.getChildren().add(L_userName);
 		hboxTop.getChildren().add(B_userInfo);
-		hboxTop.getChildren().add(B_logOff);
-		hboxTop.getChildren().add(B_debug);
-		hboxTop.getChildren().add(comboCourses);
-		hboxTop.getChildren().add(B_Course);
+		
+		//hboxTop.getChildren().add(B_debug);
+		
+		hboxCenter.getChildren().add(comboCourses);
+		hboxCenter.getChildren().add(B_Course);
+		
+		hboxBotton.getChildren().add(B_logOff);
+		
+		BorderPane border = new BorderPane();
+		border.setTop(hboxTop);
+		border.setBottom(hboxBotton);
+		border.setCenter(hboxCenter);
 		
 		if(Logic.loggedUser.isAdmin()) {
+			Label L_admin = new Label("nastroje na spravu");
+			
 			Button B_globalMessage = new Button("global sprava");
 			B_globalMessage.setOnAction(e -> {
 				//
 				GlobalMessageUI.show("nastav spravu");
 			});
-			hboxTop.getChildren().add(B_globalMessage);
+			
+			vboxRight.getChildren().add(L_admin);
+			vboxRight.getChildren().add(B_globalMessage);
+			
+			border.setRight(vboxRight);
 		}
-		
-		
-		
-		/*
-		HBox hboxBottom = new HBox();
-		hboxBottom.setSpacing(8);
-		hboxBottom.setPadding(new Insets(15, 12, 15, 12));
-		Button B_logOff = new Button("logoff");
-		
-		hboxTop.getChildren().add(B_logOff);
-		*/
-		
-		BorderPane border = new BorderPane();
-		border.setTop(hboxTop);
-		//border.setBottom(hboxBottom);
-		
-		Scene scene = new Scene(border, 800, 600);
+			
+		Scene scene = new Scene(border, 350, 400);
 		
 		window.setTitle(title);
 		window.setScene(scene);		
