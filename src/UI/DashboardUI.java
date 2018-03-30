@@ -82,11 +82,18 @@ public class DashboardUI {
 		
 		Button B_Course = new Button("choc");
 		B_Course.setOnAction(e -> {
-			//
-			String selectedCName = (String) comboCourses.getValue();
-			int pos = Logic.loggedUser.getCourseIndex(selectedCName);
-			CourseUI.show(selectedCName, (String) comboCourses.getValue(), pos);
-			window.close();
+			//	
+			if (comboCourses.getValue()==null) {
+				//
+				System.out.println("chyba");
+			}
+			else {
+				//
+				String selectedCName = (String) comboCourses.getValue();
+				int pos = Logic.loggedUser.getCourseIndex(selectedCName);
+				CourseUI.show(selectedCName, (String) comboCourses.getValue(), pos);
+				window.close();
+			}					
 		});
 		
 		hboxTop.getChildren().add(L_userWelcome);
