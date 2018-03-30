@@ -21,10 +21,18 @@ public class GlobalMessageUI {
 		vbox.setSpacing(8);
 		vbox.setPadding(new Insets(15, 25, 15, 25));
 		
-		Label L_info = new Label("zadaj globalne oznamenie - xd=0");
+		Label L_info = new Label("zadaj spravu (objavi sa po odhlaseni)");
 		TextField E_message = new TextField("eloooooo");
 		Button B_confirm = new Button("send");
-		
+		B_confirm.setOnAction(e -> {
+			String message = E_message.getText();
+			Logic.writeMessageToFile(message);
+			Logic.loadMessageFromFile();
+			window.close();
+			//DashboardUI.window.close
+			//DashboardUI.show("dashboard");
+		});
+			
 		vbox.getChildren().add(L_info);
 		vbox.getChildren().add(E_message);
 		vbox.getChildren().add(B_confirm);

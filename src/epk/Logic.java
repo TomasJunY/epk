@@ -228,7 +228,7 @@ public class Logic {
 				//zapis
 				writeUsersToFileFromArray();
 				//odhla
-				userLogoff();
+				//userLogoff();
 			}
 		}
 	}
@@ -561,6 +561,25 @@ public class Logic {
 	
 	public static void loadMessageToUser(String message) {
 		loggedUser.setGlobalMessage(message);
+	}
+	
+	public static void writeMessageToFile(String message) {
+        //nazov suboru
+        String fileName = "./data/message/message.txt";
+        //zapisuj
+        try {
+        	//zapisovac
+            FileWriter fileWriter = new FileWriter(fileName);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            //zapisuj
+            bufferedWriter.write(message);
+            //zavri 
+            bufferedWriter.flush();
+            bufferedWriter.close();
+        }
+        catch(IOException ex) {
+            System.out.println("Chyba pri zapisovani do suboru: " + fileName);
+        }
 	}
 	
 }
