@@ -194,6 +194,12 @@ public class DashboardUI {
 			 }
 			comboUsers.setPromptText("edituj dakoho");			
 			Button B_editUser = new Button("edit");
+			B_editUser.setOnAction(e -> {
+				//
+				comboUsers.getValue().toString();
+				
+				EditUserUI.show(title, position);
+			});
 			
 			vboxRight.getChildren().add(L_admin);
 			vboxRight.getChildren().add(B_globalMessage);
