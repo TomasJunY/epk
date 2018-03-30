@@ -80,6 +80,11 @@ public class DashboardUI {
 		Label L_message = new Label();
 		L_message.setText(Logic.loggedUser.getGlobalMessage().getMessage());
 		Button B_message = new Button("zavri spravu");
+		B_message.setOnAction(e -> {
+			Logic.loggedUser.getGlobalMessage().setSeen(true);
+			window.close();
+			show("dashboard");
+		});
 		
 		Button B_userInfo = new Button("info");
 		B_userInfo.setPrefWidth(80);
