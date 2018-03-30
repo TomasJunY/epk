@@ -187,6 +187,8 @@ public class DashboardUI {
 				//
 				AddUserUI.show("pridaj usera");
 			});
+			
+			Label L_edit = new Label("edit");
 					
 			ComboBox comboUsers = new ComboBox<>();
 			for (int a = 0; a < Logic.users.length; a++) {
@@ -195,13 +197,16 @@ public class DashboardUI {
 			comboUsers.setPromptText("vyber");			
 			Button B_editUser = new Button("edit");
 			B_editUser.setOnAction(e -> {
-				//
-				EditUserUI.show(title, Logic.findByUsername(comboUsers.getValue().toString()));
+				//keby nevybere nic a klika
+				if ( !(comboUsers.getValue()==null) ) {
+					EditUserUI.show(title, Logic.findByUsername(comboUsers.getValue().toString()));
+				}				
 			});
 			
 			vboxRight.getChildren().add(L_admin);
 			vboxRight.getChildren().add(B_globalMessage);
 			vboxRight.getChildren().add(B_addUser);
+			vboxRight.getChildren().add(L_edit);
 			vboxRight.getChildren().add(comboUsers);
 			vboxRight.getChildren().add(B_editUser);
 			
