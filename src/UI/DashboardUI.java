@@ -180,8 +180,15 @@ public class DashboardUI {
 				GlobalMessageUI.show("nastav spravu");
 			});
 			
+			Button B_addUser = new Button("pridaj usera");
+			B_addUser.setOnAction(e -> {
+				//
+				AddUserUI.show("pridaj usera");
+			});
+			
 			vboxRight.getChildren().add(L_admin);
 			vboxRight.getChildren().add(B_globalMessage);
+			vboxRight.getChildren().add(B_addUser);
 			
 			border.setRight(vboxRight);
 		}
