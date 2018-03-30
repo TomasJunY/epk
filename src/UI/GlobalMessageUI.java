@@ -28,6 +28,7 @@ public class GlobalMessageUI {
 			String message = E_message.getText();
 			Logic.writeMessageToFile(message);
 			Logic.loadMessageFromFile();
+			Logic.writeMessageSeenToFile(Logic.loggedUser.getUsername(), false);
 			window.close();
 			//DashboardUI.window.close
 			//DashboardUI.show("dashboard");

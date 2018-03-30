@@ -82,6 +82,7 @@ public class DashboardUI {
 		Button B_message = new Button("x");
 		B_message.setOnAction(e -> {
 			Logic.loggedUser.getGlobalMessage().setSeen(true);
+			Logic.writeMessageSeenToFile(Logic.loggedUser.getUsername(), true);		
 			window.close();
 			show("dashboard");
 		});

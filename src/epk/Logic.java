@@ -624,4 +624,31 @@ public class Logic {
         }
 	}
 	
+	//save ci videl
+	public static void writeMessageSeenToFile(String username, boolean seen) {
+        //nazov suboru
+		String fileName = "./data/users_data/history/" + username  +"/closedMessage.txt";
+        //zapisuj
+        try {
+        	//zapisovac
+            FileWriter fileWriter = new FileWriter(fileName);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            //zapisuj
+            String message = "0"; //default 0
+            if (seen) {
+            	message = "1";
+            }
+            else {
+            	message = "0";
+            }
+            bufferedWriter.write(message);
+            //zavri 
+            bufferedWriter.flush();
+            bufferedWriter.close();
+        }
+        catch(IOException ex) {
+            System.out.println("Chyba pri zapisovani do suboru: " + fileName);
+        }
+	}
+	
 }
