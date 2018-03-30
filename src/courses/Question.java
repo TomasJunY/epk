@@ -4,6 +4,8 @@ public class Question {
 	
 	private String name;
 	private String text;
+	private int point;
+	private String image;
 	private Option[] options;
 	
 	//konstruktor
@@ -13,12 +15,28 @@ public class Question {
 		this.text = text;
 	}
 	
+	public Question(int optionCount, String name, String text, int point, String image){
+		this.options = new Option[optionCount]; //pocet moznosti
+		this.name = name;
+		this.text = text;
+		this.point = point;
+		this.image = image;
+	}
+	
 	public String getName() {
 		return this.name;
 	}
 	
 	public String getText() {
 		return this.text;
+	}
+	
+	public int getPoint() {
+		return this.point;
+	}
+	
+	public String getImage() {
+		return this.image;
 	}
 	
 	public Option[] getAllOptions() {

@@ -11,6 +11,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -40,6 +42,7 @@ public class TestUI {
 		
 		ArrayList<Label> Qnames = new ArrayList<Label>();
 		ArrayList<Label> Qtexts = new ArrayList<Label>();
+		ArrayList<Image> Qimages = new ArrayList<Image>();
 		ArrayList<ComboBox> Qcombos = new ArrayList<ComboBox>();
 		
 		for (int a = 0; a < Logic.loggedUser.getCourse(position).getTest().getQuestionsLength(); a++) {
@@ -50,6 +53,19 @@ public class TestUI {
 			Label Qtext = new Label();
 			Qtext.setText(Logic.loggedUser.getCourse(position).getTest().getQuestion(a).getText());
 			Qtexts.add(Qtext);
+			
+			vbox.getChildren().add(Qname);
+			vbox.getChildren().add(Qtext);
+			//img
+			if (!Logic.loggedUser.getCourse(position).getTest().getQuestion(a).getImage().equals("$")) {
+				//
+				Image Qimage = new Image("file:data/courses/" + Logic.loggedUser.getCourse(position).getName() + "/test/images/" + Logic.loggedUser.getCourse(position).getTest().getQuestion(a).getImage());
+				//Image splashImage = new Image("http://i.imgur.com/yBPMiCp.gif");
+				//Qimage.s
+				Qimages.add(Qimage);
+				vbox.getChildren().add(new ImageView(Qimage));
+			}
+					
 			ComboBox Qcombo = new ComboBox();
 			Qcombo.setMaxWidth(300);
 			Qcombos.add(Qcombo);
@@ -58,8 +74,7 @@ public class TestUI {
 				Qcombo.getItems().add(Logic.loggedUser.getCourse(position).getTest().getQuestion(a).getOption(b).getText());
 			}
 			Qcombo.setPromptText("vyber si moznost");
-			vbox.getChildren().add(Qname);
-			vbox.getChildren().add(Qtext);
+			
 			vbox.getChildren().add(Qcombo);
 		}
 		

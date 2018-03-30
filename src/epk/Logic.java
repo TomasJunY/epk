@@ -477,12 +477,13 @@ public class Logic {
             	OPocetNumber = Integer.parseInt(OPocet);
             	//body
             	QPoint = bufferedReader.readLine();
+            	int QPointNumber = Integer.parseInt(QPoint);
             	//text otazky
             	QText = bufferedReader.readLine();
             	//obrazok
             	QImage = bufferedReader.readLine();
             	
-            	loggedUser.getCourse(position).getTest().setQuestion(QuestionIndex, new Question(OPocetNumber, QName, QText));
+            	loggedUser.getCourse(position).getTest().setQuestion(QuestionIndex, new Question(OPocetNumber, QName, QText, QPointNumber, QImage));
             	
             	//moznosti            	
             	for(int a=0; a<OPocetNumber; a++) {

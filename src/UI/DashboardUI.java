@@ -82,7 +82,7 @@ public class DashboardUI {
 		Button B_message = new Button("x");
 		B_message.setOnAction(e -> {
 			Logic.loggedUser.getGlobalMessage().setSeen(true);
-			//docasne vypnute zapisovanie historie - nechce sa mi riesit cfg, lastmsg, atd.. = po vypnuti sa objavi vzdy
+			//docasne vypnute zapisovanie historie - nesce sa mi riesit cfg, lastmsg, atd.. nemam cas = po vypnuti sa objavi vzdy
 			//Logic.writeMessageSeenToFile(Logic.loggedUser.getUsername(), true);		
 			window.close();
 			show("dashboard");
