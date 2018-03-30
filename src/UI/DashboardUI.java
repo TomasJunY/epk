@@ -135,6 +135,7 @@ public class DashboardUI {
 				CourseUI.show(selectedCName, (String) comboCourses.getValue(), pos);
 				//load max point
 				Logic.saveMaxPoints(pos);
+				System.out.println(Logic.loggedUser.getCourse(pos).getTest().getMaxPoints());
 				window.close();
 			}					
 		});

@@ -29,10 +29,11 @@ public class CourseUI {
 		Label L_cName = new Label(course_name);
 		
 		TextArea M_cText = new TextArea();
-		M_cText.setText(Logic.loggedUser.getCourse(position).getText());
+		M_cText.setText(Logic.loggedUser.getCourse(position).getText() + " \ndosiahol si: " + Logic.loggedUser.getCourse(position).getTest().getAchievedPoints()+ " bodov");
 		M_cText.setEditable(false);
 		M_cText.setWrapText(true);
 		M_cText.setPrefHeight(200);
+		//System.out.println("heehxd" +Logic.loggedUser.getCourse(position).getTest().getMaxPoints());
 		
 		vbox.getChildren().add(L_cName);
 		vbox.getChildren().add(M_cText);

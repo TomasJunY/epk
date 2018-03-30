@@ -31,7 +31,7 @@ public class TestUI {
 		Label L_TName = new Label(Logic.loggedUser.getCourse(position).getTest().getName());
 		
 		TextArea M_TText = new TextArea();
-		M_TText.setText(Logic.loggedUser.getCourse(position).getTest().getText());
+		M_TText.setText(Logic.loggedUser.getCourse(position).getTest().getText()  + "\nmaximalny pocet bodov je: " + (Logic.loggedUser.getCourse(position).getTest().getMaxPoints()));
 		M_TText.setEditable(false);
 		M_TText.setWrapText(true);
 		M_TText.setPrefHeight(70);
@@ -84,8 +84,10 @@ public class TestUI {
 			//
 			//CourseUI.show(title, course_name, position);
 			Logic.saveTestSelected(Qcombos, position);
-			Logic.saveMaxPoints(position);
+			//Logic.saveMaxPoints(position);
 			Logic.saveAchievedPoints(position);
+			AlertUI.show("konec", "dosiahol si " + Logic.loggedUser.getCourse(position).getTest().getAchievedPoints() + " bodov", 200, 100);
+			CourseUI.show(title, course_name, position);
 			window.close();
 		});
 		
@@ -100,7 +102,7 @@ public class TestUI {
 		
 		vbox.getChildren().add(B_back);
 		
-		Scene scene = new Scene(vbox, 600, 800);
+		Scene scene = new Scene(vbox, 600, 900);
 		
 		window.setX(600);
 		window.setY(50);

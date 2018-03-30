@@ -335,7 +335,7 @@ public class Logic {
             	loadCourseMaterial(CourseIndex, readedLine);
             	
             	loadCourseTest(CourseIndex, readedLine);
-            	System.out.println(readedLine);
+            	//System.out.println(readedLine);
             	//zvacsi index
             	CourseIndex++;            
             }   
@@ -662,7 +662,7 @@ public class Logic {
 		for (int a = 0; a < loggedUser.getCourse(position).getTest().getQuestionsLength(); a++) {
 			if (combos.get(a).getSelectionModel().getSelectedItem()==null) {
 				//nic nezaskrkol bengavy je
-				System.out.println("skap");
+				//System.out.println("nic");
 			}
 			else {
 				//System.out.println(combos.get(a).getSelectionModel().getSelectedItem().toString());
