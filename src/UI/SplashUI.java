@@ -46,6 +46,42 @@ public class SplashUI extends Application {
 		window.setScene(scene);		
 		window.show();
 		
+		//nite
+		class MainThread implements Runnable {
+			int index = 0;
+			
+			//konstruktor index=cislo nite
+			public MainThread (int index) {
+				this.index = index;
+			}
+			
+			public void run () {
+				for (int a = 0 ; a < 5; a++) {
+					System.out.println ( "main: " + index + " : " + a);
+				}
+			}
+		}
+		class SecondaryThread implements Runnable {
+			int index = 0;
+			
+			//konstruktor index=cislo nite
+			public SecondaryThread (int index) {
+				this.index = index;
+			}
+			
+			public void run () {
+				for (int a = 0 ; a < 5; a++) {
+					System.out.println ( "secondary: " + index + " : " + a);
+				}
+			}
+		}
+		//nite konec
+		//new Thread(new HlavnaNit(0)).start();
+		
+		for (int a = 0 ; a < 2; a++) {
+			new Thread(new MainThread(a)).start();
+			new Thread(new SecondaryThread(a)).start();
+		}
 		//load udajov a zmena sceny
 		PauseTransition pause = new PauseTransition();
 		pause.setDuration(Duration.seconds(0));
