@@ -172,6 +172,7 @@ public class DashboardUI {
 		border.setBottom(hboxBotton);
 		border.setCenter(vboxCenter);
 		
+		//admin veci
 		if(Logic.loggedUser.isAdmin()) {
 			Label L_admin = new Label("nastroje na spravu");
 			
@@ -186,10 +187,19 @@ public class DashboardUI {
 				//
 				AddUserUI.show("pridaj usera");
 			});
+					
+			ComboBox comboUsers = new ComboBox<>();
+			for (int a = 0; a < Logic.users.length; a++) {
+				comboUsers.getItems().add(Logic.users[a].getUsername());
+			 }
+			comboUsers.setPromptText("edituj dakoho");			
+			Button B_editUser = new Button("edit");
 			
 			vboxRight.getChildren().add(L_admin);
 			vboxRight.getChildren().add(B_globalMessage);
 			vboxRight.getChildren().add(B_addUser);
+			vboxRight.getChildren().add(comboUsers);
+			vboxRight.getChildren().add(B_editUser);
 			
 			border.setRight(vboxRight);
 		}
