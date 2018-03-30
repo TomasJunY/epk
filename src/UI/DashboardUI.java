@@ -57,6 +57,7 @@ public class DashboardUI {
 		HBox hboxBotton = new HBox();
 		hboxBotton.setSpacing(8);
 		hboxBotton.setPadding(new Insets(15, 12, 15, 12));
+		hboxBotton.setAlignment(Pos.BOTTOM_RIGHT);;
 		hboxBotton.setStyle("-fx-background-color: grey;");
 		
 		Label L_userWelcome = new Label("si prihlaseny ako: ");
