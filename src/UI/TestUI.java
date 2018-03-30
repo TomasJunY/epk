@@ -82,7 +82,8 @@ public class TestUI {
 		B_done.setPrefWidth(80);
 		B_done.setOnAction(e -> {
 			//
-			CourseUI.show(title, course_name, position);
+			//CourseUI.show(title, course_name, position);
+			Logic.saveTestSelected(Qcombos, position);
 			window.close();
 		});
 		

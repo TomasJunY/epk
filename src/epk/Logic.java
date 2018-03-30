@@ -4,12 +4,17 @@ import java.awt.Desktop;
 import java.io.*;
 import java.nio.*;
 import java.nio.file.Files;
+import java.util.ArrayList;
 
 import courses.Course;
 import courses.CustomFile;
 import courses.Option;
 import courses.Question;
 import courses.Test;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import users.*;
 
 public class Logic {
@@ -652,4 +657,29 @@ public class Logic {
         }
 	}
 	
+	//narvi selected do pola podla pos
+	public static void saveTestSelected(ArrayList<ComboBox> combos, int position) {
+		//
+		for (int a = 0; a < Logic.loggedUser.getCourse(position).getTest().getQuestionsLength(); a++) {
+			//rob
+			/*
+			for (int b = 0; b < Logic.loggedUser.getCourse(position).getTest().getQuestion(a).getOptionsLength(); b++) {
+				//moznosti
+				//combos.getItems().add(Logic.loggedUser.getCourse(position).getTest().getQuestion(a).getOption(b).getText());
+				//System.out.println(combos.get(b).getSelectionModel().getSelectedItem().toString()); 
+				String combotext = combos.get(b).getSelectionModel().getSelectedItem().toString();
+			}*/
+			//String combotext = combos.get(a).getSelectionModel().getSelectedItem().toString();
+			//System.out.println("hehexd" + combos.get(a).toString());
+			//System.out.println("hnusna java" + combos.get(a).getSelectionModel().toString());
+			//System.out.println("asi" + combos.get(a).getSelectionModel().getSelectedItem().toString());
+			if (combos.get(a).getSelectionModel().getSelectedItem()==null) {
+				//nic nezaskrkol
+				System.out.println("skap");
+			}
+			else {
+				System.out.println( combos.get(a).getSelectionModel().getSelectedItem().toString());
+			}
+		}
+	}
 }
