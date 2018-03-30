@@ -660,7 +660,7 @@ public class Logic {
 	//narvi selected do pola podla pos
 	public static void saveTestSelected(ArrayList<ComboBox> combos, int position) {
 		//
-		for (int a = 0; a < Logic.loggedUser.getCourse(position).getTest().getQuestionsLength(); a++) {
+		for (int a = 0; a < loggedUser.getCourse(position).getTest().getQuestionsLength(); a++) {
 			//rob
 			/*
 			for (int b = 0; b < Logic.loggedUser.getCourse(position).getTest().getQuestion(a).getOptionsLength(); b++) {
@@ -678,7 +678,16 @@ public class Logic {
 				System.out.println("skap");
 			}
 			else {
-				System.out.println( combos.get(a).getSelectionModel().getSelectedItem().toString());
+				System.out.println(combos.get(a).getSelectionModel().getSelectedItem().toString());
+				String combosel = combos.get(a).getSelectionModel().getSelectedItem().toString();
+				for (int b = 0; b < loggedUser.getCourse(position).getTest().getQuestion(a).getOptionsLength(); b++) {
+					//prehlavadajmoznosti
+					//loggedUser.getCourse(position).getTest().getQuestion(a).getOption(b).getText()
+					if (loggedUser.getCourse(position).getTest().getQuestion(a).getOption(b).getText().equals(combosel)) {
+						//bem
+						loggedUser.getCourse(position).getTest().getQuestion(a).getOption(b).setSelected(true);
+					}
+				}
 			}
 		}
 	}
