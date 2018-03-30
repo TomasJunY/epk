@@ -13,11 +13,10 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
-
-//import java.util.concurrent.TimeUnit;
-
 import epk.Logic;
 import javafx.animation.*;
+
+//import java.util.concurrent.TimeUnit;
 
 public class SplashUI extends Application {
 
@@ -27,6 +26,7 @@ public class SplashUI extends Application {
 	}
 	
 	public void start(Stage primaryStage) throws Exception {
+		
 		Stage window = primaryStage;
 		
 		Pane layout = new Pane();
@@ -46,48 +46,48 @@ public class SplashUI extends Application {
 		window.setScene(scene);		
 		window.show();
 		
-		//nite
+		//threads		
 		class MainThread implements Runnable {
+			
 			String name = null;
 			
 			//konstruktor
 			public MainThread (String name) {
 				this.name = name;
 			}
-			//hlavna vec
+			//hlavna vec - nacita userov
 			public void run () {
-				for (int a = 0 ; a < 5; a++) {
-					System.out.println ( "thread-" + name + ": " + a);
-				}
+				Logic.loadUsersFileToArray();
 			}
 		}
+		
 		class SecondaryThread implements Runnable {
+			
 			String name = null;
 			
 			//konstruktor
 			public SecondaryThread (String name) {
 				this.name = name;
 			}
-			//hlavna vec
+			//vedlajsia vec 
 			public void run () {
-				for (int a = 0 ; a < 5; a++) {
-					System.out.println ( "thread-" + name + ": " + a);
+				for (int a = 0 ; a < 1000; a++) {
+					//System.out.println("thread-" + name + ": " + a);
+					
 				}
 			}
 		}
-		//nite konec
-		//new Thread(new HlavnaNit(0)).start();
 		
-		for (int a = 0 ; a < 2; a++) {
-			new Thread(new MainThread("jozko")).start();
-			new Thread(new SecondaryThread("ferko")).start();
-		}
+		//threads
+		new Thread(new MainThread("jozko")).start();
+		new Thread(new SecondaryThread("ferko")).start();
+		
 		//load udajov a zmena sceny
 		PauseTransition pause = new PauseTransition();
 		pause.setDuration(Duration.seconds(0));
 		pause.setOnFinished(e -> {
 			//load
-			Logic.loadUsersFileToArray();
+			//Logic.loadUsersFileToArray();
 			LoginUI.show("login");			
 			window.close();
 			} );
