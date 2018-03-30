@@ -522,12 +522,12 @@ public class Logic {
 	}
 	
 	//otvorenie materialu 
-	public static void openFileOnDisk(String name) {
+	public static void openFileOnDisk(String name, int position) {
 		//
 		if (Desktop.isDesktopSupported()) {
 			try {
 				Desktop desktop = Desktop.getDesktop();
-				File myFile = new File("./data/courses/1_vodicak/material/documents/" + name);
+				File myFile = new File("./data/courses/" + Logic.loggedUser.getCourse(position).getName() + "/material/documents/" + name);
 				//File myFile = new File(path);
 				desktop.open(myFile);
 			}		    

@@ -33,7 +33,6 @@ public class CourseUI {
 		M_cText.setEditable(false);
 		M_cText.setWrapText(true);
 		M_cText.setPrefHeight(200);
-		//System.out.println("heehxd" +Logic.loggedUser.getCourse(position).getTest().getMaxPoints());
 		
 		vbox.getChildren().add(L_cName);
 		vbox.getChildren().add(M_cText);
@@ -45,7 +44,7 @@ public class CourseUI {
 			link.setText(Logic.loggedUser.getCourse(position).getFile(a).getName());
 			link.setOnAction(e ->{
 				//
-				Logic.openFileOnDisk(link.getText());
+				Logic.openFileOnDisk(link.getText(), position);
 			});
 			links.add(link);			 
 			vbox.getChildren().add(link);

@@ -47,7 +47,7 @@ miesto, kde stupanie cesty presahuje 10%, alebo kde miestne podmienky robia stup
 1
 otazka27
 3
-2
+3
 V poradi tretie prejde cez krizovatku A
 q27.png
 zlte vozidlo
