@@ -38,7 +38,7 @@ public interface Person {
 	
 	void setCourseAll(int pocet); 
 	
-	public ManualTimeMessage getGlobalMessage(); 
+	public TimeMessage getGlobalMessage(); 
 	
-	public void setGlobalMessage(ManualTimeMessage message); 
+	public void setGlobalMessage(TimeMessage message); 
 }

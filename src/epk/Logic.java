@@ -607,7 +607,7 @@ public class Logic {
             	Date expiration = formatter.parse(readedDate);
             	message.setExpiration(expiration);
             	
-            	loggedUser.setGlobalMessage((ManualTimeMessage)message);
+            	loggedUser.setGlobalMessage(message);
             }
             else {
             	//manual
@@ -623,7 +623,7 @@ public class Logic {
             		message.setSeen(true);
             	}
             	
-            	loggedUser.setGlobalMessage(message);
+            	loggedUser.setGlobalMessage((TimeMessage)message);
             }
             
             //zavri

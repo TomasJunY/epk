@@ -14,7 +14,7 @@ public class Administrator implements Person {
 	private int age;
 	private String position;
 	private Course course[];	
-	private ManualTimeMessage globalMessage;
+	private TimeMessage globalMessage;
 	
 	//konstuktor
 	public Administrator(String username, String password) {
@@ -103,11 +103,11 @@ public class Administrator implements Person {
 		this.course	= new Course[pocet];
 	}
 	
-	public ManualTimeMessage getGlobalMessage() {
+	public TimeMessage getGlobalMessage() {
 		return this.globalMessage;
 	}
 	
-	public void setGlobalMessage(ManualTimeMessage message) {
+	public void setGlobalMessage(TimeMessage message) {
 		this.globalMessage = message;
 	}
 	

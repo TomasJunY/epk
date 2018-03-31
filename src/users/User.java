@@ -14,7 +14,7 @@ public class User implements Person {
 	private int age;
 	private String position;
 	private Course course[];	
-	private ManualTimeMessage globalMessage;
+	private TimeMessage globalMessage;
 	
 	//konstuktor
 	public User(String username, String password) {
@@ -103,11 +103,11 @@ public class User implements Person {
 		this.course	= new Course[pocet];
 	}
 	
-	public ManualTimeMessage getGlobalMessage() {
+	public TimeMessage getGlobalMessage() {
 		return this.globalMessage;
 	}
 	
-	public void setGlobalMessage(ManualTimeMessage message) {
+	public void setGlobalMessage(TimeMessage message) {
 		this.globalMessage = message;
 	}
 
