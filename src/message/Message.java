@@ -2,7 +2,7 @@ package message;
 
 public class Message {
 	
-	private String message;
+	protected String message;
 	
 	public Message(String message) {
 		this.message = message;
