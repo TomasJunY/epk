@@ -598,7 +598,7 @@ public class Logic {
             readedMessage = bufferedReader.readLine();  
             readedSeen = bufferedReader.readLine();  
             
-            if (readedSeen.equals(null)) {
+            if (readedSeen.equals("$")) {
             	//time
             	TimeMessage message = new TimeMessage(readedMessage);
             	
