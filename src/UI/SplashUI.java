@@ -13,6 +13,9 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+
+import java.io.FileNotFoundException;
+
 import epk.Logic;
 import javafx.animation.*;
 
@@ -45,8 +48,7 @@ public class SplashUI extends Application {
 		window.initStyle(StageStyle.TRANSPARENT);
 		window.setScene(scene);		
 		window.show();
-		
-		//threads		
+				
 		class MainThread implements Runnable {
 			
 			String name = null;
@@ -63,6 +65,13 @@ public class SplashUI extends Application {
 		
 		class SecondaryThread implements Runnable {
 			
+			//vynimka
+			class ZleRata extends Exception {
+				ZleRata(String message) {
+					super(message);
+				}
+			}
+ 			
 			String name = null;
 			
 			//konstruktor
@@ -71,15 +80,27 @@ public class SplashUI extends Application {
 			}
 			//vedlajsia vec - sucet cisiel od 1 po 1 000
 			public void run () {
+				try {
+					System.out.println(rataj());
+				}
+				catch(Exception ex) {
+					System.out.println(ex);
+				}
+				
+			}
+			
+			int rataj() throws ZleRata {
 				int sum = 0;
 				for (int a = 1 ; a <= 1000; a++) {
 					sum += a;
 				}
-				//System.out.println(sum);
+				if (sum == 500500) {
+					throw new ZleRata("dobre to pocita");
+				}
+				return sum;
 			}
 		}
 		
-		//threads
 		new Thread(new MainThread("jozko")).start();
 		new Thread(new SecondaryThread("ferko")).start();
 		
@@ -87,8 +108,6 @@ public class SplashUI extends Application {
 		PauseTransition pause = new PauseTransition();
 		pause.setDuration(Duration.seconds(0));
 		pause.setOnFinished(e -> {
-			//load
-			//Logic.loadUsersFileToArray();
 			LoginUI.show("login");			
 			window.close();
 			} );
