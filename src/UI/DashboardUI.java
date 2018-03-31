@@ -191,8 +191,8 @@ public class DashboardUI {
 			Label L_edit = new Label("edit");
 					
 			ComboBox comboUsers = new ComboBox<>();
-			for (int a = 0; a < Logic.users.length; a++) {
-				comboUsers.getItems().add(Logic.users[a].getUsername());
+			for (int a = 0; a < Logic.users.size(); a++) {
+				comboUsers.getItems().add(Logic.users.get(a).getUsername());
 			 }
 			comboUsers.setPromptText("vyber");			
 			Button B_editUser = new Button("edit");
@@ -205,7 +205,7 @@ public class DashboardUI {
 			
 			vboxRight.getChildren().add(L_admin);
 			vboxRight.getChildren().add(B_globalMessage);
-			vboxRight.getChildren().add(B_addUser);
+			//vboxRight.getChildren().add(B_addUser);
 			vboxRight.getChildren().add(L_edit);
 			vboxRight.getChildren().add(comboUsers);
 			vboxRight.getChildren().add(B_editUser);

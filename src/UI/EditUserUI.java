@@ -18,32 +18,32 @@ public class EditUserUI {
 		Stage window = new Stage();
 		
 		Label L_username = new Label("username");		
-		TextField E_username = new TextField(Logic.users[position].getUsername());
+		TextField E_username = new TextField(Logic.users.get(position).getUsername());
 		
 		Label L_password = new Label("password");
-		TextField E_password = new TextField(Logic.users[position].getPassword());
+		TextField E_password = new TextField(Logic.users.get(position).getPassword());
 		
 		Label L_name = new Label("name");
-		TextField E_name = new TextField(Logic.users[position].getName());
+		TextField E_name = new TextField(Logic.users.get(position).getName());
 		
 		Label L_surname = new Label("surname");
-		TextField E_surname = new TextField(Logic.users[position].getSurname());
+		TextField E_surname = new TextField(Logic.users.get(position).getSurname());
 		
 		Label L_gender = new Label("gender");
-		TextField E_gender = new TextField(Logic.users[position].getGender());
+		TextField E_gender = new TextField(Logic.users.get(position).getGender());
 		
 		Label L_age = new Label("age");
-		TextField E_age = new TextField(Integer.toString(Logic.users[position].getAge()));
+		TextField E_age = new TextField(Integer.toString(Logic.users.get(position).getAge()));
 		
 		Label L_positon = new Label("position");
-		TextField E_positon = new TextField(Logic.users[position].getPosition());;
+		TextField E_positon = new TextField(Logic.users.get(position).getPosition());;
 		
 		Button B_add = new Button("edit");
 		B_add.setPrefWidth(80);
 		B_add.setOnAction(e -> {
-			Logic.users[position].setUsername(E_username.getText());
-			Logic.users[position].setPassword(E_password.getText());
-			Logic.users[position].setInfo(E_name.getText(), E_surname.getText(), E_gender.getText(), Integer.parseInt(E_age.getText()), E_positon.getText());
+			Logic.users.get(position).setUsername(E_username.getText());
+			Logic.users.get(position).setPassword(E_password.getText());
+			Logic.users.get(position).setInfo(E_name.getText(), E_surname.getText(), E_gender.getText(), Integer.parseInt(E_age.getText()), E_positon.getText());
 			Logic.writeUsersToFileFromArray();
 			window.close();
 		});

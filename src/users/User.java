@@ -1,8 +1,6 @@
 package users;
 
-import courses.Course;
-import courses.Option;
-import courses.Test;
+import courses.*;
 import epk.GlobalMessage;
 
 public class User implements Person {
@@ -72,10 +70,10 @@ public class User implements Person {
 	public String getPosition() {
 		return this.position;
 	}
-	/*
+	
 	public boolean isAdmin() {
 		return false;
-	}	*/
+	}	
 	
 	public Course getCourse(int position) {
 		return this.course[position];

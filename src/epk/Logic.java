@@ -20,9 +20,10 @@ import users.*;
 public class Logic {
 	
 	//db s usermi
-	public static User users[] = new User[getFileUserCount()];
+	//public static User users[] = new User[getFileUserCount()];
+	public static ArrayList<Person> users = new ArrayList<Person>();
 	//prihlaseny user
-	public static User loggedUser;
+	public static Person loggedUser;
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -111,11 +112,13 @@ public class Logic {
                 //pridanie usera               
                 if (readedAdminNumber == 0) {
                 	//pridaj normalneho
-                	users[userIndex] = new User(readedUsername, readedPassword);
+                	//users[userIndex] = new User(readedUsername, readedPassword);
+                	users.add(userIndex, new User(readedUsername, readedPassword));
                 }
                 if (readedAdminNumber == 1) {
                 	//pridaj admina
-                	users[userIndex] = new Administrator(readedUsername, readedPassword);
+                	//users[userIndex] = new Administrator(readedUsername, readedPassword);
+                	users.add(userIndex, new Administrator(readedUsername, readedPassword));
                 }
                 //citanie dalsich info
                 readedName = bufferedReader.readLine();
@@ -125,7 +128,8 @@ public class Logic {
                 readedAgeNumber = Integer.parseInt(readedAge);
                 readedPostition = bufferedReader.readLine();
                 //uloz
-                users[userIndex].setInfo(readedName, readedSurname, readedGender, readedAgeNumber, readedPostition);
+                //users[userIndex].setInfo(readedName, readedSurname, readedGender, readedAgeNumber, readedPostition);
+                users.get(userIndex).setInfo(readedName, readedSurname, readedGender, readedAgeNumber, readedPostition);
                 //zvacsi inderx
                 userIndex++;
             }   
@@ -152,30 +156,30 @@ public class Logic {
             FileWriter fileWriter = new FileWriter(fileName);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             //zapisuj
-            for (int a=0; a<users.length; a++) {
+            for (int a=0; a<users.size(); a++) {
             	//zapisuj
-            	bufferedWriter.write(users[a].getUsername());
+            	bufferedWriter.write(users.get(a).getUsername());
             	bufferedWriter.newLine();
-            	bufferedWriter.write(users[a].getPassword());
+            	bufferedWriter.write(users.get(a).getPassword());
             	bufferedWriter.newLine();
             	//admin
-            	if(users[a].isAdmin()) {
+            	if(users.get(a).isAdmin()) {
             		bufferedWriter.write("1");                	
             	}
             	else {
             		bufferedWriter.write("0");
             	}
             	bufferedWriter.newLine();
-            	bufferedWriter.write(users[a].getName());
+            	bufferedWriter.write(users.get(a).getName());
             	bufferedWriter.newLine();
-            	bufferedWriter.write(users[a].getSurname());
+            	bufferedWriter.write(users.get(a).getSurname());
             	bufferedWriter.newLine();
-            	bufferedWriter.write(users[a].getGender());
+            	bufferedWriter.write(users.get(a).getGender());
             	bufferedWriter.newLine();
-            	bufferedWriter.write(String.valueOf(users[a].getAge()));
+            	bufferedWriter.write(String.valueOf(users.get(a).getAge()));
             	bufferedWriter.newLine();
-            	bufferedWriter.write(users[a].getPosition());
-            	if (a < users.length-1) {
+            	bufferedWriter.write(users.get(a).getPosition());
+            	if (a < users.size()-1) {
             		bufferedWriter.newLine();
             	}
             }
@@ -201,18 +205,17 @@ public class Logic {
 	
 	//prihlasi alebo vrati false ked ne
 	public static boolean userLogin(String loginName, String loginPassword) {	
-		for (int a=0; a<users.length; a++) {			
-			if(loginName.equals(users[a].getUsername()) && loginPassword.equals(users[a].getPassword())  ) {
-				if(users[a].isAdmin()) {
+		for (int a=0; a<users.size(); a++) {			
+			if(loginName.equals(users.get(a).getUsername()) && loginPassword.equals(users.get(a).getPassword())  ) {
+				if(users.get(a).isAdmin()) {
 					//
-					loggedUser = new Administrator(users[a].getUsername(),users[a].getPassword());
+					loggedUser = new Administrator(users.get(a).getUsername(),users.get(a).getPassword());
 				} 
 				else {
 					//
-					loggedUser = new User(users[a].getUsername(),users[a].getPassword());
-				}
-				
-				loggedUser.setInfo(users[a].getName(), users[a].getSurname(), users[a].getGender(), users[a].getAge(), users[a].getPosition());
+					loggedUser = new User(users.get(a).getUsername(),users.get(a).getPassword());
+				}				
+				loggedUser.setInfo(users.get(a).getName(), users.get(a).getSurname(), users.get(a).getGender(), users.get(a).getAge(), users.get(a).getPosition());
 				loadMessageFromFile();
 				return true;
 			}
@@ -222,13 +225,13 @@ public class Logic {
 	
 	//men heslo
 	public static void changePassword(String username, String newPassword ) {
-		for (int a=0; a<users.length; a++) {			
-			if(username.equals(users[a].getUsername())) {
+		for (int a=0; a<users.size(); a++) {			
+			if(username.equals(users.get(a).getUsername())) {
 				//loggedUser = new User(users[a].getUsername(),users[a].getPassword());
 				//loggedUser.setInfo(users[a].getName(), users[a].getSurname(), users[a].getGender(), users[a].getAge(), users[a].getPosition());			
 				
 				//zmen heslo v poli
-				users[a].setPassword(newPassword);
+				users.get(a).setPassword(newPassword);
 				//zapis
 				writeUsersToFileFromArray();
 				//odhla
@@ -239,14 +242,15 @@ public class Logic {
 	
 	//find user by name
 	public static int findByUsername(String username) {
-		for (int a=0; a<users.length; a++) {			
-			if(username.equals(users[a].getUsername())) {		
+		for (int a=0; a<users.size(); a++) {			
+			if(username.equals(users.get(a).getUsername())) {		
 				return a;
 			}
 		}
 		return -1;
 	}
 	
+	/*
 	//pridanie usera - zapisanie do suboru a nacitanie
 	public static void addUser(User newUser) {
         //nazov suboru
@@ -257,29 +261,29 @@ public class Logic {
             FileWriter fileWriter = new FileWriter(fileName);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             //zapisuj povodne
-            for (int a=0; a<users.length; a++) {
+            for (int a=0; a<users.size(); a++) {
             	//zapisuj
-            	bufferedWriter.write(users[a].getUsername());
+            	bufferedWriter.write(users.get(a).getUsername());
             	bufferedWriter.newLine();
-            	bufferedWriter.write(users[a].getPassword());
+            	bufferedWriter.write(users.get(a).getPassword());
             	bufferedWriter.newLine();
             	//admin
-            	if(users[a].isAdmin()) {
+            	if(users.get(a).isAdmin()) {
             		bufferedWriter.write("1");                	
             	}
             	else {
             		bufferedWriter.write("0");
             	}
             	bufferedWriter.newLine();
-            	bufferedWriter.write(users[a].getName());
+            	bufferedWriter.write(users.get(a).getName());
             	bufferedWriter.newLine();
-            	bufferedWriter.write(users[a].getSurname());
+            	bufferedWriter.write(users.get(a).getSurname());
             	bufferedWriter.newLine();
-            	bufferedWriter.write(users[a].getGender());
+            	bufferedWriter.write(users.get(a).getGender());
             	bufferedWriter.newLine();
-            	bufferedWriter.write(String.valueOf(users[a].getAge()));
+            	bufferedWriter.write(String.valueOf(users.get(a).getAge()));
             	bufferedWriter.newLine();
-            	bufferedWriter.write(users[a].getPosition());
+            	bufferedWriter.write(users.get(a).getPosition());
             	bufferedWriter.newLine();
             }
             //pridaj nove
@@ -312,7 +316,7 @@ public class Logic {
         //loadni
         loadUsersFileToArray();
 	}	
-		
+		*/
 	//citanie courses
 	public static void loadCoursesList() {	
 		//nazov suboru

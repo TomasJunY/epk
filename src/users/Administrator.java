@@ -70,10 +70,10 @@ public class Administrator implements Person {
 	public String getPosition() {
 		return this.position;
 	}
-	/*
+	
 	public boolean isAdmin() {
-		return false;
-	}	*/
+		return true;
+	}	
 	
 	public Course getCourse(int position) {
 		return this.course[position];

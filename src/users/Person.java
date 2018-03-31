@@ -3,7 +3,7 @@ package users;
 import courses.*;
 import epk.*;
 
-interface Person {
+public interface Person {
 	
 	void setInfo(String name, String surname, String gender, int age, String position);
 	
@@ -23,11 +23,9 @@ interface Person {
 	
 	int getAge();
 	
-	String getPosition();
-	
-	
-	
-	//boolean isAdmin();
+	String getPosition();	
+		
+	boolean isAdmin();
 	
 	Course getCourse(int position);
 	
