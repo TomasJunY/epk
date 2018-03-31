@@ -47,4 +47,7 @@ public class TimeMessage extends Message {
 	public boolean isNotSeen() {
 		return !this.seen;
 	}
+	
+	public void setSeen(boolean seen) {
+	}
 }

@@ -13,6 +13,7 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import message.ManualTimeMessage;
 
 public class DashboardUI {
 	
@@ -77,18 +78,30 @@ public class DashboardUI {
 		String userWelcomeMessage = Logic.loggedUser.getName() + " " + Logic.loggedUser.getSurname();
 		Label L_userName = new Label(userWelcomeMessage);
 		
-		Label L_message = new Label();
-		//L_message.setText(Logic.loggedUser.getGlobalMessage().getMessage());
-		L_message.setText(Logic.loggedUser.getGlobalMessage().getFormattedExpiration());
-		Button B_message = new Button("x");
-		B_message.setOnAction(e -> {
-			Logic.loggedUser.getGlobalMessage().setSeen(true);
-			//docasne vypnute zapisovanie historie - nesce sa mi riesit cfg, lastmsg, atd.. nemam cas = po vypnuti sa objavi vzdy
-			//docasny takedown cfg
-			//Logic.writeMessageSeenToFile(Logic.loggedUser.getUsername(), true);		
-			window.close();
-			show("dashboard");
-		});
+		//zobraz
+		if (Logic.loggedUser.getGlobalMessage().isNotSeen()) {
+			Label L_message = new Label();
+			//L_message.setText(Logic.loggedUser.getGlobalMessage().getMessage());
+			L_message.setText(Logic.loggedUser.getGlobalMessage().getFormattedExpiration());
+			hboxMessage.getChildren().add(L_message);
+			
+			if (Logic.loggedUser.getGlobalMessage() instanceof ManualTimeMessage) {
+				Button B_message = new Button("x");
+				B_message.setOnAction(e -> {
+					//Logic.loggedUser.getGlobalMessage().set;
+					//docasne vypnute zapisovanie historie - nesce sa mi riesit cfg, lastmsg, atd.. nemam cas = po vypnuti sa objavi vzdy
+					//docasny takedown cfg
+					//Logic.writeMessageSeenToFile(Logic.loggedUser.getUsername(), true);	
+					Logic.loggedUser.getGlobalMessage().setSeen(true);
+					window.close();
+					show("dashboard");		
+				});				
+				hboxMessage.getChildren().add(B_message);
+			}				
+		}
+		
+		
+				
 		
 		Button B_userInfo = new Button("info");
 		B_userInfo.setPrefWidth(80);
@@ -137,7 +150,7 @@ public class DashboardUI {
 				CourseUI.show(selectedCName, (String) comboCourses.getValue(), pos);
 				//load max point
 				Logic.saveMaxPoints(pos);
-				System.out.println(Logic.loggedUser.getCourse(pos).getTest().getMaxPoints());
+				//System.out.println(Logic.loggedUser.getCourse(pos).getTest().getMaxPoints());
 				window.close();
 			}					
 		});
@@ -147,8 +160,7 @@ public class DashboardUI {
 		
 		
 		//hboxTop.getChildren().add(B_debug);
-		hboxMessage.getChildren().add(L_message);
-		hboxMessage.getChildren().add(B_message);
+		
 		
 		hboxCenter.getChildren().add(comboCourses);
 		hboxCenter.getChildren().add(B_Course);

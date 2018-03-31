@@ -608,6 +608,8 @@ public class Logic {
             	message.setExpiration(expiration);
             	
             	loggedUser.setGlobalMessage(message);
+            	
+            	//loggedUser.getGlobalMessage().getClass();
             }
             else {
             	//manual
@@ -624,6 +626,8 @@ public class Logic {
             	}
             	
             	loggedUser.setGlobalMessage((TimeMessage)message);
+            	
+            	//loggedUser.getGlobalMessage().getClass();
             }
             
             //zavri
