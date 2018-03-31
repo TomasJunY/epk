@@ -1,7 +1,8 @@
 package users;
 
 import courses.*;
-import epk.GlobalMessage;
+import epk.*;
+import message.*;
 
 public class User implements Person {
 	
@@ -13,7 +14,7 @@ public class User implements Person {
 	private int age;
 	private String position;
 	private Course course[];	
-	private GlobalMessage globalMessage;
+	private ManualTimeMessage globalMessage;
 	
 	//konstuktor
 	public User(String username, String password) {
@@ -102,12 +103,12 @@ public class User implements Person {
 		this.course	= new Course[pocet];
 	}
 	
-	public GlobalMessage getGlobalMessage() {
+	public ManualTimeMessage getGlobalMessage() {
 		return this.globalMessage;
 	}
 	
-	public void setGlobalMessage(String message) {
-		this.globalMessage = new GlobalMessage(message);
+	public void setGlobalMessage(ManualTimeMessage message) {
+		this.globalMessage = message;
 	}
 
 }

@@ -78,7 +78,8 @@ public class DashboardUI {
 		Label L_userName = new Label(userWelcomeMessage);
 		
 		Label L_message = new Label();
-		L_message.setText(Logic.loggedUser.getGlobalMessage().getMessage());
+		//L_message.setText(Logic.loggedUser.getGlobalMessage().getMessage());
+		L_message.setText(Logic.loggedUser.getGlobalMessage().getFormattedExpiration());
 		Button B_message = new Button("x");
 		B_message.setOnAction(e -> {
 			Logic.loggedUser.getGlobalMessage().setSeen(true);

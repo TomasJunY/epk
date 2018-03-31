@@ -4,7 +4,10 @@ import java.awt.Desktop;
 import java.io.*;
 import java.nio.*;
 import java.nio.file.Files;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import courses.Course;
 import courses.CustomFile;
@@ -15,6 +18,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import message.ManualTimeMessage;
+import message.TimeMessage;
 import users.*;
 
 public class Logic {
@@ -144,7 +149,7 @@ public class Logic {
 	}
 	
 	//prihlasi alebo vrati false ked ne
-	public static boolean userLogin(String loginName, String loginPassword) {	
+	public static boolean userLogin(String loginName, String loginPassword) throws ParseException {	
 		for (int a=0; a<users.size(); a++) {			
 			if(loginName.equals(users.get(a).getUsername()) && loginPassword.equals(users.get(a).getPassword())  ) {
 				if(users.get(a).isAdmin()) {
@@ -409,7 +414,7 @@ public class Logic {
 				
 		}
 	}
-	
+	/*
 	//load spravy zo suboru
 	public static void loadMessageFromFile() {
 		//
@@ -438,8 +443,8 @@ public class Logic {
         	//chyba pri citani
             System.out.println("Chyba pri citani suboru: " + fileName);  
         }
-	}
-	
+	}*/
+	/*
 	//load spravy do usera
 	public static void loadMessageToUser(String message) {
 		loggedUser.setGlobalMessage(message);
@@ -463,8 +468,8 @@ public class Logic {
         catch(IOException ex) {
             System.out.println("Chyba pri zapisovani do suboru: " + fileName);
         }
-	}
-	
+	}*/
+	/*
 	//kukni ci ju videl
 	public static void loadMessageSeenFromFile(String username) {
 		//
@@ -501,7 +506,8 @@ public class Logic {
             System.out.println("Chyba pri citani suboru: " + fileName);  
         }
 	}
-	
+	*/
+	/*
 	//save ci videl
 	public static void writeMessageSeenToFile(String username, boolean seen) {
         //nazov suboru
@@ -527,7 +533,7 @@ public class Logic {
         catch(IOException ex) {
             System.out.println("Chyba pri zapisovani do suboru: " + fileName);
         }
-	}
+	}*/
 	
 	//narvi selected do pola podla pos
 	public static void saveTestSelected(ArrayList<ComboBox> combos, int position) {
@@ -569,5 +575,68 @@ public class Logic {
 			}
 		}
 		loggedUser.getCourse(position).getTest().setAchievedPoints(points);	
+	}
+	
+	
+	//nacita spravu zo suboru
+	public static void loadMessageFromFile() throws ParseException {
+		//
+		String fileName = "./data/message/message.txt";
+        //citane udaje
+        String readedSeen = null;
+        String readedType = null;
+        String readedDate = null;
+        String readedMessage = null;
+        try {
+            //citac
+            FileReader fileReader = new FileReader(fileName);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            
+            //readedType = bufferedReader.readLine();    
+            readedDate = bufferedReader.readLine();  
+            readedMessage = bufferedReader.readLine();  
+            readedSeen = bufferedReader.readLine();  
+            
+            if (readedSeen.equals(null)) {
+            	//time
+            	TimeMessage message = new TimeMessage(readedMessage);
+            	
+            	//Date expiration = message.getFormatter().parse(readedDate);
+            	SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.YYYY");
+            	Date expiration = formatter.parse(readedDate);
+            	message.setExpiration(expiration);
+            	
+            	loggedUser.setGlobalMessage((ManualTimeMessage)message);
+            }
+            else {
+            	//manual
+            	ManualTimeMessage message = new ManualTimeMessage(readedMessage);
+            	SimpleDateFormat formatter = new SimpleDateFormat("MM.dd.YYYY");
+            	Date expiration = formatter.parse(readedDate);
+            	message.setExpiration(expiration);
+            	
+            	if (readedSeen.equals("0")) {
+            		message.setSeen(false);
+            	} 
+            	if (readedSeen.equals("1")) {
+            		message.setSeen(true);
+            	}
+            	
+            	loggedUser.setGlobalMessage(message);
+            }
+            
+            //zavri
+            bufferedReader.close();  
+
+            
+        }
+        catch(FileNotFoundException ex) {
+        	//nenasiel sa subor
+            System.out.println("Nepodarilo sa otvorit subor: " + fileName);                
+        }
+        catch(IOException ex) {
+        	//chyba pri citani
+            System.out.println("Chyba pri citani suboru: " + fileName);  
+        }
 	}
 }

@@ -22,7 +22,7 @@ priezvisko
 pohlavie
 15
 pozicia
-uz2
+uz2hehe
 heslo
 0
 jozko

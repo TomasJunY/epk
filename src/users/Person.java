@@ -2,6 +2,7 @@ package users;
 
 import courses.*;
 import epk.*;
+import message.*;
 
 public interface Person {
 	
@@ -37,7 +38,7 @@ public interface Person {
 	
 	void setCourseAll(int pocet); 
 	
-	GlobalMessage getGlobalMessage(); 
+	public ManualTimeMessage getGlobalMessage(); 
 	
-	void setGlobalMessage(String message); 
+	public void setGlobalMessage(ManualTimeMessage message); 
 }

@@ -1,5 +1,7 @@
 package UI;
 
+import java.text.ParseException;
+
 import epk.Logic;
 
 import javafx.*;
@@ -38,14 +40,19 @@ public class LoginUI {
 		GridPane.setConstraints(B_login, 1, 2);
 		B_login.setPrefWidth(150);
 		B_login.setOnAction(e -> {
-			if ( Logic.userLogin( E_username.getText(), E_password.getText() ) == true ) {
-				//load course
-				Logic.loadCoursesList();
-				DashboardUI.show("dashboard");
-				window.close();
-			}
-			else {
-				AlertUI.show("chyba", "zle meno alebo heslo", 200, 100);
+			try {
+				if ( Logic.userLogin( E_username.getText(), E_password.getText() ) == true ) {
+					//load course
+					Logic.loadCoursesList();
+					DashboardUI.show("dashboard");
+					window.close();
+				}
+				else {
+					AlertUI.show("chyba", "zle meno alebo heslo", 200, 100);
+				}
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
 		});
 		

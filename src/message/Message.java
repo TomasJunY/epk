@@ -1,6 +1,6 @@
 package message;
 
-public class Message {
+abstract class Message {
 	
 	protected String message;
 	

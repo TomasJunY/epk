@@ -29,6 +29,10 @@ public class TimeMessage extends Message {
 	public String getFormattedExpiration() {
 		return this.formattedDate;
 	}
+	
+	public SimpleDateFormat getFormatter() {
+		return this.formatter;
+	}
 
 	public void passedDate(Date currentDate) {
 		if (currentDate.after(expiration)) {
