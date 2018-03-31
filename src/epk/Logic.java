@@ -612,19 +612,9 @@ public class Logic {
             else {
             	//manual
             	ManualTimeMessage message = new ManualTimeMessage(readedMessage);
-            	readedMessage = "01.01.2015";
-            	DateFormat formatter = new SimpleDateFormat("dd.MM.YYYY");
-            	Date expiration = formatter.parse(readedMessage);
+            	DateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
+            	Date expiration = formatter.parse(readedDate);
             	message.setExpiration(expiration);
-            	
-            	try {
-                    String target = "Thu Sep 28 20:29:30 JST 2000";
-                    DateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss zzz yyyy");
-                    Date result =  df.parse(target);
-                    System.out.println(df.parse(target)); 
-                } catch (ParseException pe) {
-                    pe.printStackTrace();
-                }
                 
             	if (readedSeen.equals("0")) {
             		message.setSeen(false);
