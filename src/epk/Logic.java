@@ -317,6 +317,13 @@ public class Logic {
         loadUsersFileToArray();
 	}	
 		*/
+	
+	//pridanie usera - zapisanie do suboru a nacitanie
+	public static void addUser(User newUser) {
+        users.add(newUser);
+        writeUsersToFileFromArray();
+	}	
+	
 	//citanie courses
 	public static void loadCoursesList() {	
 		//nazov suboru

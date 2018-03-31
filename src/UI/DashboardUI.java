@@ -205,7 +205,7 @@ public class DashboardUI {
 			
 			vboxRight.getChildren().add(L_admin);
 			vboxRight.getChildren().add(B_globalMessage);
-			//vboxRight.getChildren().add(B_addUser);
+			vboxRight.getChildren().add(B_addUser);
 			vboxRight.getChildren().add(L_edit);
 			vboxRight.getChildren().add(comboUsers);
 			vboxRight.getChildren().add(B_editUser);
