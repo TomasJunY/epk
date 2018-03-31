@@ -69,6 +69,7 @@ public class SplashUI extends Application {
 			class ZleRata extends Exception {
 				ZleRata(String message) {
 					super(message);
+					this.printStackTrace();
 				}
 			}
  			
@@ -81,12 +82,11 @@ public class SplashUI extends Application {
 			//vedlajsia vec - sucet cisiel od 1 po 1 000
 			public void run () {
 				try {
-					System.out.println(rataj());
+					rataj();
 				}
 				catch(Exception ex) {
 					System.out.println(ex);
-				}
-				
+				}				
 			}
 			
 			int rataj() throws ZleRata {
@@ -94,8 +94,8 @@ public class SplashUI extends Application {
 				for (int a = 1 ; a <= 1000; a++) {
 					sum += a;
 				}
-				if (sum == 500500) {
-					throw new ZleRata("dobre to pocita");
+				if (sum != 500500) {
+					throw new ZleRata("zle to pocita");
 				}
 				return sum;
 			}
