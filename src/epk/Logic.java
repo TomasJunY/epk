@@ -4,6 +4,7 @@ import java.awt.Desktop;
 import java.io.*;
 import java.nio.*;
 import java.nio.file.Files;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -611,10 +612,20 @@ public class Logic {
             else {
             	//manual
             	ManualTimeMessage message = new ManualTimeMessage(readedMessage);
-            	SimpleDateFormat formatter = new SimpleDateFormat("MM.dd.YYYY");
-            	Date expiration = formatter.parse(readedDate);
+            	readedMessage = "01.01.2015";
+            	DateFormat formatter = new SimpleDateFormat("dd.MM.YYYY");
+            	Date expiration = formatter.parse(readedMessage);
             	message.setExpiration(expiration);
             	
+            	try {
+                    String target = "Thu Sep 28 20:29:30 JST 2000";
+                    DateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss zzz yyyy");
+                    Date result =  df.parse(target);
+                    System.out.println(df.parse(target)); 
+                } catch (ParseException pe) {
+                    pe.printStackTrace();
+                }
+                
             	if (readedSeen.equals("0")) {
             		message.setSeen(false);
             	} 
