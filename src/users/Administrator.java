@@ -110,11 +110,4 @@ public class Administrator implements Person {
 		this.globalMessage = new GlobalMessage(message);
 	}
 	
-	//zatial zbytocne
-	public User addUser(String addedUsername, String addedPassword, String addedAdmin, String addedName, String addedSurname, String addedGender, int addedAge, String addedPosition) {
-		User newUser = new User(addedUsername, addedPassword);
-		newUser.setInfo(addedName, addedSurname, addedGender, addedAge, addedPosition);
-		return newUser;
-	}
-
 }

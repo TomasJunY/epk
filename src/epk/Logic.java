@@ -20,68 +20,15 @@ import users.*;
 public class Logic {
 	
 	//db s usermi
-	//public static User users[] = new User[getFileUserCount()];
 	public static ArrayList<Person> users = new ArrayList<Person>();
 	//prihlaseny user
 	public static Person loggedUser;
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		//System.out.println("haha");
-		
-		//int pocet = getFileUserCount();
-		//System.out.println("pocet: " + pocet);
-		//loadUsersFileToArray();
-		//writeUsersToFileFromArray();
-		//System.out.println(userLogin("admin", "heslo"));
-		//addUser("uz2", "heslo", "0", "meno", "priz", "muz", "25", "asfa");
-		//changePassword("admin", "new");
-		//System.out.println(users.length);
-		//loadCoursesList();
-	}
-	
-	//pocet uzivatelov s subore
-	public static int getFileUserCount() {
-		//nazov suboru
-        String fileName = "./data/users_data/list/users.txt";
-        //citrany riadok
-        String readedLine = null;        
-        //pocty
-        int lineCount = 0;
-        int userCount = 0;
-        //citaj
-        try {
-        	//citac
-            FileReader fileReader = new FileReader(fileName);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);   
-                       
-            //citaj po riadkoch
-            while( (readedLine = bufferedReader.readLine() ) != null) {
-                //System.out.println(readedLine);
-                lineCount++;
-            } 
-            //vysledok
-            userCount = lineCount/8;          
-            //zavri
-            bufferedReader.close();       
-        }
-        catch(FileNotFoundException ex) {
-        	//nenasiel sa subor
-            System.out.println("Nepodarilo sa otvorit subor: " + fileName);                
-        }
-        catch(IOException ex) {
-        	//chyba pri citani
-            System.out.println("Chyba pri citani suboru: " + fileName);  
-        }
-        //vrat vysledok
-        return userCount;
-	}
-	
 	//nacitanie do pola
 	public static void loadUsersFileToArray() {	
 		//nazov suboru
         String fileName = "./data/users_data/list/users.txt";
-        //citrane udaje
+        //citane udaje
         String readedUsername = null;
         String readedPassword = null;
         String readedAdmin = null;
@@ -93,16 +40,12 @@ public class Logic {
         
         int readedAdminNumber = 0;
         int readedAgeNumber = 0;
-        
-        //
         int userIndex = 0;
 
         try {
             //citac
             FileReader fileReader = new FileReader(fileName);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-            
-            //readedUsername = bufferedReader.readLine();  
             
             //citaj po riadkoch
             while( (readedUsername = bufferedReader.readLine() ) != null) {
@@ -112,12 +55,10 @@ public class Logic {
                 //pridanie usera               
                 if (readedAdminNumber == 0) {
                 	//pridaj normalneho
-                	//users[userIndex] = new User(readedUsername, readedPassword);
                 	users.add(userIndex, new User(readedUsername, readedPassword));
                 }
                 if (readedAdminNumber == 1) {
                 	//pridaj admina
-                	//users[userIndex] = new Administrator(readedUsername, readedPassword);
                 	users.add(userIndex, new Administrator(readedUsername, readedPassword));
                 }
                 //citanie dalsich info
@@ -128,7 +69,6 @@ public class Logic {
                 readedAgeNumber = Integer.parseInt(readedAge);
                 readedPostition = bufferedReader.readLine();
                 //uloz
-                //users[userIndex].setInfo(readedName, readedSurname, readedGender, readedAgeNumber, readedPostition);
                 users.get(userIndex).setInfo(readedName, readedSurname, readedGender, readedAgeNumber, readedPostition);
                 //zvacsi inderx
                 userIndex++;
@@ -146,7 +86,7 @@ public class Logic {
         }
 	}
 	
-	//zapis do textaku - zatial ineho
+	//zapis do textaku
 	public static void writeUsersToFileFromArray() {
         //nazov suboru
         String fileName = "./data/users_data/list/users.txt";
@@ -208,11 +148,9 @@ public class Logic {
 		for (int a=0; a<users.size(); a++) {			
 			if(loginName.equals(users.get(a).getUsername()) && loginPassword.equals(users.get(a).getPassword())  ) {
 				if(users.get(a).isAdmin()) {
-					//
 					loggedUser = new Administrator(users.get(a).getUsername(),users.get(a).getPassword());
 				} 
 				else {
-					//
 					loggedUser = new User(users.get(a).getUsername(),users.get(a).getPassword());
 				}				
 				loggedUser.setInfo(users.get(a).getName(), users.get(a).getSurname(), users.get(a).getGender(), users.get(a).getAge(), users.get(a).getPosition());
@@ -227,15 +165,9 @@ public class Logic {
 	public static void changePassword(String username, String newPassword ) {
 		for (int a=0; a<users.size(); a++) {			
 			if(username.equals(users.get(a).getUsername())) {
-				//loggedUser = new User(users[a].getUsername(),users[a].getPassword());
-				//loggedUser.setInfo(users[a].getName(), users[a].getSurname(), users[a].getGender(), users[a].getAge(), users[a].getPosition());			
-				
-				//zmen heslo v poli
 				users.get(a).setPassword(newPassword);
 				//zapis
 				writeUsersToFileFromArray();
-				//odhla
-				//userLogoff();
 			}
 		}
 	}
@@ -250,74 +182,6 @@ public class Logic {
 		return -1;
 	}
 	
-	/*
-	//pridanie usera - zapisanie do suboru a nacitanie
-	public static void addUser(User newUser) {
-        //nazov suboru
-        String fileName = "./data/users_data/list/users.txt";
-        //zapisuj
-        try {
-        	//zapisovac
-            FileWriter fileWriter = new FileWriter(fileName);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            //zapisuj povodne
-            for (int a=0; a<users.size(); a++) {
-            	//zapisuj
-            	bufferedWriter.write(users.get(a).getUsername());
-            	bufferedWriter.newLine();
-            	bufferedWriter.write(users.get(a).getPassword());
-            	bufferedWriter.newLine();
-            	//admin
-            	if(users.get(a).isAdmin()) {
-            		bufferedWriter.write("1");                	
-            	}
-            	else {
-            		bufferedWriter.write("0");
-            	}
-            	bufferedWriter.newLine();
-            	bufferedWriter.write(users.get(a).getName());
-            	bufferedWriter.newLine();
-            	bufferedWriter.write(users.get(a).getSurname());
-            	bufferedWriter.newLine();
-            	bufferedWriter.write(users.get(a).getGender());
-            	bufferedWriter.newLine();
-            	bufferedWriter.write(String.valueOf(users.get(a).getAge()));
-            	bufferedWriter.newLine();
-            	bufferedWriter.write(users.get(a).getPosition());
-            	bufferedWriter.newLine();
-            }
-            //pridaj nove
-            bufferedWriter.write(newUser.getUsername());
-        	bufferedWriter.newLine();
-        	bufferedWriter.write(newUser.getPassword());
-        	bufferedWriter.newLine();
-        	bufferedWriter.write("0");
-        	bufferedWriter.newLine();
-        	bufferedWriter.write(newUser.getName());
-        	bufferedWriter.newLine();
-        	bufferedWriter.write(newUser.getSurname());
-        	bufferedWriter.newLine();
-        	bufferedWriter.write(newUser.getGender());
-        	bufferedWriter.newLine();
-        	bufferedWriter.write(Integer.toString(newUser.getAge()));
-        	bufferedWriter.newLine();
-        	bufferedWriter.write(newUser.getPosition());
-            //zavri
-        	bufferedWriter.flush();
-            bufferedWriter.close();
-            
-        }
-        catch(IOException ex) {
-            System.out.println("Chyba pri zapisovani do suboru: " + fileName);
-        }
-        //reset uziv
-        users = null;
-        users = new User[getFileUserCount()];
-        //loadni
-        loadUsersFileToArray();
-	}	
-		*/
-	
 	//pridanie usera - zapisanie do suboru a nacitanie
 	public static void addUser(User newUser) {
         users.add(newUser);
@@ -328,7 +192,6 @@ public class Logic {
 	public static void loadCoursesList() {	
 		//nazov suboru
         String fileName = "./data/courses/courses.txt";
-        //loggedUser.getCourse(0);
         //citane udaje
         String readedLine = null;
         int pocetCourses = 0;
@@ -338,7 +201,6 @@ public class Logic {
             //citac
             FileReader fileReader = new FileReader(fileName);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-            //readedLine = bufferedReader.readLine();
             //pocet
             readedLine = bufferedReader.readLine();   
             pocetCourses = Integer.parseInt(readedLine);
@@ -346,16 +208,11 @@ public class Logic {
             
             //citaj po riadkoch
             while( (readedLine = bufferedReader.readLine() ) != null) {
-            	//rob
             	String location = readedLine;
             	//nacitaj veci
-            	//course[0] = new Course("c1", "textas");
-            	loggedUser.setCourse(CourseIndex, new Course("c1", "textas"));
-            	
-            	loadCourseMaterial(CourseIndex, readedLine);
-            	
+            	loggedUser.setCourse(CourseIndex, new Course("c1", "textas"));        	
+            	loadCourseMaterial(CourseIndex, readedLine);           	
             	loadCourseTest(CourseIndex, readedLine);
-            	//System.out.println(readedLine);
             	//zvacsi index
             	CourseIndex++;            
             }   
@@ -456,7 +313,6 @@ public class Logic {
 	public static void loadCourseTest(int position, String location) {	
 		//nazov suboru
         String fileName = "./data/courses/" + location + "/test/test.txt";
-        //loggedUser.getCourse(0);
         //citane udaje
         String readedLine = null;
         String TestName = null;
@@ -468,7 +324,7 @@ public class Logic {
         String QImage = null;
         String QPoint = null;
         
-        String OPocet = null; //moznosti
+        String OPocet = null; 
         String OText = null;
         String OCorrect = null;
         
@@ -483,9 +339,7 @@ public class Logic {
         try {
             //citac
             FileReader fileReader = new FileReader(fileName);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            
-            //readedLine = bufferedReader.readLine();  
+            BufferedReader bufferedReader = new BufferedReader(fileReader);           
             
             TestName = bufferedReader.readLine();
             TestText = bufferedReader.readLine();
@@ -512,7 +366,6 @@ public class Logic {
             	
             	//moznosti            	
             	for(int a=0; a<OPocetNumber; a++) {
-            		//
             		OText = bufferedReader.readLine();
             		OCorrect = bufferedReader.readLine();
             		OCorrectNumber = Integer.parseInt(OCorrect);
@@ -543,12 +396,10 @@ public class Logic {
 	
 	//otvorenie materialu 
 	public static void openFileOnDisk(String name, int position) {
-		//
 		if (Desktop.isDesktopSupported()) {
 			try {
 				Desktop desktop = Desktop.getDesktop();
 				File myFile = new File("./data/courses/" + Logic.loggedUser.getCourse(position).getName() + "/material/documents/" + name);
-				//File myFile = new File(path);
 				desktop.open(myFile);
 			}		    
 			catch (IOException ex) {
@@ -682,16 +533,14 @@ public class Logic {
 	public static void saveTestSelected(ArrayList<ComboBox> combos, int position) {
 		for (int a = 0; a < loggedUser.getCourse(position).getTest().getQuestionsLength(); a++) {
 			if (combos.get(a).getSelectionModel().getSelectedItem()==null) {
-				//nic nezaskrkol bengavy je
+				//nic nezaskrkol
 				//System.out.println("nic");
 			}
 			else {
-				//System.out.println(combos.get(a).getSelectionModel().getSelectedItem().toString());
 				String combosel = combos.get(a).getSelectionModel().getSelectedItem().toString();
 				for (int b = 0; b < loggedUser.getCourse(position).getTest().getQuestion(a).getOptionsLength(); b++) {
-					//prehlavadajmoznosti
+					//prehlavadaj moznosti
 					if (loggedUser.getCourse(position).getTest().getQuestion(a).getOption(b).getText().equals(combosel)) {
-						//bem
 						loggedUser.getCourse(position).getTest().getQuestion(a).getOption(b).setSelected(true);
 					}
 				}
