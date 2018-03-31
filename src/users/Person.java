@@ -1,9 +1,11 @@
 package users;
 
-import courses.Course;
-import epk.GlobalMessage;
+import courses.*;
+import epk.*;
 
 interface Person {
+	
+	void setInfo(String name, String surname, String gender, int age, String position);
 	
 	String getUsername();
 	
@@ -23,7 +25,7 @@ interface Person {
 	
 	String getPosition();
 	
-	void setInfo(String name, String surname, String gender, int age, String position);
+	
 	
 	//boolean isAdmin();
 	
