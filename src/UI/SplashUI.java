@@ -102,7 +102,10 @@ public class SplashUI extends Application {
 		}
 		
 		new Thread(new MainThread("jozko")).start();
-		new Thread(new SecondaryThread("ferko")).start();
+		//vytvor 10 kde rataj sucet
+		for (int a = 0; a < 10; a++) {
+			new Thread(new SecondaryThread("ferko " + a)).start();
+		}		
 		
 		//load udajov a zmena sceny
 		PauseTransition pause = new PauseTransition();
