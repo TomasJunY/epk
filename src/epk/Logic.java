@@ -194,7 +194,7 @@ public class Logic {
         writeUsersToFileFromArray();
 	}	
 	
-	//citanie courses
+	//citanie courses kuknut este
 	public static void loadCoursesList() {	
 		//nazov suboru
         String fileName = "./data/courses/courses.txt";
@@ -577,7 +577,6 @@ public class Logic {
 		}
 		loggedUser.getCourse(position).getTest().setAchievedPoints(points);	
 	}
-	
 	
 	//nacita spravu zo suboru
 	public static void loadMessageFromFile() throws ParseException {
