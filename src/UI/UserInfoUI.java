@@ -16,7 +16,6 @@ public class UserInfoUI {
 		
 		Button B_passwordChange = new Button("zmen heslo");
 		B_passwordChange.setOnAction(e -> {
-			//men heslo
 			PasswordChangeUI.show("zmena hesla");
 		} );
 		B_passwordChange.setPrefWidth(80);

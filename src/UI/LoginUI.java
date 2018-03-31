@@ -38,12 +38,7 @@ public class LoginUI {
 		GridPane.setConstraints(B_login, 1, 2);
 		B_login.setPrefWidth(150);
 		B_login.setOnAction(e -> {
-			//rob
-			//AlertUI.show("chyba", "daco sa stalo", 200, 100);
 			if ( Logic.userLogin( E_username.getText(), E_password.getText() ) == true ) {
-				//prihlas
-				//AlertUI.show("ok", "sicko v poradku", 200, 100);
-				//Logic.userLogin(loginName, loginPassword)
 				//load course
 				Logic.loadCoursesList();
 				DashboardUI.show("dashboard");

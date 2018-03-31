@@ -42,7 +42,6 @@ public class AddUserUI {
 		B_add.setPrefWidth(80);
 		B_add.setOnAction(e -> {
 			User newUser = new User(E_username.getText(), E_password.getText());
-			//User newUser = Logic.loggedUser.
 			newUser.setInfo(E_name.getText(), E_surname.getText(), E_gender.getText(), Integer.parseInt(E_age.getText()), E_positon.getText());
 			Logic.addUser(newUser);
 			window.close();

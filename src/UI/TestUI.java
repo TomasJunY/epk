@@ -58,10 +58,7 @@ public class TestUI {
 			vbox.getChildren().add(Qtext);
 			//img
 			if (!Logic.loggedUser.getCourse(position).getTest().getQuestion(a).getImage().equals("$")) {
-				//
 				Image Qimage = new Image("file:data/courses/" + Logic.loggedUser.getCourse(position).getName() + "/test/images/" + Logic.loggedUser.getCourse(position).getTest().getQuestion(a).getImage());
-				//Image splashImage = new Image("http://i.imgur.com/yBPMiCp.gif");
-				//Qimage.s
 				Qimages.add(Qimage);
 				vbox.getChildren().add(new ImageView(Qimage));
 			}
@@ -81,10 +78,7 @@ public class TestUI {
 		Button B_done = new Button("Test");
 		B_done.setPrefWidth(80);
 		B_done.setOnAction(e -> {
-			//
-			//CourseUI.show(title, course_name, position);
 			Logic.saveTestSelected(Qcombos, position);
-			//Logic.saveMaxPoints(position);
 			Logic.saveAchievedPoints(position);
 			AlertUI.show("konec", "dosiahol si " + Logic.loggedUser.getCourse(position).getTest().getAchievedPoints() + " bodov", 200, 100);
 			CourseUI.show(title, course_name, position);

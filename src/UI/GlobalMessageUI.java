@@ -30,8 +30,6 @@ public class GlobalMessageUI {
 			Logic.loadMessageFromFile();
 			Logic.writeMessageSeenToFile(Logic.loggedUser.getUsername(), false);
 			window.close();
-			//DashboardUI.window.close
-			//DashboardUI.show("dashboard");
 		});
 			
 		vbox.getChildren().add(L_info);

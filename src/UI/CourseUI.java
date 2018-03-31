@@ -39,11 +39,9 @@ public class CourseUI {
 		
 		ArrayList<Hyperlink > links = new ArrayList<Hyperlink >();
 		for (int a = 0; a < Logic.loggedUser.getCourse(position).getFileLength(); a++) {
-			//rob
 			Hyperlink link = new Hyperlink();
 			link.setText(Logic.loggedUser.getCourse(position).getFile(a).getName());
 			link.setOnAction(e ->{
-				//
 				Logic.openFileOnDisk(link.getText(), position);
 			});
 			links.add(link);			 

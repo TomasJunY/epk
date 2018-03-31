@@ -56,10 +56,6 @@ public class PasswordChangeUI {
 				else {
 					AlertUI.show("chyba", "povodne sa nezhoduje", 200, 100);
 				}
-				
-				//AlertUI.show("ok", "sicko v poradku", 200, 100);
-				//DashboardUI.show("dashboard");
-				//window.close();
 			}
 			else {
 				AlertUI.show("chyba", "hesla sa lisia", 200, 100);
