@@ -578,7 +578,7 @@ public class Logic {
 		loggedUser.getCourse(position).getTest().setAchievedPoints(points);	
 	}
 	
-	//nacita spravu zo suboru
+	//nacita spravu zo suboru - globalnu
 	public static void loadMessageFromFile() throws ParseException {
 		//
 		String fileName = "./data/message/message.txt";
@@ -606,6 +606,15 @@ public class Logic {
             	Date expiration = formatter.parse(readedDate);
             	message.setExpiration(expiration);
             	
+            	TimeMessage userMessage = loadUserMessageFromFile(loggedUser.getUsername());
+            	
+            	//rovnake
+            	if (userMessage.getMessage().equals(message.getMessage())) {
+            		message.setSeen(userMessage.isSeen());
+            	}
+            	
+            	loggedUser.setGlobalMessage((TimeMessage)message);
+            	
             	loggedUser.setGlobalMessage(message);
             	
             	//loggedUser.getGlobalMessage().getClass();
@@ -623,8 +632,15 @@ public class Logic {
             	if (readedSeen.equals("1")) {
             		message.setSeen(true);
             	}
+            	TimeMessage userMessage = loadUserMessageFromFile(loggedUser.getUsername());
             	
-            	loggedUser.setGlobalMessage((TimeMessage)message);
+            	//rovnake
+            	if (userMessage.getMessage().equals(message.getMessage())) {
+            		message.setSeen(userMessage.isSeen());
+            	}
+            	
+            	loggedUser.setGlobalMessage((TimeMessage)message);     	
+            	
             	
             	//loggedUser.getGlobalMessage().getClass();
             }
@@ -642,5 +658,72 @@ public class Logic {
         	//chyba pri citani
             System.out.println("Chyba pri citani suboru: " + fileName);  
         }
+	}
+	
+	//check user msg
+	public static TimeMessage loadUserMessageFromFile(String username) throws ParseException {
+		//
+		String fileName = "./data/users_data/history/" + username + "/closedMessage.txt";
+        //citane udaje
+        String readedSeen = null;
+        String readedType = null;
+        String readedDate = null;
+        String readedMessage = null;
+        try {
+            //citac
+            FileReader fileReader = new FileReader(fileName);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            
+            //readedType = bufferedReader.readLine();    
+            readedDate = bufferedReader.readLine();  
+            readedMessage = bufferedReader.readLine();  
+            readedSeen = bufferedReader.readLine();  
+            
+            if (readedSeen.equals("$")) {
+            	//time
+            	TimeMessage message = new TimeMessage(readedMessage);
+            	
+            	//Date expiration = message.getFormatter().parse(readedDate);
+            	SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.YYYY");
+            	Date expiration = formatter.parse(readedDate);
+            	message.setExpiration(expiration);
+            	
+            	//zavri
+                bufferedReader.close();
+            	return message;
+            	
+            	//loggedUser.getGlobalMessage().getClass();
+            }
+            else {
+            	//manual
+            	ManualTimeMessage message = new ManualTimeMessage(readedMessage);
+            	DateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
+            	Date expiration = formatter.parse(readedDate);
+            	message.setExpiration(expiration);
+                
+            	if (readedSeen.equals("0")) {
+            		message.setSeen(false);
+            	} 
+            	if (readedSeen.equals("1")) {
+            		message.setSeen(true);
+            	}
+            	
+            	//zavri
+                bufferedReader.close();
+            	return (TimeMessage)message;
+            	
+            	//loggedUser.getGlobalMessage().getClass();
+            }
+            
+        }
+        catch(FileNotFoundException ex) {
+        	//nenasiel sa subor
+            System.out.println("Nepodarilo sa otvorit subor: " + fileName);                
+        }
+        catch(IOException ex) {
+        	//chyba pri citani
+            System.out.println("Chyba pri citani suboru: " + fileName);  
+        }
+		return null;
 	}
 }
