@@ -13,18 +13,15 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
-
 import java.io.FileNotFoundException;
-
 import epk.Logic;
 import javafx.animation.*;
 
-//import java.util.concurrent.TimeUnit;
+
 
 public class SplashUI extends Application {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		launch(args);
 	}
 	
@@ -33,13 +30,11 @@ public class SplashUI extends Application {
 		Stage window = primaryStage;
 		
 		Pane layout = new Pane();
-		layout.setPrefSize(400, 233);
-		//layout.setPrefSize(500, 500);
+		layout.setPrefSize(600, 400);
 		layout.setBackground(null);
 		
-		//Image splashImage = new Image(getClass().getResourceAsStream("splash.png"));
 		Image splashImage = new Image("file:data/images/splash.png");
-		//Image splashImage = new Image("http://i.imgur.com/yBPMiCp.gif");
+
 		layout.getChildren().add(new ImageView(splashImage));
 		
 		Scene scene = new Scene(layout, Color.TRANSPARENT);
@@ -109,7 +104,7 @@ public class SplashUI extends Application {
 		
 		//load udajov a zmena sceny
 		PauseTransition pause = new PauseTransition();
-		pause.setDuration(Duration.seconds(0));
+		pause.setDuration(Duration.seconds(3));
 		pause.setOnFinished(e -> {
 			LoginUI.show("login");			
 			window.close();

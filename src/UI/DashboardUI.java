@@ -21,30 +21,10 @@ public class DashboardUI {
 		
 		Stage window = new Stage();	
 		
-		/*
-		GridPane grid = new GridPane();
-		grid.setPadding(new Insets(10, 10, 10, 10));
-		grid.setVgap(10);
-		grid.setHgap(15);
-		//grid.setPrefSize(800, 600);
-		
-		Label L_userWelcome = new Label("si prihlaseny ako: ");
-		GridPane.setConstraints(L_userWelcome, 0, 0);
-		String userWelcomeMessage = Logic.loggedUser.getName() + " " + Logic.loggedUser.getSurname();
-		Label L_userName = new Label(userWelcomeMessage);
-		GridPane.setConstraints(L_userName, 1, 0);
-		
-		grid.getChildren().add(L_userWelcome);
-		grid.getChildren().add(L_userName);
-		
-		*/
-		
 		HBox hboxTop = new HBox();
 		hboxTop.setSpacing(8);
 		hboxTop.setPadding(new Insets(15, 12, 15, 12));
 		hboxTop.setStyle("-fx-background-color: #0099ff;");
-		
-		//AnchorPane anchor = new AnchorPane();
 		
 		HBox hboxCenter = new HBox();
 		hboxCenter.setSpacing(8);
@@ -81,17 +61,12 @@ public class DashboardUI {
 		//zobraz
 		if (Logic.loggedUser.getGlobalMessage().isNotSeen()) {
 			Label L_message = new Label();
-			//L_message.setText(Logic.loggedUser.getGlobalMessage().getMessage());
 			L_message.setText(Logic.loggedUser.getGlobalMessage().getFormattedExpiration() + " " +Logic.loggedUser.getGlobalMessage().getMessage());
 			hboxMessage.getChildren().add(L_message);
 			
 			if (Logic.loggedUser.getGlobalMessage() instanceof ManualTimeMessage) {
 				Button B_message = new Button("x");
 				B_message.setOnAction(e -> {
-					//Logic.loggedUser.getGlobalMessage().set;
-					//docasne vypnute zapisovanie historie - nesce sa mi riesit cfg, lastmsg, atd.. nemam cas = po vypnuti sa objavi vzdy
-					//docasny takedown cfg
-					//Logic.writeMessageSeenToFile(Logic.loggedUser.getUsername(), true);	
 					Logic.loggedUser.getGlobalMessage().setSeen(true);
 					Logic.writeUserMessageToFile(Logic.loggedUser.getUsername(), Logic.loggedUser.getGlobalMessage());
 					window.close();
@@ -100,10 +75,7 @@ public class DashboardUI {
 				hboxMessage.getChildren().add(B_message);
 			}				
 		}
-		
-		
-				
-		
+						
 		Button B_userInfo = new Button("info");
 		B_userInfo.setPrefWidth(80);
 		B_userInfo.setOnAction(e -> {
@@ -123,61 +95,49 @@ public class DashboardUI {
 				AlertUI.show("chyba", "nepodarilo sa odhlasit", 200, 100);
 			}
 		});
-		
+		/*
 		Button B_debug = new Button("debug");
 		B_debug.setOnAction(e -> {
 			//
 			Logic.loadCoursesList();
 		});
-		
+		*/
 		ComboBox comboCourses = new ComboBox<>();
 		for (int a = 0; a < Logic.loggedUser.getCourseLength(); a++) {
 			comboCourses.getItems().add(Logic.loggedUser.getCourse(a).getName());
 		 }
-		//comboCourses.getItems().addAll("1", "2", "3");
 		comboCourses.setPromptText("vyber si kurz");
 		
-		Button B_Course = new Button("choc");
+		Button B_Course = new Button("rob");
 		B_Course.setOnAction(e -> {
 			//	
 			if (comboCourses.getValue()==null) {
-				//
 				System.out.println("chyba");
 			}
 			else {
-				//
 				String selectedCName = (String) comboCourses.getValue();
 				int pos = Logic.loggedUser.getCourseIndex(selectedCName);
 				CourseUI.show(selectedCName, (String) comboCourses.getValue(), pos);
 				//load max point
 				Logic.saveMaxPoints(pos);
-				//System.out.println(Logic.loggedUser.getCourse(pos).getTest().getMaxPoints());
 				window.close();
 			}					
 		});
 		
 		hboxTop.getChildren().add(L_userWelcome);
-		hboxTop.getChildren().add(L_userName);
-		
+		hboxTop.getChildren().add(L_userName);	
 		
 		//hboxTop.getChildren().add(B_debug);
-		
-		
+				
 		hboxCenter.getChildren().add(comboCourses);
 		hboxCenter.getChildren().add(B_Course);
 		
-		//vboxCenter.getChildren().add(hboxMessage);
 		if (Logic.loggedUser.getGlobalMessage().isNotSeen()) {
 			vboxCenter.getChildren().add(hboxMessage);
 		}
 		
 		vboxCenter.getChildren().add(hboxCenter);
-		/*
-		anchor.getChildren().add(hboxMessage);
-		anchor.getChildren().add(hboxCenter);
-		anchor.setTopAnchor(hboxMessage, 0.0);
-		anchor.setBottomAnchor(hboxCenter, 100.0);
-		 */
+		
 		hboxBotton.getChildren().add(B_userInfo);
 		hboxBotton.getChildren().add(B_logOff);
 		
@@ -190,7 +150,7 @@ public class DashboardUI {
 		if(Logic.loggedUser.isAdmin()) {
 			Label L_admin = new Label("nastroje na spravu");
 			
-			Button B_globalMessage = new Button("global sprava");
+			Button B_globalMessage = new Button("oznamenie");
 			B_globalMessage.setOnAction(e -> {
 				//
 				GlobalMessageUI.show("nastav spravu");
@@ -202,7 +162,7 @@ public class DashboardUI {
 				AddUserUI.show("pridaj usera");
 			});
 			
-			Label L_edit = new Label("edit");
+			Label L_edit = new Label("edituj usera");
 					
 			ComboBox comboUsers = new ComboBox<>();
 			for (int a = 0; a < Logic.users.size(); a++) {

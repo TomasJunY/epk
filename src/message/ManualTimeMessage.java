@@ -1,7 +1,7 @@
 package message;
 
 public class ManualTimeMessage extends TimeMessage {
-	//zatvori sa sama po case da sa vypat
+	//zatvori sa sama po case da sa vypnut
 	
 	public ManualTimeMessage(String message) {
 		super(message);

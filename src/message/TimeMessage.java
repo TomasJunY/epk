@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class TimeMessage extends Message {
-	//zatvori sa sama po case neda sa vypat
+	//zatvori sa sama po case neda sa vypnut
 	
 	protected Date expiration;
 	protected SimpleDateFormat formatter;

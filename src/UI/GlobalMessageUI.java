@@ -34,9 +34,6 @@ public class GlobalMessageUI {
 		Button B_confirm = new Button("send");
 		B_confirm.setOnAction(e -> {
 			String message = E_message.getText();
-			//Logic.writeMessageToFile(message);
-			//Logic.loadMessageFromFile();
-			//Logic.writeMessageSeenToFile(Logic.loggedUser.getUsername(), false);
 			
 			boolean canBeClosed = true;
 			if (CB_closed.isSelected()) {

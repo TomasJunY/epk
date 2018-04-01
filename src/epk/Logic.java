@@ -137,18 +137,7 @@ public class Logic {
             System.out.println("Chyba pri zapisovani do suboru: " + fileName);
         }
 	}
-	
-	//odhlasi alebo vrati false ked ne
-	public static boolean userLogoff() {	
-		loggedUser = null;
-		if (loggedUser == null) {
-			return true;
-		}
-		else {		
-			return false;
-		}
-	}
-	
+		
 	//prihlasi alebo vrati false ked ne
 	public static boolean userLogin(String loginName, String loginPassword) throws ParseException {	
 		for (int a=0; a<users.size(); a++) {			
@@ -167,6 +156,17 @@ public class Logic {
 		return false;
 	}
 	
+	//odhlasi alebo vrati false ked ne
+	public static boolean userLogoff() {	
+		loggedUser = null;
+		if (loggedUser == null) {
+			return true;
+		}
+		else {		
+			return false;
+		}
+	}
+
 	//men heslo
 	public static void changePassword(String username, String newPassword ) {
 		for (int a=0; a<users.size(); a++) {			
@@ -320,7 +320,7 @@ public class Logic {
 		//nazov suboru
         String fileName = "./data/courses/" + location + "/test/test.txt";
         //citane udaje
-        String readedLine = null;
+        //String readedLine = null;
         String TestName = null;
         String TestText = null;
         
@@ -415,128 +415,8 @@ public class Logic {
 				
 		}
 	}
-	/*
-	//load spravy zo suboru
-	public static void loadMessageFromFile() {
-		//
-		String fileName = "./data/message/message.txt";
-        //citane udaje
-        String readedLine = null;
-        try {
-            //citac
-            FileReader fileReader = new FileReader(fileName);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            
-            readedLine = bufferedReader.readLine();                           
-            //zavri
-            bufferedReader.close();  
-            //load do usera
-            loadMessageToUser(readedLine);
-            //load pref seen
-            //docasny takedown cfg
-            //loadMessageSeenFromFile(loggedUser.getUsername());
-        }
-        catch(FileNotFoundException ex) {
-        	//nenasiel sa subor
-            System.out.println("Nepodarilo sa otvorit subor: " + fileName);                
-        }
-        catch(IOException ex) {
-        	//chyba pri citani
-            System.out.println("Chyba pri citani suboru: " + fileName);  
-        }
-	}*/
-	/*
-	//load spravy do usera
-	public static void loadMessageToUser(String message) {
-		loggedUser.setGlobalMessage(message);
-	}
 	
-	//save spravy do suboru
-	public static void writeMessageToFile(String message) {
-        //nazov suboru
-        String fileName = "./data/message/message.txt";
-        //zapisuj
-        try {
-        	//zapisovac
-            FileWriter fileWriter = new FileWriter(fileName);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            //zapisuj
-            bufferedWriter.write(message);
-            //zavri 
-            bufferedWriter.flush();
-            bufferedWriter.close();
-        }
-        catch(IOException ex) {
-            System.out.println("Chyba pri zapisovani do suboru: " + fileName);
-        }
-	}*/
-	/*
-	//kukni ci ju videl
-	public static void loadMessageSeenFromFile(String username) {
-		//
-		String fileName = "./data/users_data/history/" + username  +"/closedMessage.txt";
-        //citane udaje
-        String readedLine = null;
-        int cislo = 0;
-        boolean seen = false;
-        try {
-            //citac
-            FileReader fileReader = new FileReader(fileName);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            
-            readedLine = bufferedReader.readLine();                           
-            //zavri
-            bufferedReader.close();  
-            
-            cislo = Integer.parseInt(readedLine);           
-            if (cislo == 0) {
-            	seen = false;
-            }
-            else {
-            	seen = true;
-            }
-            
-            loggedUser.getGlobalMessage().setSeen(seen);
-        }
-        catch(FileNotFoundException ex) {
-        	//nenasiel sa subor
-            System.out.println("Nepodarilo sa otvorit subor: " + fileName);                
-        }
-        catch(IOException ex) {
-        	//chyba pri citani
-            System.out.println("Chyba pri citani suboru: " + fileName);  
-        }
-	}
-	*/
-	/*
-	//save ci videl
-	public static void writeMessageSeenToFile(String username, boolean seen) {
-        //nazov suboru
-		String fileName = "./data/users_data/history/" + username  +"/closedMessage.txt";
-        //zapisuj
-        try {
-        	//zapisovac
-            FileWriter fileWriter = new FileWriter(fileName);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            //zapisuj
-            String message = "0"; //default 0
-            if (seen) {
-            	message = "1";
-            }
-            else {
-            	message = "0";
-            }
-            bufferedWriter.write(message);
-            //zavri 
-            bufferedWriter.flush();
-            bufferedWriter.close();
-        }
-        catch(IOException ex) {
-            System.out.println("Chyba pri zapisovani do suboru: " + fileName);
-        }
-	}*/
-	
-	//narvi selected do pola podla pos
+	//daj selected do pola podla position
 	public static void saveTestSelected(ArrayList<ComboBox> combos, int position) {
 		for (int a = 0; a < loggedUser.getCourse(position).getTest().getQuestionsLength(); a++) {
 			if (combos.get(a).getSelectionModel().getSelectedItem()==null) {
@@ -582,11 +462,10 @@ public class Logic {
 	public static void loadMessageFromFile() throws ParseException {
 		//
 		String fileName = "./data/message/message.txt";
-        //citane udaje
-        String readedSeen = null;
-        String readedType = null;
+        //citane udaje       
         String readedDate = null;
         String readedMessage = null;
+        String readedSeen = null;
         try {
             //citac
             FileReader fileReader = new FileReader(fileName);
@@ -600,8 +479,6 @@ public class Logic {
             if (readedSeen.equals("$")) {
             	//time
             	TimeMessage message = new TimeMessage(readedMessage);
-            	
-            	//Date expiration = message.getFormatter().parse(readedDate);
             	SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
             	Date expiration = formatter.parse(readedDate);
             	message.setExpiration(expiration);
@@ -663,17 +540,15 @@ public class Logic {
 	public static TimeMessage loadUserMessageFromFile(String username) throws ParseException {
 		//
 		String fileName = "./data/users_data/history/" + username + "/closedMessage.txt";
-        //citane udaje
-        String readedSeen = null;
-        String readedType = null;
+        //citane udaje       
         String readedDate = null;
         String readedMessage = null;
+        String readedSeen = null;
         try {
             //citac
             FileReader fileReader = new FileReader(fileName);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-            
-            //readedType = bufferedReader.readLine();    
+                
             readedDate = bufferedReader.readLine();  
             readedMessage = bufferedReader.readLine();  
             readedSeen = bufferedReader.readLine();  

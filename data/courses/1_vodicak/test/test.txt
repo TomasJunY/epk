@@ -1,5 +1,5 @@
 1_vodicak
-informacie o teste, test 1 a
+informacie o teste, test 1, vodicak, vyberove otazky
 5
 otazka1
 3
