@@ -602,7 +602,7 @@ public class Logic {
             	TimeMessage message = new TimeMessage(readedMessage);
             	
             	//Date expiration = message.getFormatter().parse(readedDate);
-            	SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.YYYY");
+            	SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
             	Date expiration = formatter.parse(readedDate);
             	message.setExpiration(expiration);
             	
@@ -645,9 +645,7 @@ public class Logic {
             }
             
             //zavri
-            bufferedReader.close();  
-
-            
+            bufferedReader.close();            
         }
         catch(FileNotFoundException ex) {
         	//nenasiel sa subor

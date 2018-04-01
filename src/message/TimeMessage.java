@@ -22,7 +22,7 @@ public class TimeMessage extends Message {
 	
 	public void setExpiration(Date expiration) {
 		this.expiration = expiration;
-		formatter = new SimpleDateFormat("dd.MM.YYYY");
+		formatter = new SimpleDateFormat("dd.MM.yyyy");
 		formattedDate = formatter.format(expiration);
 	}
 	

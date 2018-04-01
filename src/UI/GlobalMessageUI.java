@@ -30,12 +30,23 @@ public class GlobalMessageUI {
 		
 		CheckBox CB_closed = new CheckBox("moze byt zatvorena");
 		
+		Label L_info = new Label("sprava sa zobrazi az po odhlaseni");
 		Button B_confirm = new Button("send");
 		B_confirm.setOnAction(e -> {
 			String message = E_message.getText();
 			//Logic.writeMessageToFile(message);
 			//Logic.loadMessageFromFile();
 			//Logic.writeMessageSeenToFile(Logic.loggedUser.getUsername(), false);
+			
+			boolean canBeClosed = true;
+			if (CB_closed.isSelected()) {
+				canBeClosed = true;
+			}
+			else {
+				canBeClosed = false;
+			}
+			
+			Logic.writeMessageToFile(E_date.getText(), E_message.getText(), canBeClosed);
 			window.close();
 		});
 			
@@ -44,9 +55,10 @@ public class GlobalMessageUI {
 		vbox.getChildren().add(L_message);
 		vbox.getChildren().add(E_message);
 		vbox.getChildren().add(CB_closed);
+		vbox.getChildren().add(L_info);
 		vbox.getChildren().add(B_confirm);
 		
-		Scene scene = new Scene(vbox, 250, 200);
+		Scene scene = new Scene(vbox, 250, 250);
 		
 		window.setTitle(title);
 		window.initModality(Modality.APPLICATION_MODAL);
