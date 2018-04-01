@@ -616,6 +616,7 @@ public class Logic {
             		writeUserMessageToFile(loggedUser.getUsername(), message);
             	}
             	
+            	message.passedDate(new Date());
             	loggedUser.setGlobalMessage(message);
             }
             else {
@@ -641,6 +642,7 @@ public class Logic {
             		writeUserMessageToFile(loggedUser.getUsername(), message);
             	}
             	
+            	message.passedDate(new Date());
             	loggedUser.setGlobalMessage((TimeMessage)message);     	
             }
             
