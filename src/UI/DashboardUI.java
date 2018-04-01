@@ -93,7 +93,7 @@ public class DashboardUI {
 					//docasny takedown cfg
 					//Logic.writeMessageSeenToFile(Logic.loggedUser.getUsername(), true);	
 					Logic.loggedUser.getGlobalMessage().setSeen(true);
-					Logic.writeMessageToFile(Logic.loggedUser.getUsername(), Logic.loggedUser.getGlobalMessage());
+					Logic.writeUserMessageToFile(Logic.loggedUser.getUsername(), Logic.loggedUser.getGlobalMessage());
 					window.close();
 					show("dashboard");		
 				});				

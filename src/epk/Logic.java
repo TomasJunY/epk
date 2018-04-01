@@ -612,10 +612,11 @@ public class Logic {
             	if (userMessage.getMessage().equals(message.getMessage())) {
             		message.setSeen(userMessage.isSeen());
             	}
+            	else {
+            		writeUserMessageToFile(loggedUser.getUsername(), message);
+            	}
             	
             	loggedUser.setGlobalMessage(message);
-            	
-            	//loggedUser.getGlobalMessage().getClass();
             }
             else {
             	//manual
@@ -637,13 +638,10 @@ public class Logic {
             		message.setSeen(userMessage.isSeen());
             	}
             	else {
-            		writeMessageToFile(loggedUser.getUsername(), message);
+            		writeUserMessageToFile(loggedUser.getUsername(), message);
             	}
             	
             	loggedUser.setGlobalMessage((TimeMessage)message);     	
-            	
-            	
-            	//loggedUser.getGlobalMessage().getClass();
             }
             
             //zavri
@@ -724,9 +722,39 @@ public class Logic {
 		return null;
 	}
 	
+	//zapis global message
+	public static void writeMessageToFile(String date, String message, boolean canBeClosed) {
+        //nazov suboru
+		String fileName = "./data/message/message.txt";
+        //zapisuj
+        try {
+        	//zapisovac
+            FileWriter fileWriter = new FileWriter(fileName);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            //zapisuj
+            bufferedWriter.write(date);
+            bufferedWriter.newLine();
+            bufferedWriter.write(message);
+            bufferedWriter.newLine();
+            String seen = "0";
+            if (canBeClosed) {
+            	seen = "0";
+            }
+            else {
+            	seen = "$";
+            }
+            bufferedWriter.write(seen);
+            //zavri 
+            bufferedWriter.flush();
+            bufferedWriter.close();
+        }
+        catch(IOException ex) {
+            System.out.println("Chyba pri zapisovani do suboru: " + fileName);
+        }
+	}
 	
 	//zapisovanie user message - ked je global ina
-	public static void writeMessageToFile(String username, TimeMessage message) {
+	public static void writeUserMessageToFile(String username, TimeMessage message) {
         //nazov suboru
 		String fileName = "./data/users_data/history/" + username  +"/closedMessage.txt";
         //zapisuj
