@@ -613,8 +613,6 @@ public class Logic {
             		message.setSeen(userMessage.isSeen());
             	}
             	
-            	loggedUser.setGlobalMessage((TimeMessage)message);
-            	
             	loggedUser.setGlobalMessage(message);
             	
             	//loggedUser.getGlobalMessage().getClass();
@@ -637,6 +635,9 @@ public class Logic {
             	//rovnake
             	if (userMessage.getMessage().equals(message.getMessage())) {
             		message.setSeen(userMessage.isSeen());
+            	}
+            	else {
+            		writeMessageToFile(loggedUser.getUsername(), message);
             	}
             	
             	loggedUser.setGlobalMessage((TimeMessage)message);     	
@@ -690,9 +691,7 @@ public class Logic {
             	
             	//zavri
                 bufferedReader.close();
-            	return message;
-            	
-            	//loggedUser.getGlobalMessage().getClass();
+            	return message;            	
             }
             else {
             	//manual
@@ -711,8 +710,6 @@ public class Logic {
             	//zavri
                 bufferedReader.close();
             	return (TimeMessage)message;
-            	
-            	//loggedUser.getGlobalMessage().getClass();
             }
             
         }
@@ -725,5 +722,37 @@ public class Logic {
             System.out.println("Chyba pri citani suboru: " + fileName);  
         }
 		return null;
+	}
+	
+	
+	//zapisovanie user message - ked je global ina
+	public static void writeMessageToFile(String username, TimeMessage message) {
+        //nazov suboru
+		String fileName = "./data/users_data/history/" + username  +"/closedMessage.txt";
+        //zapisuj
+        try {
+        	//zapisovac
+            FileWriter fileWriter = new FileWriter(fileName);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            //zapisuj
+            bufferedWriter.write(message.getFormattedExpiration());
+            bufferedWriter.newLine();
+            bufferedWriter.write(message.getMessage());
+            bufferedWriter.newLine();
+            String seen = "0";
+            if (message.isSeen()) {
+            	seen = "1";
+            }
+            else {
+            	seen = "0";
+            }
+            bufferedWriter.write(seen);
+            //zavri 
+            bufferedWriter.flush();
+            bufferedWriter.close();
+        }
+        catch(IOException ex) {
+            System.out.println("Chyba pri zapisovani do suboru: " + fileName);
+        }
 	}
 }

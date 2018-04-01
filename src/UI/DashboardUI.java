@@ -82,7 +82,7 @@ public class DashboardUI {
 		if (Logic.loggedUser.getGlobalMessage().isNotSeen()) {
 			Label L_message = new Label();
 			//L_message.setText(Logic.loggedUser.getGlobalMessage().getMessage());
-			L_message.setText(Logic.loggedUser.getGlobalMessage().getFormattedExpiration());
+			L_message.setText(Logic.loggedUser.getGlobalMessage().getFormattedExpiration() + " " +Logic.loggedUser.getGlobalMessage().getMessage());
 			hboxMessage.getChildren().add(L_message);
 			
 			if (Logic.loggedUser.getGlobalMessage() instanceof ManualTimeMessage) {
@@ -93,6 +93,7 @@ public class DashboardUI {
 					//docasny takedown cfg
 					//Logic.writeMessageSeenToFile(Logic.loggedUser.getUsername(), true);	
 					Logic.loggedUser.getGlobalMessage().setSeen(true);
+					Logic.writeMessageToFile(Logic.loggedUser.getUsername(), Logic.loggedUser.getGlobalMessage());
 					window.close();
 					show("dashboard");		
 				});				
