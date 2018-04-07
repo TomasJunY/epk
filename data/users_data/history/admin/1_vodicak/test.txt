@@ -41,7 +41,8 @@ nesmie byz vzidalenost medzi vozidlami mensia ako 2 m
 0
 1
 nesmie byz vzidalenost medzi vozidlami mensia ako 2,5 m
-10
+1
+0
 otazka16
 3
 2

@@ -6,11 +6,17 @@ public class Option {
 	private boolean correct;
 	private boolean selected;
 	
-	//konstruktor
+	//konstruktor	
 	public Option(String text, boolean correct) {
 		this.text = text;
 		this.correct = correct;
 		this.selected = false;
+	}
+	
+	public Option(String text, boolean correct, boolean selected) {
+		this.text = text;
+		this.correct = correct;
+		this.selected = selected;
 	}
 	
 	public String getText() {

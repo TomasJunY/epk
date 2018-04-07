@@ -104,7 +104,7 @@ public class SplashUI extends Application {
 		
 		//load udajov a zmena sceny
 		PauseTransition pause = new PauseTransition();
-		pause.setDuration(Duration.seconds(3));
+		pause.setDuration(Duration.seconds(0));
 		pause.setOnFinished(e -> {
 			LoginUI.show("login");			
 			window.close();
