@@ -30,7 +30,7 @@ public class Logic {
 	//prihlaseny user
 	public static Person loggedUser;
 
-	//nacitanie do pola
+	//nacitanie userov do pola
 	public static void loadUsersFileToArray() {	
 		//nazov suboru
         String fileName = "./data/users_data/list/users.txt";
@@ -92,7 +92,7 @@ public class Logic {
         }
 	}
 	
-	//zapis do textaku
+	//zapis userov do textaku
 	public static void writeUsersToFileFromArray() {
         //nazov suboru
         String fileName = "./data/users_data/list/users.txt";
@@ -188,13 +188,13 @@ public class Logic {
 		return -1;
 	}
 	
-	//pridanie usera - zapisanie do suboru a nacitanie
+	//pridanie usera - zapisanie do suboru
 	public static void addUser(User newUser) {
         users.add(newUser);
         writeUsersToFileFromArray();
 	}	
 	
-	//citanie courses kuknut este
+	//citanie courses - zoznamu
 	public static void loadCoursesList() {	
 		//nazov suboru
         String fileName = "./data/courses/courses.txt";
@@ -215,8 +215,8 @@ public class Logic {
             //citaj po riadkoch
             while( (readedLine = bufferedReader.readLine() ) != null) {
             	String location = readedLine;
-            	//nacitaj veci
-            	loggedUser.setCourse(CourseIndex, new Course("c1", "textas"));        	
+            	//nacitaj veci - zatial hovadiny, potom sa to prepise
+            	loggedUser.setCourse(CourseIndex, new Course("placeholder", "placeholder"));        	
             	loadCourseMaterial(CourseIndex, readedLine);           	
             	loadCourseTest(CourseIndex, readedLine);
             	//zvacsi index
@@ -315,7 +315,7 @@ public class Logic {
         }
 	}
 	
-	//citanie course - test
+	//citanie course - test - zatial bez historie
 	public static void loadCourseTest(int position, String location) {	
 		//nazov suboru
 		String fileName = "./data/courses/" + location + "/test/test.txt";
@@ -367,8 +367,7 @@ public class Logic {
             	//obrazok
             	QImage = bufferedReader.readLine();
             	
-            	loggedUser.getCourse(position).getTest().setQuestion(QuestionIndex, new Question(OPocetNumber, QName, QText, QPointNumber, QImage));
-            	
+            	loggedUser.getCourse(position).getTest().setQuestion(QuestionIndex, new Question(OPocetNumber, QName, QText, QPointNumber, QImage));       	
             	//moznosti            	
             	for(int a=0; a<OPocetNumber; a++) {
             		OText = bufferedReader.readLine();
@@ -443,7 +442,7 @@ public class Logic {
 		loggedUser.getCourse(position).getTest().setMaxPoints(maxPoints);	
 	}
 	
-	//scitaj body
+	//scitaj body 
 	public static void saveAchievedPoints(int position) {
 		int points = 0;
 		for (int a = 0; a < loggedUser.getCourse(position).getTest().getQuestionsLength(); a++) {	
@@ -535,7 +534,7 @@ public class Logic {
         }
 	}
 	
-	//check user msg
+	//nacita spravu zo suboru - userovu
 	public static TimeMessage loadUserMessageFromFile(String username) throws ParseException {
 		//
 		String fileName = "./data/users_data/history/" + username + "/closedMessage.txt";
@@ -557,7 +556,7 @@ public class Logic {
             	TimeMessage message = new TimeMessage(readedMessage);
             	
             	//Date expiration = message.getFormatter().parse(readedDate);
-            	SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.YYYY");
+            	SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
             	Date expiration = formatter.parse(readedDate);
             	message.setExpiration(expiration);
             	
@@ -627,7 +626,7 @@ public class Logic {
         }
 	}
 	
-	//zapisovanie user message - ked je global ina
+	//zapisovanie user message - ked je global ina = REFRESH
 	public static void writeUserMessageToFile(String username, TimeMessage message) {
         //nazov suboru
 		String fileName = "./data/users_data/history/" + username  +"/closedMessage.txt";
