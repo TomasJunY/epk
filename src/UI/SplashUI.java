@@ -16,6 +16,7 @@ import javafx.util.Duration;
 import java.io.FileNotFoundException;
 import epk.Logic;
 import javafx.animation.*;
+import java.util.Random;
 
 public class SplashUI extends Application {
 
@@ -76,14 +77,15 @@ public class SplashUI extends Application {
 			//vedlajsia vec - faktorial
 			public void run () {
 				try {
-					faktorial(5);
+					Random random = new Random();
+					faktorial(random.nextInt(20)+1);
 				}
 				catch(Exception ex) {
 					System.out.println(ex);
 				}				
 			}
 			
-			int fakt(int n) {
+			long fakt(long n) {
 				if (n <=0) {
 					return 1;
 				} 
@@ -92,15 +94,16 @@ public class SplashUI extends Application {
 				}
 			}
 			
-			void faktorial(int n) throws ZleRata {
-				
-				int faktFor = 1; 
-				for (int a = 1; a <= 5; a++) {
+			void faktorial(long n) throws ZleRata {
+							
+				long faktFor = 1; 
+				for (int a = 1; a <= n; a++) {
 					faktFor *= a;
 				}
-				//System.out.println("faktorial for " + faktFor);
-				int faktRek = fakt(n);
-				//System.out.println("faktorial rekurzivne " + faktRek);
+
+				long faktRek = fakt(n);
+
+				System.out.println("n: " + n +" for: " + faktFor + " rek: " + faktRek);
 				
 				if (faktFor != faktRek) {
 					throw new ZleRata("zle to pocita");
@@ -109,8 +112,8 @@ public class SplashUI extends Application {
 		}
 		
 		new Thread(new MainThread("jozko")).start();
-		//vytvor 10 kde rataj fakorial
-		for (int a = 0; a < 10; a++) {
+		//vytvor 40 kde rataj fakorial
+		for (int a = 0; a < 40; a++) {
 			new Thread(new SecondaryThread("ferko " + a)).start();
 		}		
 		
