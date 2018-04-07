@@ -17,8 +17,6 @@ import java.io.FileNotFoundException;
 import epk.Logic;
 import javafx.animation.*;
 
-
-
 public class SplashUI extends Application {
 
 	public static void main(String[] args) {

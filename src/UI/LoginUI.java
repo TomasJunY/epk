@@ -1,9 +1,7 @@
 package UI;
 
 import java.text.ParseException;
-
 import epk.Logic;
-
 import javafx.*;
 import javafx.application.Application;
 import javafx.geometry.*;

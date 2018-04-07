@@ -1,7 +1,6 @@
 package UI;
 
 import epk.Logic;
-
 import javafx.*;
 import javafx.application.Application;
 import javafx.geometry.*;
