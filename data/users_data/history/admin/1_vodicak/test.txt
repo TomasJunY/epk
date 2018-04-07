@@ -4,14 +4,14 @@ informacie o teste, test 1
 otazka1
 3
 2
-Vodicom sa rozumie A odpovedal B
+Vodicom sa rozumie A odpovedal A
 $
 osoba, ktora vedie vozidlo
 1
-0
+1
 osoba, ktora vedie najma motorove alebo nemotorove vozidlo, tlaci motocykel, pohybuje sa na lyziach, alebo kolieskovych korculiach, taha alebo tlaci sanky
 0
-1
+0
 len osoba ktora vedie motorove vozidlo
 0
 0

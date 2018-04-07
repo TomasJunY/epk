@@ -399,6 +399,9 @@ public class Logic {
             	//zvacsi index
             	QuestionIndex++;            
             }   
+            //loadni body
+            saveMaxPoints(position);
+            saveAchievedPoints(position);
             //zavri
             bufferedReader.close();         
         }
