@@ -22,11 +22,3 @@ priezvisko
 pohlavie
 15
 pozicia
-uz2hehe
-heslo
-0
-jozko
-mrkvicka
-muž
-15
-nezamestnany
