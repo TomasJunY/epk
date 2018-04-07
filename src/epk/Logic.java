@@ -218,7 +218,7 @@ public class Logic {
             	//nacitaj veci
             	loggedUser.setCourse(CourseIndex, new Course("c1", "textas"));        	
             	loadCourseMaterial(CourseIndex, readedLine);           	
-            	loadCourseTest(CourseIndex, readedLine, loggedUser.getUsername());
+            	loadCourseTest(CourseIndex, readedLine);
             	//zvacsi index
             	CourseIndex++;            
             }   
@@ -316,11 +316,10 @@ public class Logic {
 	}
 	
 	//citanie course - test
-	public static void loadCourseTest(int position, String location, String username) {	
+	public static void loadCourseTest(int position, String location) {	
 		//nazov suboru
-        String fileName = "./data/users_data/history/" + username + "/" + location + "/test.txt";
+		String fileName = "./data/courses/" + location + "/test/test.txt";
         //citane udaje
-        //String readedLine = null;
         String TestName = null;
         String TestText = null;
         
@@ -333,15 +332,12 @@ public class Logic {
         String OPocet = null; 
         String OText = null;
         String OCorrect = null;
-        String OSelected = null;
         
         int QPocetNumber = 0;
         int OPocetNumber = 0; 
         int OCorrectNumber = 0;
-        int OSelectedNumber = 0;
         
         boolean OCorrectBool = false;
-        boolean OSelectedBool = false;
         
         int QuestionIndex = 0;
 
@@ -377,31 +373,19 @@ public class Logic {
             	for(int a=0; a<OPocetNumber; a++) {
             		OText = bufferedReader.readLine();
             		OCorrect = bufferedReader.readLine();
-            		OSelected = bufferedReader.readLine();
             		OCorrectNumber = Integer.parseInt(OCorrect);
-            		OSelectedNumber = Integer.parseInt(OSelected);
             		if (OCorrectNumber==1) {
             			OCorrectBool = true;
             		}
             		else {
             			OCorrectBool = false;
             		}
-            		if (OSelectedNumber==1) {
-            			OSelectedBool = true;
-            		}
-            		else {
-            			OSelectedBool = false;
-            		}
-            		
-            		loggedUser.getCourse(position).getTest().getQuestion(QuestionIndex).setOption(a, new Option(OText, OCorrectBool, OSelectedBool));
-            		//loggedUser.getCourse(position).getTest().getQuestion(QuestionIndex).getOption(a).setSelected(OSelectedBool);
+         		
+            		loggedUser.getCourse(position).getTest().getQuestion(QuestionIndex).setOption(a, new Option(OText, OCorrectBool));
             	}            	
             	//zvacsi index
             	QuestionIndex++;            
             }   
-            //loadni body
-            saveMaxPoints(position);
-            saveAchievedPoints(position);
             //zavri
             bufferedReader.close();         
         }

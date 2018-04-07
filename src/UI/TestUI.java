@@ -67,12 +67,7 @@ public class TestUI {
 			Qcombo.setMaxWidth(300);
 			Qcombos.add(Qcombo);
 			for (int b = 0; b < Logic.loggedUser.getCourse(position).getTest().getQuestion(a).getOptionsLength(); b++) {
-				//
 				Qcombo.getItems().add(Logic.loggedUser.getCourse(position).getTest().getQuestion(a).getOption(b).getText());
-				
-				if(Logic.loggedUser.getCourse(position).getTest().getQuestion(a).getOption(b).getSelected()) {
-					Qcombo.getSelectionModel().select(b);
-				}
 			}
 			Qcombo.setPromptText("vyber si moznost");
 			
