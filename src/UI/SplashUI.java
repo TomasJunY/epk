@@ -72,37 +72,51 @@ public class SplashUI extends Application {
 			public SecondaryThread (String name) {
 				this.name = name;
 			}
-			//vedlajsia vec - sucet cisiel od 1 po 1 000
+			
+			//vedlajsia vec - faktorial
 			public void run () {
 				try {
-					rataj();
+					faktorial(5);
 				}
 				catch(Exception ex) {
 					System.out.println(ex);
 				}				
 			}
 			
-			int rataj() throws ZleRata {
-				int sum = 0;
-				for (int a = 1 ; a <= 1000; a++) {
-					sum += a;
+			int fakt(int n) {
+				if (n <=0) {
+					return 1;
+				} 
+				else {
+					return n * fakt(n-1);
 				}
-				if (sum != 500500) {
+			}
+			
+			void faktorial(int n) throws ZleRata {
+				
+				int faktFor = 1; 
+				for (int a = 1; a <= 5; a++) {
+					faktFor *= a;
+				}
+				//System.out.println("faktorial for " + faktFor);
+				int faktRek = fakt(n);
+				//System.out.println("faktorial rekurzivne " + faktRek);
+				
+				if (faktFor != faktRek) {
 					throw new ZleRata("zle to pocita");
 				}
-				return sum;
 			}
 		}
 		
 		new Thread(new MainThread("jozko")).start();
-		//vytvor 10 kde rataj sucet
+		//vytvor 10 kde rataj fakorial
 		for (int a = 0; a < 10; a++) {
 			new Thread(new SecondaryThread("ferko " + a)).start();
 		}		
 		
 		//load udajov a zmena sceny
 		PauseTransition pause = new PauseTransition();
-		pause.setDuration(Duration.seconds(0));
+		pause.setDuration(Duration.seconds(3));
 		pause.setOnFinished(e -> {
 			LoginUI.show("login");			
 			window.close();
