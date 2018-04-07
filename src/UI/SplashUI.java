@@ -103,7 +103,7 @@ public class SplashUI extends Application {
 
 				long faktRek = fakt(n);
 
-				System.out.println("n: " + n +" for: " + faktFor + " rek: " + faktRek);
+				//System.out.println("n: " + n +" for: " + faktFor + " rek: " + faktRek);
 				
 				if (faktFor != faktRek) {
 					throw new ZleRata("zle to pocita");
