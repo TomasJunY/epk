@@ -32,8 +32,11 @@ public class CourseUI {
 		M_cText.setWrapText(true);
 		M_cText.setPrefHeight(200);
 		
+		Label L_cLinks = new Label("linky:");
+		
 		vbox.getChildren().add(L_cName);
 		vbox.getChildren().add(M_cText);
+		vbox.getChildren().add(L_cLinks);
 		
 		ArrayList<Hyperlink > links = new ArrayList<Hyperlink >();
 		for (int a = 0; a < Logic.loggedUser.getCourse(position).getFileLength(); a++) {
