@@ -321,6 +321,11 @@ public class Logic {
         //citane udaje
         String TestName = null;
         String TestText = null;
+        String TestFinished = null;
+        
+        int TestFinishedNumber = 0;
+        
+        boolean TestFinishedBool = false;
         
         String QPocet = null;
         String QName = null;
@@ -331,12 +336,15 @@ public class Logic {
         String OPocet = null; 
         String OText = null;
         String OCorrect = null;
+        String OSelected = null;
         
         int QPocetNumber = 0;
         int OPocetNumber = 0; 
         int OCorrectNumber = 0;
+        int OSelectedNumber = 0;
         
         boolean OCorrectBool = false;
+        boolean OSelectedBool = false;
         
         int QuestionIndex = 0;
 
@@ -347,10 +355,19 @@ public class Logic {
             
             TestName = bufferedReader.readLine();
             TestText = bufferedReader.readLine();
+            TestFinished = bufferedReader.readLine();
+            TestFinishedNumber = Integer.parseInt(TestFinished);
+            if (TestFinishedNumber==1) {
+            	TestFinishedBool = true;
+    		}
+    		else {
+    			TestFinishedBool = false;
+    		}
             QPocet = bufferedReader.readLine();
             QPocetNumber = Integer.parseInt(QPocet);
             
             loggedUser.getCourse(position).setTest(new Test(QPocetNumber, TestName, TestText));
+            loggedUser.getCourse(position).setFinished(TestFinishedBool);
             //citaj po riadkoch
             while( (QName = bufferedReader.readLine() ) != null) {
             	//nazov otazky
@@ -378,8 +395,18 @@ public class Logic {
             		else {
             			OCorrectBool = false;
             		}
-         		
+            		
+            		OSelected = bufferedReader.readLine();
+            		OSelectedNumber = Integer.parseInt(OSelected);
+            		if (OSelectedNumber==1) {
+            			OSelectedBool = true;
+            		}
+            		else {
+            			OSelectedBool = false;
+            		}
+            		
             		loggedUser.getCourse(position).getTest().getQuestion(QuestionIndex).setOption(a, new Option(OText, OCorrectBool));
+            		loggedUser.getCourse(position).getTest().getQuestion(QuestionIndex).getOption(a).setSelected(OSelectedBool);
             	}            	
             	//zvacsi index
             	QuestionIndex++;            

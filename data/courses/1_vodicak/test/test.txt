@@ -12,7 +12,7 @@ osoba, ktora vedie vozidlo
 0
 osoba, ktora vedie najma motorove alebo nemotorove vozidlo, tlaci motocykel, pohybuje sa na lyziach, alebo kolieskovych korculiach, taha alebo tlaci sanky
 0
-0
+1
 len osoba ktorá vedie motorove vozidlo
 0
 0
