@@ -1,6 +1,6 @@
 2_placeholder
 informacie o teste, test 2
-1
+0
 2
 otazka1
 2
@@ -9,7 +9,7 @@ si stastny na fiit
 hehe.gif
 ano
 1
-1
+0
 nie
 0
 0
@@ -20,7 +20,7 @@ hehe
 $
 as
 0
-1
+0
 xd
 1
 0

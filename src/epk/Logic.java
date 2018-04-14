@@ -425,6 +425,87 @@ public class Logic {
         }
 	}
 	
+	//zapisovanie historie testu
+	public static void writeCourseTest(int position, String location, String username) {
+        //nazov suboru
+        //String fileName = "./data/users_data/list/users.txt";
+        String fileName = "./data/users_data/history/" + username + "/" + location + "/test.txt";
+        //zapisuj
+        try {
+        	//zapisovac
+            FileWriter fileWriter = new FileWriter(fileName);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            //zapisuj
+            bufferedWriter.write(loggedUser.getCourse(position).getTest().getName());
+        	bufferedWriter.newLine();
+        	bufferedWriter.write(loggedUser.getCourse(position).getTest().getText());
+        	bufferedWriter.newLine();
+        	if(loggedUser.getCourse(position).isFinished()) {
+        		bufferedWriter.write("1");                	
+        	}
+        	else {
+        		bufferedWriter.write("0");
+        	}
+        	bufferedWriter.newLine();
+            //pocet otazok
+        	bufferedWriter.write(Integer.toString(loggedUser.getCourse(position).getTest().getQuestionsLength()));
+        	bufferedWriter.newLine();
+        	//otazky
+            for (int a=0; a<loggedUser.getCourse(position).getTest().getQuestionsLength(); a++) {
+            	//nazov
+            	bufferedWriter.write(loggedUser.getCourse(position).getTest().getQuestion(a).getName());
+            	bufferedWriter.newLine();
+            	//pocet moznosti
+            	bufferedWriter.write(Integer.toString(loggedUser.getCourse(position).getTest().getQuestion(a).getOptionsLength()));
+            	bufferedWriter.newLine();
+            	//body
+            	bufferedWriter.write(Integer.toString(loggedUser.getCourse(position).getTest().getQuestion(a).getPoint()));
+            	bufferedWriter.newLine();
+            	//text
+            	bufferedWriter.write(loggedUser.getCourse(position).getTest().getQuestion(a).getText());
+            	bufferedWriter.newLine();
+            	//obrazok
+            	bufferedWriter.write(loggedUser.getCourse(position).getTest().getQuestion(a).getImage());
+            	bufferedWriter.newLine();
+            	
+            	//moznosti
+            	for (int b=0; b<loggedUser.getCourse(position).getTest().getQuestion(a).getOptionsLength(); b++) {
+            		//text
+            		bufferedWriter.write(loggedUser.getCourse(position).getTest().getQuestion(a).getOption(b).getText());
+                	bufferedWriter.newLine();
+                	//correct
+                	if(loggedUser.getCourse(position).getTest().getQuestion(a).getOption(b).getCorrect()) {
+                		bufferedWriter.write("1");                	
+                	}
+                	else {
+                		bufferedWriter.write("0");
+                	}
+                	//bufferedWriter.write(Integer.toString(loggedUser.getCourse(position).getTest().getQuestion(a).getOption(b).));
+                	bufferedWriter.newLine();
+                	//selected
+                	if(loggedUser.getCourse(position).getTest().getQuestion(a).getOption(b).getSelected()) {
+                		bufferedWriter.write("1");                	
+                	}
+                	else {
+                		bufferedWriter.write("0");
+                	}
+                	//bufferedWriter.write(Integer.toString(loggedUser.getCourse(position).getTest().getQuestion(a).getPoint()));
+                	if (b<loggedUser.getCourse(position).getTest().getQuestion(a).getOptionsLength()) {
+                		bufferedWriter.newLine();
+                	}
+                	
+            	}
+
+            }
+            //zavri 
+            bufferedWriter.flush();
+            bufferedWriter.close();
+        }
+        catch(IOException ex) {
+            System.out.println("Chyba pri zapisovani do suboru: " + fileName);
+        }
+	}
+	
 	//otvorenie materialu 
 	public static void openFileOnDisk(String name, int position) {
 		if (Desktop.isDesktopSupported()) {
