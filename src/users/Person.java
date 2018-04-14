@@ -56,25 +56,56 @@ public interface Person {
 	 */
 	int getAge();
 	
+	/**
+	 * Returns position
+	 * @return position
+	 */
 	String getPosition();	
 	
-	/**
-	 * Returns admin
-	 * @return admin
-	 */
 	boolean isAdmin();
 	
+	/**
+	 * Returns course on position
+	 * @param position position
+	 * @return course[position]
+	 */
 	Course getCourse(int position);
 	
+	/**
+	 * Returns course length
+	 * @return course length
+	 */
 	int getCourseLength();
 	
+	/**
+	 * Returns course index
+	 * @param find string
+	 * @return course index
+	 */
 	int getCourseIndex(String find);	
 	
+	/**
+	 * Sets course on position in array
+	 * @param position position
+	 * @param course course
+	 */
 	void setCourse(int position, Course course); 
 	
+	/**
+	 * Sets number of courses
+	 * @param pocet number of courses
+	 */
 	void setCourseAll(int pocet); 
 	
-	public TimeMessage getGlobalMessage(); 
+	/**
+	 * Returns global message
+	 * @return global message
+	 */
+	TimeMessage getGlobalMessage(); 
 	
-	public void setGlobalMessage(TimeMessage message); 
+	/**
+	 * Sets global message
+	 * @param message global message
+	 */
+	void setGlobalMessage(TimeMessage message); 
 }
