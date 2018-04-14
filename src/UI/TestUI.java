@@ -66,6 +66,10 @@ public class TestUI {
 			Qcombos.add(Qcombo);
 			for (int b = 0; b < Logic.loggedUser.getCourse(position).getTest().getQuestion(a).getOptionsLength(); b++) {
 				Qcombo.getItems().add(Logic.loggedUser.getCourse(position).getTest().getQuestion(a).getOption(b).getText());
+				
+				if(Logic.loggedUser.getCourse(position).getTest().getQuestion(a).getOption(b).getSelected()) {
+					Qcombo.getSelectionModel().select(b);
+				}
 			}
 			Qcombo.setPromptText("vyber si moznost");
 			
@@ -74,6 +78,11 @@ public class TestUI {
 		
 		Button B_done = new Button("Test");
 		B_done.setPrefWidth(80);
+		if (Logic.loggedUser.getCourse(position).isFinished()) {
+			B_done.setDisable(true);
+			B_done.setText("test je uz dokonceny");
+		}
+		
 		B_done.setOnAction(e -> {
 			Logic.saveTestSelected(Qcombos, position);
 			Logic.saveAchievedPoints(position);

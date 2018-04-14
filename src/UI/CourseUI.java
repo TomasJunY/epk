@@ -52,10 +52,6 @@ public class CourseUI {
 		Button B_test = new Button("Test");
 		B_test.setPrefWidth(80);
 		
-		if (Logic.loggedUser.getCourse(position).isFinished()) {
-			B_test.setDisable(true);
-		}
-		
 		B_test.setOnAction(e -> {
 			//
 			TestUI.show(title, course_name, position);
