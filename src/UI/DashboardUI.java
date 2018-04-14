@@ -156,10 +156,11 @@ public class DashboardUI {
 			else {
 				String selectedCName = (String) comboCoursesFinished.getValue();
 				int pos = Logic.loggedUser.getCourseIndex(selectedCName);
-				CourseUI.show(selectedCName, (String) comboCourses.getValue(), pos);
 				//load max point
 				Logic.saveMaxPoints(pos);
 				Logic.saveAchievedPoints(pos);
+				CourseUI.show(selectedCName, (String) comboCoursesFinished.getValue(), pos);
+				
 				window.close();
 			}					
 		});

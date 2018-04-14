@@ -1,6 +1,5 @@
 package UI;
 
-import java.awt.Button;
 import java.util.ArrayList;
 import epk.Logic;
 import javafx.*;
@@ -28,7 +27,7 @@ public class CourseUI {
 		Label L_cName = new Label(course_name);
 		
 		TextArea M_cText = new TextArea();
-		M_cText.setText(Logic.loggedUser.getCourse(position).getText() + " \ndosiahol si: " + Logic.loggedUser.getCourse(position).getTest().getAchievedPoints()+ " bodov");
+		M_cText.setText(Logic.loggedUser.getCourse(position).getText() + " \ndosiahol si: " + Logic.loggedUser.getCourse(position).getTest().getAchievedPoints()+ " bodov" + " zo: " + Logic.loggedUser.getCourse(position).getTest().getMaxPoints()+ " bodov");
 		M_cText.setEditable(false);
 		M_cText.setWrapText(true);
 		M_cText.setPrefHeight(200);
@@ -52,12 +51,11 @@ public class CourseUI {
 
 		Button B_test = new Button("Test");
 		B_test.setPrefWidth(80);
-		/*
+		
 		if (Logic.loggedUser.getCourse(position).isFinished()) {
-			
+			B_test.setDisable(true);
 		}
-		*/
-		B_test.setEnabled(false);
+		
 		B_test.setOnAction(e -> {
 			//
 			TestUI.show(title, course_name, position);
