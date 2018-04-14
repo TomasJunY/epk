@@ -30,6 +30,11 @@ public class DashboardUI {
 		hboxCenter.setPadding(new Insets(15, 12, 15, 12));
 		//hboxCenter.setStyle("-fx-background-color: #0099ff;");
 		
+		HBox hboxCenter2 = new HBox();
+		hboxCenter2.setSpacing(8);
+		hboxCenter2.setPadding(new Insets(15, 12, 15, 12));
+		//hboxCenter.setStyle("-fx-background-color: #0099ff;");
+		
 		HBox hboxMessage = new HBox();
 		hboxMessage.setSpacing(8);
 		hboxMessage.setPadding(new Insets(15, 12, 15, 12));
@@ -101,13 +106,18 @@ public class DashboardUI {
 			Logic.loadCoursesList();
 		});
 		*/
+		
+		Label L_courses = new Label("kurzy:");
+			
 		ComboBox comboCourses = new ComboBox<>();
-		for (int a = 0; a < Logic.loggedUser.getCourseLength(); a++) {
-			comboCourses.getItems().add(Logic.loggedUser.getCourse(a).getName());
+		for (int a = 0; a < Logic.loggedUser.getCourseLength(); a++) {			
+			if (Logic.loggedUser.getCourse(a).isNotFinished()) {
+				comboCourses.getItems().add(Logic.loggedUser.getCourse(a).getName());
+			}
 		 }
 		comboCourses.setPromptText("vyber si kurz");
 		
-		Button B_Course = new Button("rob");
+		Button B_Course = new Button("OK");
 		B_Course.setOnAction(e -> {
 			//	
 			if (comboCourses.getValue()==null) {
@@ -126,16 +136,51 @@ public class DashboardUI {
 		hboxTop.getChildren().add(L_userWelcome);
 		hboxTop.getChildren().add(L_userName);	
 		
+		
+		Label L_coursesFinished = new Label("hotove:");
+		
+		ComboBox comboCoursesFinished = new ComboBox<>();
+		for (int a = 0; a < Logic.loggedUser.getCourseLength(); a++) {			
+			if (Logic.loggedUser.getCourse(a).isFinished()) {
+				comboCoursesFinished.getItems().add(Logic.loggedUser.getCourse(a).getName());
+			}
+		 }
+		comboCoursesFinished.setPromptText("vyber si kurz");
+		
+		Button B_CourseFinished = new Button("OK");
+		B_CourseFinished.setOnAction(e -> {
+			//	
+			if (comboCoursesFinished.getValue()==null) {
+				System.out.println("chyba");
+			}
+			else {
+				String selectedCName = (String) comboCoursesFinished.getValue();
+				int pos = Logic.loggedUser.getCourseIndex(selectedCName);
+				CourseUI.show(selectedCName, (String) comboCourses.getValue(), pos);
+				//load max point
+				Logic.saveMaxPoints(pos);
+				Logic.saveAchievedPoints(pos);
+				window.close();
+			}					
+		});
+		
 		//hboxTop.getChildren().add(B_debug);
-				
+		
+		hboxCenter.getChildren().add(L_courses);
 		hboxCenter.getChildren().add(comboCourses);
 		hboxCenter.getChildren().add(B_Course);
+		
+		hboxCenter2.getChildren().add(L_coursesFinished);
+		hboxCenter2.getChildren().add(comboCoursesFinished);
+		hboxCenter2.getChildren().add(B_CourseFinished);
 		
 		if (Logic.loggedUser.getGlobalMessage().isNotSeen()) {
 			vboxCenter.getChildren().add(hboxMessage);
 		}
 		
+		//vboxCenter.getChildren().add(L_courses);
 		vboxCenter.getChildren().add(hboxCenter);
+		vboxCenter.getChildren().add(hboxCenter2);
 		
 		hboxBotton.getChildren().add(B_userInfo);
 		hboxBotton.getChildren().add(B_logOff);
@@ -186,7 +231,7 @@ public class DashboardUI {
 			border.setRight(vboxRight);
 		}
 			
-		Scene scene = new Scene(border, 350, 400);
+		Scene scene = new Scene(border, 400, 400);
 		
 		window.setTitle(title);
 		window.setScene(scene);		

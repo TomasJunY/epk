@@ -38,6 +38,10 @@ public class Course {
 		return this.finished;
 	}
 	
+	public boolean isNotFinished() {
+		return !this.finished;
+	}
+	
 	public CustomFile getFile(int position) {
 		return this.file[position];
 	}

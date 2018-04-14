@@ -1,5 +1,6 @@
 package UI;
 
+import java.awt.Button;
 import java.util.ArrayList;
 import epk.Logic;
 import javafx.*;
@@ -51,6 +52,12 @@ public class CourseUI {
 
 		Button B_test = new Button("Test");
 		B_test.setPrefWidth(80);
+		/*
+		if (Logic.loggedUser.getCourse(position).isFinished()) {
+			
+		}
+		*/
+		B_test.setEnabled(false);
 		B_test.setOnAction(e -> {
 			//
 			TestUI.show(title, course_name, position);
