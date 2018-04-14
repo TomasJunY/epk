@@ -428,18 +428,19 @@ public class Logic {
 	//zapisovanie historie testu
 	public static void writeCourseTest(int position, String location, String username) {
         //nazov suboru
-        //String fileName = "./data/users_data/list/users.txt";
         String fileName = "./data/users_data/history/" + username + "/" + location + "/test.txt";
         //zapisuj
         try {
         	//zapisovac
             FileWriter fileWriter = new FileWriter(fileName);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            //zapisuj
+            //name
             bufferedWriter.write(loggedUser.getCourse(position).getTest().getName());
         	bufferedWriter.newLine();
+        	//text
         	bufferedWriter.write(loggedUser.getCourse(position).getTest().getText());
         	bufferedWriter.newLine();
+        	//finished
         	if(loggedUser.getCourse(position).isFinished()) {
         		bufferedWriter.write("1");                	
         	}
@@ -450,9 +451,10 @@ public class Logic {
             //pocet otazok
         	bufferedWriter.write(Integer.toString(loggedUser.getCourse(position).getTest().getQuestionsLength()));
         	bufferedWriter.newLine();
+        	
         	//otazky
             for (int a=0; a<loggedUser.getCourse(position).getTest().getQuestionsLength(); a++) {
-            	//nazov
+            	//name
             	bufferedWriter.write(loggedUser.getCourse(position).getTest().getQuestion(a).getName());
             	bufferedWriter.newLine();
             	//pocet moznosti
@@ -480,7 +482,6 @@ public class Logic {
                 	else {
                 		bufferedWriter.write("0");
                 	}
-                	//bufferedWriter.write(Integer.toString(loggedUser.getCourse(position).getTest().getQuestion(a).getOption(b).));
                 	bufferedWriter.newLine();
                 	//selected
                 	if(loggedUser.getCourse(position).getTest().getQuestion(a).getOption(b).getSelected()) {
@@ -489,13 +490,10 @@ public class Logic {
                 	else {
                 		bufferedWriter.write("0");
                 	}
-                	//bufferedWriter.write(Integer.toString(loggedUser.getCourse(position).getTest().getQuestion(a).getPoint()));
                 	if (b<loggedUser.getCourse(position).getTest().getQuestion(a).getOptionsLength()) {
                 		bufferedWriter.newLine();
-                	}
-                	
+                	}             	
             	}
-
             }
             //zavri 
             bufferedWriter.flush();
