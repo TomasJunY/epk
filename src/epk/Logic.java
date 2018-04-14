@@ -217,7 +217,7 @@ public class Logic {
             	//nacitaj veci - zatial hovadiny, potom sa to prepise
             	loggedUser.setCourse(CourseIndex, new Course("placeholder", "placeholder"));        	
             	loadCourseMaterial(CourseIndex, readedLine);           	
-            	loadCourseTest(CourseIndex, readedLine);
+            	loadCourseTest(CourseIndex, readedLine, loggedUser.getUsername());
             	//zvacsi index
             	CourseIndex++;            
             }   
@@ -314,10 +314,11 @@ public class Logic {
         }
 	}
 	
-	//citanie course - test - zatial bez historie
-	public static void loadCourseTest(int position, String location) {	
+	//citanie course - test 
+	public static void loadCourseTest(int position, String location, String username) {	
 		//nazov suboru
-		String fileName = "./data/courses/" + location + "/test/test.txt";
+		//String fileName = "./data/courses/" + location + "/test/test.txt";
+		String fileName = "./data/users_data/history/" + username + "/" + location + "/test.txt";
         //citane udaje
         String TestName = null;
         String TestText = null;
