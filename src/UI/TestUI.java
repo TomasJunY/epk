@@ -29,7 +29,7 @@ public class TestUI {
 		Label L_TName = new Label(Logic.loggedUser.getCourse(position).getTest().getName());
 		
 		TextArea M_TText = new TextArea();
-		M_TText.setText(Logic.loggedUser.getCourse(position).getTest().getText()  + "\nmaximalny pocet bodov je: " + (Logic.loggedUser.getCourse(position).getTest().getMaxPoints()));
+		M_TText.setText(Logic.loggedUser.getCourse(position).getTest().getText()  + "\nmaximalny pocet bodov je: " + (Logic.loggedUser.getCourse(position).getTest().getMaxPoints()) + "\npo dokonceni testu sa treba odhlasit");
 		M_TText.setEditable(false);
 		M_TText.setWrapText(true);
 		M_TText.setPrefHeight(70);
