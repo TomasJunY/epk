@@ -3,7 +3,7 @@ package courses;
 /**
  * <b>Test Object</b> <br>
  * 
- * Object is storing data about test
+ * Object is storing data about Test
  * 
  * @author Tomáš Junas
  * @version 1.0
@@ -19,12 +19,12 @@ public class Test {
 	/**
 	 * Constructor
 	 * 
-	 * @param questionCount number of questions
+	 * @param questionCount number of Questions
 	 * @param name name of the Test
 	 * @param text text of the Test
 	 */
 	public Test(int questionCount, String name, String text){
-		this.questions = new Question[questionCount]; //pocet otazok
+		this.questions = new Question[questionCount];
 		this.name = name;
 		this.text = text;
 	}
@@ -78,7 +78,7 @@ public class Test {
 	}
 	
 	/**
-	 * Returns length of Question array
+	 * Returns length of Questions array
 	 * 
 	 * @return questions.length
 	 */
@@ -89,10 +89,10 @@ public class Test {
 	/**
 	 * Sets Question in array on position
 	 * @param position position in array
-	 * @param questions question
+	 * @param question question
 	 */
-	public void setQuestion(int position, Question questions) {
-		this.questions[position] = questions;
+	public void setQuestion(int position, Question question) {
+		this.questions[position] = question;
 	}
 	
 	/**
