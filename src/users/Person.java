@@ -10,54 +10,63 @@ public interface Person {
 	
 	/**
 	 * Returns username
+	 * 
 	 * @return username
 	 */
 	String getUsername();
 	
 	/**
 	 * Sets username
+	 * 
 	 * @param username username
 	 */
 	void setUsername(String username);
 	
 	/**
 	 * Returns password
+	 * 
 	 * @return password
 	 */
 	String getPassword();
 	
 	/**
 	 * Sets password
+	 * 
 	 * @param pasword password
 	 */
 	void setPassword(String password);
 	
 	/**
 	 * Returns name
+	 * 
 	 * @return name
 	 */
 	String getName();
 	
 	/**
 	 * Returns surname
+	 * 
 	 * @return surname
 	 */
 	String getSurname();
 	
 	/**
 	 * Returns gender
+	 * 
 	 * @return gender
 	 */
 	String getGender();
 	
 	/**
 	 * Returns age
+	 * 
 	 * @return age
 	 */
 	int getAge();
 	
 	/**
 	 * Returns position
+	 * 
 	 * @return position
 	 */
 	String getPosition();	
@@ -66,6 +75,7 @@ public interface Person {
 	
 	/**
 	 * Returns course on position
+	 * 
 	 * @param position position
 	 * @return course[position]
 	 */
@@ -73,12 +83,14 @@ public interface Person {
 	
 	/**
 	 * Returns course length
+	 * 
 	 * @return course length
 	 */
 	int getCourseLength();
 	
 	/**
 	 * Returns course index
+	 * 
 	 * @param find string
 	 * @return course index
 	 */
@@ -86,6 +98,7 @@ public interface Person {
 	
 	/**
 	 * Sets course on position in array
+	 * 
 	 * @param position position
 	 * @param course course
 	 */
@@ -93,18 +106,21 @@ public interface Person {
 	
 	/**
 	 * Sets number of courses
+	 * 
 	 * @param pocet number of courses
 	 */
 	void setCourseAll(int pocet); 
 	
 	/**
 	 * Returns global message
+	 * 
 	 * @return global message
 	 */
 	TimeMessage getGlobalMessage(); 
 	
 	/**
 	 * Sets global message
+	 * 
 	 * @param message global message
 	 */
 	void setGlobalMessage(TimeMessage message); 
