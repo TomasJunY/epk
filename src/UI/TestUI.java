@@ -105,7 +105,10 @@ public class TestUI {
 		
 		vbox.getChildren().add(B_back);
 		
-		Scene scene = new Scene(vbox, 600, 900);
+		ScrollPane scrollPane = new ScrollPane();
+		scrollPane.setContent(vbox);
+		
+		Scene scene = new Scene(scrollPane, 600, 900);
 		
 		window.setX(600);
 		window.setY(50);
