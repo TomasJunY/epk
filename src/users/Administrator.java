@@ -142,7 +142,7 @@ public class Administrator implements Person {
 	}	
 	
 	/**
-	 * Returns course from array on position
+	 * Returns Course from array on position
 	 * 
 	 * @param position position
 	 * @return course[position]
@@ -152,7 +152,7 @@ public class Administrator implements Person {
 	}
 	
 	/**
-	 * Returns length of course array
+	 * Returns length of Course array
 	 * 
 	 * @return course.length
 	 */
@@ -161,10 +161,10 @@ public class Administrator implements Person {
 	}
 	
 	/**
-	 * Returns course index, find by string
+	 * Returns Course index, find by string
 	 * 
 	 * @param find string
-	 * @return course index
+	 * @return index
 	 */
 	public int getCourseIndex(String find) {
 		int index = -1;
@@ -178,19 +178,19 @@ public class Administrator implements Person {
 	}
 	
 	/**
-	 * Sets course on position in array
+	 * Sets Course on position in array
 	 * 
 	 * @param position position
-	 * @param course course
+	 * @param course Course
 	 */
 	public void setCourse(int position, Course course) {
 		this.course[position] = course;
 	}
 	
 	/**
-	 * Sets number of courses
+	 * Sets number of Courses
 	 * 
-	 * @param pocet number of courses
+	 * @param pocet number of Courses
 	 */
 	public void setCourseAll(int pocet) {
 		this.course	= new Course[pocet];

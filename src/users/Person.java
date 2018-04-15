@@ -90,7 +90,7 @@ public interface Person {
 	boolean isAdmin();
 	
 	/**
-	 * Returns course from array on position
+	 * Returns Course from array on position
 	 * 
 	 * @param position position
 	 * @return course[position]
@@ -98,14 +98,14 @@ public interface Person {
 	Course getCourse(int position);
 	
 	/**
-	 * Returns length of course array
+	 * Returns length of Course array
 	 * 
 	 * @return course.length
 	 */
 	int getCourseLength();
 	
 	/**
-	 * Returns course index, find by string
+	 * Returns Course index, find by string
 	 * 
 	 * @param find string
 	 * @return course index
@@ -113,17 +113,17 @@ public interface Person {
 	int getCourseIndex(String find);	
 	
 	/**
-	 * Sets course on position in array
+	 * Sets Course on position in array
 	 * 
 	 * @param position position
-	 * @param course course
+	 * @param course Course
 	 */
 	void setCourse(int position, Course course); 
 	
 	/**
-	 * Sets number of courses
+	 * Sets number of Courses
 	 * 
-	 * @param pocet number of courses
+	 * @param pocet number of Courses
 	 */
 	void setCourseAll(int pocet); 
 	
