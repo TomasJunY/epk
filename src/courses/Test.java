@@ -129,4 +129,5 @@ public class Test {
 	public void setAchievedPoints(int achievedPoints) {
 		this.achievedPoints = achievedPoints;
 	}
+	
 }
