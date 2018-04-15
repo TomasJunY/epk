@@ -20,14 +20,30 @@ import javafx.scene.control.ComboBox;
 import message.*;
 import users.*;
 
+/**
+ * <b>Logic Object</b> <br>
+ * 
+ * Object is storing all users and loggedUser <br>
+ * 
+ * Object is handling text files and operations behind UI
+ * 
+ * @author Tomáš Junas
+ * @version 1.0
+ */
 public class Logic {
 	
-	//db s usermi
+	/**
+	 * all Persons
+	 */
 	public static ArrayList<Person> users = new ArrayList<Person>();
-	//prihlaseny user
+	/**
+	 * currently logged Person
+	 */
 	public static Person loggedUser;
 
-	//nacitanie userov do pola
+	/**
+	 * Loads all Persons from file to array
+	 */
 	public static void loadUsersFileToArray() {	
 		//nazov suboru
         String fileName = "./data/users_data/list/users.txt";
@@ -89,7 +105,9 @@ public class Logic {
         }
 	}
 	
-	//zapis userov do textaku
+	/**
+	 * Writes all Persons from array to file
+	 */
 	public static void writeUsersToFileFromArray() {
         //nazov suboru
         String fileName = "./data/users_data/list/users.txt";
@@ -135,7 +153,14 @@ public class Logic {
         }
 	}
 		
-	//prihlasi alebo vrati false ked ne
+	/**
+	 * Logs in Person
+	 * 
+	 * @param loginName username of the Person
+	 * @param loginPassword password of the Person
+	 * @return true if successfully logged in, false if not
+	 * @throws ParseException
+	 */
 	public static boolean userLogin(String loginName, String loginPassword) throws ParseException {	
 		for (int a=0; a<users.size(); a++) {			
 			if(loginName.equals(users.get(a).getUsername()) && loginPassword.equals(users.get(a).getPassword())  ) {
@@ -153,7 +178,11 @@ public class Logic {
 		return false;
 	}
 	
-	//odhlasi alebo vrati false ked ne
+	/**
+	 * Logs off Person
+	 * 
+	 * @return true if successfully logged off, false if not
+	 */
 	public static boolean userLogoff() {	
 		loggedUser = null;
 		if (loggedUser == null) {
@@ -164,7 +193,12 @@ public class Logic {
 		}
 	}
 
-	//men heslo
+	/**
+	 * Change password of the Person, saves to textfile
+	 * 
+	 * @param username username of the Person
+	 * @param newPassword new password of the Person
+	 */
 	public static void changePassword(String username, String newPassword ) {
 		for (int a=0; a<users.size(); a++) {			
 			if(username.equals(users.get(a).getUsername())) {
@@ -175,7 +209,12 @@ public class Logic {
 		}
 	}
 	
-	//find user by name
+	/**
+	 * Finds Person by username
+	 * 
+	 * @param username username of the Person
+	 * @return position of user in array, if not found return -1
+	 */
 	public static int findByUsername(String username) {
 		for (int a=0; a<users.size(); a++) {			
 			if(username.equals(users.get(a).getUsername())) {		
@@ -185,7 +224,11 @@ public class Logic {
 		return -1;
 	}
 	
-	//pridanie usera - zapisanie do suboru
+	/**
+	 * Adds Person to array, then writes to file and copies important files (history and message)
+	 * 
+	 * @param newUser new Person
+	 */
 	public static void addUser(User newUser) {
         users.add(newUser);
         writeUsersToFileFromArray();
@@ -199,13 +242,21 @@ public class Logic {
         }
 	}	
 	
-	//create user dir
+	/**
+	 * Creates directory of the Person
+	 * 
+	 * @param username name of the Person
+	 */
 	public static void createUsernameDir(String username) {
 		File userDir = new File("./data/users_data/history/" + username + "/");	
 		userDir.mkdir();
 	}
 	
-	//copy message
+	/**
+	 * Copies message of the Person
+	 * 
+	 * @param username name of the Person
+	 */
 	public static void copyMessage(String username) {
 		//create file	
 		File newClosedMessageFile = new File("./data/users_data/history/" + username + "/closedMessage.txt");	
