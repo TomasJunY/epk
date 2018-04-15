@@ -276,7 +276,12 @@ public class Logic {
 		}
 	}
 	
-	//create course dir + copy test
+	/**
+	 * Creates Course directory in Person directory and copies test
+	 * 
+	 * @param location name of the Course
+	 * @param username username of the Person
+	 */
 	public static void createCourseDirAndCopyTest(String location, String username) {
 		//create dir
 		File courseDir = new File("./data/users_data/history/" + username + "/" + location + "/");	
@@ -291,7 +296,9 @@ public class Logic {
 		}
 	}
 	
-	//citanie courses - zoznamu
+	/**
+	 * Loads Courses List
+	 */
 	public static void loadCoursesList() {	
 		//nazov suboru
         String fileName = "./data/courses/courses.txt";
@@ -332,7 +339,12 @@ public class Logic {
         }
 	}
 	
-	//citanie course - material
+	/**
+	 * Loads Course Material
+	 * 
+	 * @param position position in array of Courses
+	 * @param location name of the Course
+	 */
 	public static void loadCourseMaterial(int position, String location) {	
 		//nazov suboru
         String fileName = "./data/courses/" + location + "/material/course.txt";
@@ -371,7 +383,12 @@ public class Logic {
         }
 	}
 	
-	//citanie course - material - link
+	/**
+	 * Loads Course Material documents - links 
+	 * 
+	 * @param position position in array of Courses
+	 * @param location name of the Course
+	 */
 	public static void loadCourseMaterialDoc(int position, String location) {	
 		//nazov suboru
         String fileName = "./data/courses/" + location + "/material/links.txt";
@@ -412,10 +429,15 @@ public class Logic {
         }
 	}
 	
-	//citanie course - test 
+	/**
+	 * Loads Course Test
+	 * 
+	 * @param position position in array of Courses
+	 * @param location name of the Course
+	 * @param username username of the Person
+	 */
 	public static void loadCourseTest(int position, String location, String username) {	
 		//nazov suboru
-		//String fileName = "./data/courses/" + location + "/test/test.txt";
 		String fileName = "./data/users_data/history/" + username + "/" + location + "/test.txt";
         //citane udaje
         String TestName = null;
@@ -523,7 +545,13 @@ public class Logic {
         }
 	}
 	
-	//zapisovanie historie testu
+	/**
+	 * Writes history of the Test (finished and selected Options)
+	 * 
+	 * @param position position in array of Courses
+	 * @param location name of the Course
+	 * @param username username of the Person
+	 */
 	public static void writeCourseTest(int position, String location, String username) {
         //nazov suboru
         String fileName = "./data/users_data/history/" + username + "/" + location + "/test.txt";
