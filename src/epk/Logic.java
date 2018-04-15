@@ -630,7 +630,13 @@ public class Logic {
         }
 	}
 	
-	//otvorenie materialu 
+	/**
+	 * Opens Material File (.docx, etc, ...) 
+	 * 
+	 * @param name name of the File
+	 * @param position position in array of CustomFiles
+	 * @see CustomFile
+	 */
 	public static void openFileOnDisk(String name, int position) {
 		if (Desktop.isDesktopSupported()) {
 			try {
@@ -646,18 +652,23 @@ public class Logic {
 		}
 	}
 	
-	//daj selected do pola podla position
+	/**
+	 * Saves selected Options from ComboBox to Test
+	 * 
+	 * @param combos ComboBoxes
+	 * @param position position in array of Courses
+	 */
 	public static void saveTestSelected(ArrayList<ComboBox> combos, int position) {
 		for (int a = 0; a < loggedUser.getCourse(position).getTest().getQuestionsLength(); a++) {
 			if (combos.get(a).getSelectionModel().getSelectedItem()==null) {
-				//nic nezaskrkol
+				//nic nevybral
 				//System.out.println("nic");
 			}
 			else {
-				String combosel = combos.get(a).getSelectionModel().getSelectedItem().toString();
+				String comboSel = combos.get(a).getSelectionModel().getSelectedItem().toString();
 				for (int b = 0; b < loggedUser.getCourse(position).getTest().getQuestion(a).getOptionsLength(); b++) {
 					//prehlavadaj moznosti
-					if (loggedUser.getCourse(position).getTest().getQuestion(a).getOption(b).getText().equals(combosel)) {
+					if (loggedUser.getCourse(position).getTest().getQuestion(a).getOption(b).getText().equals(comboSel)) {
 						loggedUser.getCourse(position).getTest().getQuestion(a).getOption(b).setSelected(true);
 					}
 				}
@@ -665,7 +676,11 @@ public class Logic {
 		}
 	}
 	
-	//max body
+	/**
+	 * Saves maximum points of the Test
+	 * 
+	 * @param position position in array of Courses
+	 */
 	public static void saveMaxPoints(int position) {
 		int maxPoints = 0;
 		for (int a = 0; a < loggedUser.getCourse(position).getTest().getQuestionsLength(); a++) {
@@ -674,7 +689,11 @@ public class Logic {
 		loggedUser.getCourse(position).getTest().setMaxPoints(maxPoints);	
 	}
 	
-	//scitaj body 
+	/**
+	 * Saves achieved points of the Test
+	 * 
+	 * @param position position in array of Courses
+	 */
 	public static void saveAchievedPoints(int position) {
 		int points = 0;
 		for (int a = 0; a < loggedUser.getCourse(position).getTest().getQuestionsLength(); a++) {	
@@ -688,7 +707,10 @@ public class Logic {
 		loggedUser.getCourse(position).getTest().setAchievedPoints(points);	
 	}
 	
-	//nacita spravu zo suboru - globalnu
+	/**
+	 * Loads global message from file - if new rewrite Custom 
+	 * @throws ParseException
+	 */
 	public static void loadMessageFromFile() throws ParseException {
 		//
 		String fileName = "./data/message/message.txt";
@@ -700,8 +722,7 @@ public class Logic {
             //citac
             FileReader fileReader = new FileReader(fileName);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-            
-            //readedType = bufferedReader.readLine();    
+   
             readedDate = bufferedReader.readLine();  
             readedMessage = bufferedReader.readLine();  
             readedSeen = bufferedReader.readLine();  
@@ -766,7 +787,13 @@ public class Logic {
         }
 	}
 	
-	//nacita spravu zo suboru - userovu
+	/**
+	 * Loads Person Custom messago from file
+	 * 
+	 * @param username username of the Person
+	 * @return global message
+	 * @throws ParseException
+	 */
 	public static TimeMessage loadUserMessageFromFile(String username) throws ParseException {
 		//
 		String fileName = "./data/users_data/history/" + username + "/closedMessage.txt";
