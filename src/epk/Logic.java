@@ -4,6 +4,9 @@ import java.awt.Desktop;
 import java.io.*;
 import java.nio.*;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -191,7 +194,56 @@ public class Logic {
 	public static void addUser(User newUser) {
         users.add(newUser);
         writeUsersToFileFromArray();
+        //create user dir
+        createUsernameDir(newUser.getUsername());       
+        //copy message
+        copyMessage(newUser.getUsername());
+        //create course dir + copy test
+        for (int a=0; a < loggedUser.getCourseLength(); a++) {
+        	createCourseDirAndCopyTest(Logic.loggedUser.getCourse(a).getName(), newUser.getUsername());       	
+        }
 	}	
+	
+	//create user dir
+	public static void createUsernameDir(String username) {
+		File userDir = new File("./data/users_data/history/" + username + "/");	
+		userDir.mkdir();
+	}
+	
+	//copy message
+	public static void copyMessage(String username) {
+		//create file	
+		File newClosedMessageFile = new File("./data/users_data/history/" + username + "/closedMessage.txt");	
+		try {
+			newClosedMessageFile.createNewFile();
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+		
+		//copy from original
+		Path source = Paths.get("./data/message/message.txt");
+		Path destination = Paths.get("./data/users_data/history/" + username + "/closedMessage.txt");		
+		try {
+			Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	//create course dir + copy test
+	public static void createCourseDirAndCopyTest(String location, String username) {
+		//create dir
+		File courseDir = new File("./data/users_data/history/" + username + "/" + location + "/");	
+		courseDir.mkdir();
+		//copy test
+		Path source = Paths.get("./data/courses/" + location + "/test/test.txt");
+		Path destination = Paths.get("./data/users_data/history/" + username + "/" + location + "/test.txt");		
+		try {
+			Files.copy(source, destination, StandardCopyOption.REPLACE_EXISTING);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	//citanie courses - zoznamu
 	public static void loadCoursesList() {	
