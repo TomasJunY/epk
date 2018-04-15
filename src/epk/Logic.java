@@ -793,6 +793,7 @@ public class Logic {
 	 * @param username username of the Person
 	 * @return global message
 	 * @throws ParseException
+	 * @see Message
 	 */
 	public static TimeMessage loadUserMessageFromFile(String username) throws ParseException {
 		//
@@ -813,8 +814,6 @@ public class Logic {
             if (readedSeen.equals("$")) {
             	//time
             	TimeMessage message = new TimeMessage(readedMessage);
-            	
-            	//Date expiration = message.getFormatter().parse(readedDate);
             	SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
             	Date expiration = formatter.parse(readedDate);
             	message.setExpiration(expiration);
@@ -854,7 +853,14 @@ public class Logic {
 		return null;
 	}
 	
-	//zapis global message
+	/**
+	 * Writes new global message to file
+	 * 
+	 * @param date expiration date of the message
+	 * @param message text of the message
+	 * @param canBeClosed value if can be closed
+	 * @see Message
+	 */
 	public static void writeMessageToFile(String date, String message, boolean canBeClosed) {
         //nazov suboru
 		String fileName = "./data/message/message.txt";
@@ -885,7 +891,13 @@ public class Logic {
         }
 	}
 	
-	//zapisovanie user message - ked je global ina = REFRESH
+	/**
+	 * Write Persons custom message to file, if global is different than custom then refresg
+	 * 
+	 * @param username username of the Person
+	 * @param message message
+	 * @see Message
+	 */
 	public static void writeUserMessageToFile(String username, TimeMessage message) {
         //nazov suboru
 		String fileName = "./data/users_data/history/" + username  +"/closedMessage.txt";
@@ -915,4 +927,5 @@ public class Logic {
             System.out.println("Chyba pri zapisovani do suboru: " + fileName);
         }
 	}
+	
 }
