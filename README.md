@@ -1,6 +1,8 @@
 ﻿# epk
 
 treba dorobiť:
-  * javadoc
+  * javadoc - detaily
   * cleanup editov
+  * cleanup UI
+  * UML
   
