@@ -1,7 +1,9 @@
 package courses;
 
 /**
- * Course Object
+ * <b>Course Object</b> <br>
+ * 
+ * Object is storing data about course
  * 
  * @author Tomáš Junas
  * @version 1.0

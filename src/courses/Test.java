@@ -1,5 +1,13 @@
 package courses;
 
+/**
+ * <b>Test Object</b> <br>
+ * 
+ * Object is storing data about test
+ * 
+ * @author Tomáš Junas
+ * @version 1.0
+ */
 public class Test {
 
 	private String name;
