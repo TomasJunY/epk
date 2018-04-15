@@ -1,71 +1,87 @@
 package users;
 
 import courses.*;
-import epk.*;
 import message.*;
 
+/**
+ * <b>Person Interface</b> <br>
+ * 
+ * Interface of the Person
+ *
+ * @author Tomáš Junas
+ * @version 1.0
+ */
 public interface Person {
 	
+	/**
+	 * Sets information of the Person
+	 * 
+	 * @param name name of the Person
+	 * @param surname surname of the Person
+	 * @param gender gender of the Person
+	 * @param age age of the Person
+	 * @param position position of the Person
+	 */
 	void setInfo(String name, String surname, String gender, int age, String position);
 	
 	/**
-	 * Returns username
+	 * Returns username of the Person
 	 * 
 	 * @return username
 	 */
 	String getUsername();
 	
 	/**
-	 * Sets username
+	 * Sets username of the Person
 	 * 
-	 * @param username username
+	 * @param username username of the Person
 	 */
 	void setUsername(String username);
 	
 	/**
-	 * Returns password
+	 * Returns password of the Person
 	 * 
 	 * @return password
 	 */
 	String getPassword();
 	
 	/**
-	 * Sets password
+	 * Sets password of the Person
 	 * 
-	 * @param pasword password
+	 * @param password password of the Person
 	 */
 	void setPassword(String password);
 	
 	/**
-	 * Returns name
+	 * Returns name of the Person
 	 * 
 	 * @return name
 	 */
 	String getName();
 	
 	/**
-	 * Returns surname
+	 * Returns surname of the Person
 	 * 
 	 * @return surname
 	 */
 	String getSurname();
 	
 	/**
-	 * Returns gender
+	 * Returns gender of the Person
 	 * 
 	 * @return gender
 	 */
 	String getGender();
 	
 	/**
-	 * Returns age
+	 * Returns age of the Person
 	 * 
 	 * @return age
 	 */
 	int getAge();
 	
 	/**
-	 * Returns position
+	 * Returns position of the Person
 	 * 
 	 * @return position
 	 */
@@ -74,7 +90,7 @@ public interface Person {
 	boolean isAdmin();
 	
 	/**
-	 * Returns course on position
+	 * Returns course from array on position
 	 * 
 	 * @param position position
 	 * @return course[position]
@@ -82,14 +98,14 @@ public interface Person {
 	Course getCourse(int position);
 	
 	/**
-	 * Returns course length
+	 * Returns length of course array
 	 * 
-	 * @return course length
+	 * @return course.length
 	 */
 	int getCourseLength();
 	
 	/**
-	 * Returns course index
+	 * Returns course index, find by string
 	 * 
 	 * @param find string
 	 * @return course index

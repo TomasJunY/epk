@@ -1,7 +1,6 @@
 package users;
 
 import courses.*;
-import epk.*;
 import message.*;
 
 public class User implements Person {
