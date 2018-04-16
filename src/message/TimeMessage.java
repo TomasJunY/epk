@@ -9,7 +9,7 @@ import java.util.Date;
  * Object is storing data about TimeMessage <br>
  * The Message will close at selected date
  * 
- * @author Tomáš Junas
+ * @author Tomas Junas
  * @version 1.0
  */
 public class TimeMessage extends Message {
@@ -98,7 +98,7 @@ public class TimeMessage extends Message {
 	
 	/**
 	 * Sets seen value (do nothing)
-	 * @param seen
+	 * @param seen seen value
 	 */
 	public void setSeen(boolean seen) {	
 	}

@@ -5,7 +5,7 @@ package courses;
  * 
  * Object is storing data about course
  * 
- * @author Tomáš Junas
+ * @author Tomas Junas
  * @version 1.0
  */
 public class Course {
@@ -119,7 +119,7 @@ public class Course {
 	
 	/**
 	 * Sets length of File array
-	 * @param pocet
+	 * @param pocet length of File array
 	 */
 	public void setFileAll(int pocet) {
 		this.file = new CustomFile[pocet];

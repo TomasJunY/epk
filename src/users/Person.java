@@ -8,7 +8,7 @@ import message.*;
  * 
  * Interface of the Person
  *
- * @author Tomáš Junas
+ * @author Tomas Junas
  * @version 1.0
  */
 public interface Person {

@@ -8,7 +8,7 @@ import message.*;
  * 
  * Object is storing data about User <br>
  * 
- * @author Tomáš Junas
+ * @author Tomas Junas
  * @version 1.0
  */
 public class User implements Person {

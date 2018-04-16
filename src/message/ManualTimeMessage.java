@@ -7,7 +7,7 @@ package message;
  * The Message will close at selected date <br>
  * Can be closed manually
  * 
- * @author Tomáš Junas
+ * @author Tomas Junas
  * @version 1.0
  */
 public class ManualTimeMessage extends TimeMessage {

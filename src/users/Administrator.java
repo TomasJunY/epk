@@ -8,7 +8,7 @@ import message.*;
  * 
  * Object is storing data about Administrator <br>
  * 
- * @author Tomáš Junas
+ * @author Tomas Junas
  * @version 1.0
  */
 public class Administrator implements Person {

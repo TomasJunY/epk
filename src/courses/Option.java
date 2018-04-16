@@ -5,7 +5,7 @@ package courses;
  * 
  * Object is storing data about Option
  * 
- * @author Tomáš Junas
+ * @author Tomas Junas
  * @version 1.0
  */
 public class Option {

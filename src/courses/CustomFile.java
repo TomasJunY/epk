@@ -7,7 +7,7 @@ package courses;
  * in folder (./data/1/)
  * path to file is (./data/1/placeholder.txt)
  * 
- * @author Tomáš Junas
+ * @author Tomas Junas
  * @version 1.0
  */
 public class CustomFile {

@@ -5,7 +5,7 @@ package message;
  * 
  * Object is storing data about Message
  * 
- * @author Tomáš Junas
+ * @author Tomas Junas
  * @version 1.0
  */
 abstract class Message {

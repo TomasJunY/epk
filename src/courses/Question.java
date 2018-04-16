@@ -5,7 +5,7 @@ package courses;
  * 
  * Object is storing data about Question
  * 
- * @author Tomáš Junas
+ * @author Tomas Junas
  * @version 1.0
  */
 public class Question {
@@ -114,7 +114,7 @@ public class Question {
 	 * Sets Option in array on position
 	 * 
 	 * @param position position in array
-	 * @param options option
+	 * @param option Option
 	 */
 	public void setOption(int position, Option option) {
 		this.options[position] = option;

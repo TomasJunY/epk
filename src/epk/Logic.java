@@ -27,7 +27,7 @@ import users.*;
  * 
  * Object is handling text files and operations behind UI
  * 
- * @author Tomáš Junas
+ * @author Tomas Junas
  * @version 1.0
  */
 public class Logic {
@@ -159,7 +159,7 @@ public class Logic {
 	 * @param loginName username of the Person
 	 * @param loginPassword password of the Person
 	 * @return true if successfully logged in, false if not
-	 * @throws ParseException
+	 * @throws ParseException Exception
 	 */
 	public static boolean userLogin(String loginName, String loginPassword) throws ParseException {	
 		for (int a=0; a<users.size(); a++) {			
@@ -709,7 +709,7 @@ public class Logic {
 	
 	/**
 	 * Loads global message from file - if new rewrite Custom 
-	 * @throws ParseException
+	 * @throws ParseException Exception
 	 */
 	public static void loadMessageFromFile() throws ParseException {
 		//
@@ -792,8 +792,7 @@ public class Logic {
 	 * 
 	 * @param username username of the Person
 	 * @return global message
-	 * @throws ParseException
-	 * @see Message
+	 * @throws ParseException Exception
 	 */
 	public static TimeMessage loadUserMessageFromFile(String username) throws ParseException {
 		//
@@ -859,7 +858,6 @@ public class Logic {
 	 * @param date expiration date of the message
 	 * @param message text of the message
 	 * @param canBeClosed value if can be closed
-	 * @see Message
 	 */
 	public static void writeMessageToFile(String date, String message, boolean canBeClosed) {
         //nazov suboru
@@ -896,7 +894,6 @@ public class Logic {
 	 * 
 	 * @param username username of the Person
 	 * @param message message
-	 * @see Message
 	 */
 	public static void writeUserMessageToFile(String username, TimeMessage message) {
         //nazov suboru
