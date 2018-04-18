@@ -57,7 +57,7 @@ public class DashboardUI {
 		hboxBotton.setAlignment(Pos.BOTTOM_RIGHT);;
 		hboxBotton.setStyle("-fx-background-color: grey;");
 		
-		Label L_userWelcome = new Label("si prihlaseny ako: ");
+		Label L_userWelcome = new Label("Si prihl·sen˝ ako: ");
 		//L_userWelcome.setFont(Font.font("Calibri", FontWeight.NORMAL, 12));
 		//L_userWelcome.setFont(Font.font(12));
 		String userWelcomeMessage = Logic.loggedUser.getName() + " " + Logic.loggedUser.getSurname();
@@ -81,13 +81,13 @@ public class DashboardUI {
 			}				
 		}
 						
-		Button B_userInfo = new Button("info");
+		Button B_userInfo = new Button("Inform·cie");
 		B_userInfo.setPrefWidth(80);
 		B_userInfo.setOnAction(e -> {
 			UserInfoUI.show(userWelcomeMessage);
 		});
 		
-		Button B_logOff = new Button("logoff");
+		Button B_logOff = new Button("Odhl·siù sa");
 		B_logOff.setPrefWidth(80);
 		B_logOff.setOnAction(e -> {
 			if ( Logic.userLogoff() == true ) {
@@ -97,11 +97,11 @@ public class DashboardUI {
 				window.close();
 			}
 			else {
-				AlertUI.show("chyba", "nepodarilo sa odhlasit", 200, 100);
+				AlertUI.show("Chyba", "Nepodarilo sa odhl·siù", 200, 100);
 			}
 		});
 		
-		Label L_courses = new Label("kurzy:");
+		Label L_courses = new Label("Kurzy:");
 			
 		ComboBox comboCourses = new ComboBox<>();
 		for (int a = 0; a < Logic.loggedUser.getCourseLength(); a++) {			
@@ -131,7 +131,7 @@ public class DashboardUI {
 		hboxTop.getChildren().add(L_userName);	
 		
 		
-		Label L_coursesFinished = new Label("hotove:");
+		Label L_coursesFinished = new Label("HotovÈ:");
 		
 		ComboBox comboCoursesFinished = new ComboBox<>();
 		for (int a = 0; a < Logic.loggedUser.getCourseLength(); a++) {			
@@ -184,28 +184,28 @@ public class DashboardUI {
 		
 		//admin veci
 		if(Administrator.class.isInstance(Logic.loggedUser)) {
-			Label L_admin = new Label("nastroje na spravu");
+			Label L_admin = new Label("N·stroje na spr·vu");
 			
-			Button B_globalMessage = new Button("oznamenie");
+			Button B_globalMessage = new Button("Ozn·menie");
 			B_globalMessage.setOnAction(e -> {
 				//
-				GlobalMessageUI.show("nastav spravu");
+				GlobalMessageUI.show("Nastav spr·vu");
 			});
 			
-			Button B_addUser = new Button("pridaj usera");
+			Button B_addUser = new Button("Pridaj usera");
 			B_addUser.setOnAction(e -> {
 				//
-				AddUserUI.show("pridaj usera");
+				AddUserUI.show("Pridaj usera");
 			});
 			
-			Label L_edit = new Label("edituj usera");
+			Label L_edit = new Label("Edituj usera");
 					
 			ComboBox comboUsers = new ComboBox<>();
 			for (int a = 0; a < Logic.users.size(); a++) {
 				comboUsers.getItems().add(Logic.users.get(a).getUsername());
 			 }
 			comboUsers.setPromptText("vyber");			
-			Button B_editUser = new Button("edit");
+			Button B_editUser = new Button("Edit");
 			B_editUser.setOnAction(e -> {
 				//keby nevybere nic a klika
 				if ( !(comboUsers.getValue()==null) ) {

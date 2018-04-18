@@ -25,16 +25,16 @@ public class LoginUI {
 		Label L_username = new Label("username");
 		GridPane.setConstraints(L_username, 0, 0);
 		
-		TextField E_username = new TextField("admin");
+		TextField E_username = new TextField();
 		GridPane.setConstraints(E_username, 1, 0);
 		
-		Label L_password = new Label("password");
+		Label L_password = new Label("heslo");
 		GridPane.setConstraints(L_password, 0, 1);
 		
-		TextField E_password = new TextField("heslo");
+		PasswordField E_password = new PasswordField();
 		GridPane.setConstraints(E_password, 1, 1);
 					
-		Button B_login = new Button("login");
+		Button B_login = new Button("Login");
 		GridPane.setConstraints(B_login, 1, 2);
 		B_login.setPrefWidth(150);
 		B_login.setOnAction(e -> {
@@ -42,11 +42,11 @@ public class LoginUI {
 				if ( Logic.userLogin( E_username.getText(), E_password.getText() ) == true ) {
 					//load course
 					Logic.loadCoursesList();
-					DashboardUI.show("dashboard");
+					DashboardUI.show("Dashboard");
 					window.close();
 				}
 				else {
-					AlertUI.show("chyba", "zle meno alebo heslo", 200, 100);
+					AlertUI.show("Chyba", "Zlé meno alebo heslo", 200, 100);
 				}
 			} catch (ParseException e1) {
 				// TODO Auto-generated catch block

@@ -22,16 +22,18 @@ public class GlobalMessageUI {
 		vbox.setSpacing(8);
 		vbox.setPadding(new Insets(15, 25, 15, 25));
 		
-		Label L_date = new Label("zadaj datum");
-		TextField E_date = new TextField("15.11.2030");
+		Label L_date = new Label("Zadaj dátum");
+		TextField E_date = new TextField();
+		E_date.setPromptText("15.11.2030");
 		
-		Label L_message = new Label("zadaj spravu");
-		TextField E_message = new TextField("eloo$oooo");
+		Label L_message = new Label("Zadaj správu");
+		TextField E_message = new TextField();
+		E_message.setPromptText("helou");
 		
-		CheckBox CB_closed = new CheckBox("moze byt zatvorena");
+		CheckBox CB_closed = new CheckBox("Môže by zatvorená");
 		
-		Label L_info = new Label("sprava sa zobrazi az po odhlaseni");
-		Button B_confirm = new Button("send");
+		Label L_info = new Label("Správa sa zobrazí až po odhlásení");
+		Button B_confirm = new Button("Send");
 		B_confirm.setOnAction(e -> {
 			String message = E_message.getText();
 			

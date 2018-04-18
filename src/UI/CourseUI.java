@@ -32,7 +32,7 @@ public class CourseUI {
 		M_cText.setWrapText(true);
 		M_cText.setPrefHeight(200);
 		
-		Label L_cLinks = new Label("linky:");
+		Label L_cLinks = new Label("Linky:");
 		
 		vbox.getChildren().add(L_cName);
 		vbox.getChildren().add(M_cText);
@@ -63,7 +63,7 @@ public class CourseUI {
 		Button B_back = new Button("Back");
 		B_back.setOnAction(e -> {
 			//
-			DashboardUI.show("dashboard");
+			DashboardUI.show("Dashboard");
 			window.close();
 		});
 		

@@ -4,9 +4,7 @@ import epk.Logic;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -22,25 +20,25 @@ public class PasswordChangeUI {
 		grid.setVgap(10);
 		grid.setHgap(15);
 		
-		Label L_orig = new Label("povodne");
+		Label L_orig = new Label("Pôvodné");
 		GridPane.setConstraints(L_orig, 0, 0);
 		
-		TextField E_orig = new TextField("");
+		PasswordField E_orig = new PasswordField();
 		GridPane.setConstraints(E_orig, 1, 0);
 		
-		Label L_new = new Label("nove");
+		Label L_new = new Label("Nové");
 		GridPane.setConstraints(L_new, 0, 1);
 		
-		TextField E_new = new TextField("");
+		PasswordField E_new = new PasswordField();
 		GridPane.setConstraints(E_new, 1, 1);
 		
-		Label L_new2 = new Label("nove znova");
+		Label L_new2 = new Label("Nové znova");
 		GridPane.setConstraints(L_new2, 0, 2);
 		
-		TextField E_new2 = new TextField("");
+		PasswordField E_new2 = new PasswordField();
 		GridPane.setConstraints(E_new2, 1, 2);
 			
-		Button B_change = new Button("zmen");
+		Button B_change = new Button("Zmeò");
 		GridPane.setConstraints(B_change, 1, 3);
 		B_change.setPrefWidth(80);
 		B_change.setOnAction(e -> {
@@ -54,11 +52,11 @@ public class PasswordChangeUI {
 					window.close();
 				}
 				else {
-					AlertUI.show("chyba", "povodne sa nezhoduje", 200, 100);
+					AlertUI.show("Chyba", "Pôvodné sa nezhoduje", 200, 100);
 				}
 			}
 			else {
-				AlertUI.show("chyba", "hesla sa lisia", 200, 100);
+				AlertUI.show("Chyba", "Heslá sú odlišné", 200, 100);
 			}
 		});
 		

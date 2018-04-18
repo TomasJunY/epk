@@ -20,25 +20,25 @@ public class EditUserUI {
 		Label L_username = new Label("username");		
 		TextField E_username = new TextField(Logic.users.get(position).getUsername());
 		
-		Label L_password = new Label("password");
+		Label L_password = new Label("heslo");
 		TextField E_password = new TextField(Logic.users.get(position).getPassword());
 		
-		Label L_name = new Label("name");
+		Label L_name = new Label("meno");
 		TextField E_name = new TextField(Logic.users.get(position).getName());
 		
-		Label L_surname = new Label("surname");
+		Label L_surname = new Label("priezvisko");
 		TextField E_surname = new TextField(Logic.users.get(position).getSurname());
 		
-		Label L_gender = new Label("gender");
+		Label L_gender = new Label("pohlavie");
 		TextField E_gender = new TextField(Logic.users.get(position).getGender());
 		
-		Label L_age = new Label("age");
+		Label L_age = new Label("vek");
 		TextField E_age = new TextField(Integer.toString(Logic.users.get(position).getAge()));
 		
-		Label L_positon = new Label("position");
+		Label L_positon = new Label("pracovná pozícia");
 		TextField E_positon = new TextField(Logic.users.get(position).getPosition());;
 		
-		Button B_add = new Button("edit");
+		Button B_add = new Button("Edit");
 		B_add.setPrefWidth(80);
 		B_add.setOnAction(e -> {
 			Logic.users.get(position).setUsername(E_username.getText());

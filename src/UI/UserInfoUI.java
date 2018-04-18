@@ -14,9 +14,9 @@ public class UserInfoUI {
 	public static void show(String title) {
 		Stage window = new Stage();
 		
-		Button B_passwordChange = new Button("zmen heslo");
+		Button B_passwordChange = new Button("Zmeò heslo");
 		B_passwordChange.setOnAction(e -> {
-			PasswordChangeUI.show("zmena hesla");
+			PasswordChangeUI.show("Zmena hesla");
 		} );
 		B_passwordChange.setPrefWidth(80);
 		
@@ -35,7 +35,7 @@ public class UserInfoUI {
 		Label L_positon = new Label();
 		L_positon.setText(Logic.loggedUser.getPosition());
 		
-		Button B_confirm = new Button("ok");
+		Button B_confirm = new Button("OK");
 		B_confirm.setOnAction(e -> window.close() );
 		B_confirm.setPrefWidth(80);
 		

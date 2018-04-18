@@ -18,27 +18,27 @@ public class AddUserUI {
 		Stage window = new Stage();
 		
 		Label L_username = new Label("username");		
-		TextField E_username = new TextField("uz2");
+		TextField E_username = new TextField();
 		
-		Label L_password = new Label("password");
-		TextField E_password = new TextField("pass");
+		Label L_password = new Label("heslo");
+		TextField E_password = new TextField();
 		
-		Label L_name = new Label("name");
-		TextField E_name = new TextField("jozko");
+		Label L_name = new Label("meno");
+		TextField E_name = new TextField();
 		
-		Label L_surname = new Label("surname");
-		TextField E_surname = new TextField("mrkvicka");
+		Label L_surname = new Label("priezvisko");
+		TextField E_surname = new TextField();
 		
-		Label L_gender = new Label("gender");
-		TextField E_gender = new TextField("muž");
+		Label L_gender = new Label("pohlavie");
+		TextField E_gender = new TextField();
 		
-		Label L_age = new Label("age");
-		TextField E_age = new TextField("15");
+		Label L_age = new Label("vek");
+		TextField E_age = new TextField();
 		
-		Label L_positon = new Label("position");
-		TextField E_positon = new TextField("nezamestnany");;
+		Label L_positon = new Label("pracovná pozícia");
+		TextField E_positon = new TextField();;
 		
-		Button B_add = new Button("pridaj");
+		Button B_add = new Button("Pridaj");
 		B_add.setPrefWidth(80);
 		B_add.setOnAction(e -> {
 			User newUser = new User(E_username.getText(), E_password.getText());

@@ -29,7 +29,7 @@ public class TestUI {
 		Label L_TName = new Label(Logic.loggedUser.getCourse(position).getTest().getName());
 		
 		TextArea M_TText = new TextArea();
-		M_TText.setText(Logic.loggedUser.getCourse(position).getTest().getText()  + "\nmaximalny pocet bodov je: " + (Logic.loggedUser.getCourse(position).getTest().getMaxPoints()));
+		M_TText.setText(Logic.loggedUser.getCourse(position).getTest().getText()  + "\nmaximálny poèet bodov je: " + (Logic.loggedUser.getCourse(position).getTest().getMaxPoints()));
 		M_TText.setEditable(false);
 		M_TText.setWrapText(true);
 		M_TText.setPrefHeight(70);
@@ -71,7 +71,7 @@ public class TestUI {
 					Qcombo.getSelectionModel().select(b);
 				}
 			}
-			Qcombo.setPromptText("vyber si moznost");
+			Qcombo.setPromptText("vyber si možnos");
 			
 			vbox.getChildren().add(Qcombo);
 		}
@@ -80,17 +80,17 @@ public class TestUI {
 		B_done.setPrefWidth(120);
 		if (Logic.loggedUser.getCourse(position).isFinished()) {
 			B_done.setDisable(true);
-			B_done.setText("Test je uz hotovy");
+			B_done.setText("Test je už hotový");
 		}
 		
 		B_done.setOnAction(e -> {
 			Logic.saveTestSelected(Qcombos, position);
 			Logic.saveAchievedPoints(position);
-			AlertUI.show("konec", "dosiahol si " + Logic.loggedUser.getCourse(position).getTest().getAchievedPoints() + " bodov", 200, 100);
+			AlertUI.show("Koniec", "Dosiahol si " + Logic.loggedUser.getCourse(position).getTest().getAchievedPoints() + " bodov", 200, 100);
 			Logic.loggedUser.getCourse(position).setFinished(true);
 			Logic.writeCourseTest(position, Logic.loggedUser.getCourse(position).getName(), Logic.loggedUser.getUsername());
 			//CourseUI.show(title, course_name, position);
-			DashboardUI.show("dashboard");
+			DashboardUI.show("Dashboard");
 			window.close();
 		});
 		

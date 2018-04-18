@@ -19,7 +19,7 @@ public class AlertUI {
 		Label L_message = new Label();
 		L_message.setText(message);
 		
-		Button B_confirm = new Button("ok");
+		Button B_confirm = new Button("OK");
 		B_confirm.setOnAction(e -> window.close() );
 		
 		VBox layout = new VBox(15);
