@@ -2,13 +2,11 @@ package UI;
 
 import epk.Logic;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -34,9 +32,7 @@ public class GlobalMessageUI {
 		
 		Label L_info = new Label("Správa sa zobrazí až po odhlásení");
 		Button B_confirm = new Button("Send");
-		B_confirm.setOnAction(e -> {
-			String message = E_message.getText();
-			
+		B_confirm.setOnAction(e -> {		
 			boolean canBeClosed = true;
 			if (CB_closed.isSelected()) {
 				canBeClosed = true;

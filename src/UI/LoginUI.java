@@ -2,11 +2,7 @@ package UI;
 
 import java.text.ParseException;
 import epk.Logic;
-import javafx.*;
-import javafx.application.Application;
 import javafx.geometry.*;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;

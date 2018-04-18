@@ -2,16 +2,10 @@ package UI;
 
 import epk.Logic;
 import users.*;
-import javafx.*;
-import javafx.application.Application;
 import javafx.geometry.*;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import message.ManualTimeMessage;
 
@@ -29,21 +23,16 @@ public class DashboardUI {
 		HBox hboxCenter = new HBox();
 		hboxCenter.setSpacing(8);
 		hboxCenter.setPadding(new Insets(15, 12, 15, 12));
-		//hboxCenter.setStyle("-fx-background-color: #0099ff;");
 		
 		HBox hboxCenter2 = new HBox();
 		hboxCenter2.setSpacing(8);
 		hboxCenter2.setPadding(new Insets(15, 12, 15, 12));
-		//hboxCenter.setStyle("-fx-background-color: #0099ff;");
 		
 		HBox hboxMessage = new HBox();
 		hboxMessage.setSpacing(8);
 		hboxMessage.setPadding(new Insets(15, 12, 15, 12));
-		//hboxCenter.setStyle("-fx-background-color: #0099ff;");
 		
 		VBox vboxCenter = new VBox();
-		//hboxCenter.setSpacing(8);
-		//hboxCenter.setPadding(new Insets(15, 12, 15, 12));
 		
 		VBox vboxRight = new VBox();
 		vboxRight.setSpacing(8);
@@ -58,8 +47,6 @@ public class DashboardUI {
 		hboxBotton.setStyle("-fx-background-color: grey;");
 		
 		Label L_userWelcome = new Label("Si prihlásený ako: ");
-		//L_userWelcome.setFont(Font.font("Calibri", FontWeight.NORMAL, 12));
-		//L_userWelcome.setFont(Font.font(12));
 		String userWelcomeMessage = Logic.loggedUser.getName() + " " + Logic.loggedUser.getSurname();
 		Label L_userName = new Label(userWelcomeMessage);
 		
@@ -92,7 +79,6 @@ public class DashboardUI {
 		B_logOff.setOnAction(e -> {
 			if ( Logic.userLogoff() == true ) {
 				//odhlas
-				//AlertUI.show("ok", "sicko v poradku", 200, 100);
 				LoginUI.show("login");
 				window.close();
 			}
@@ -113,7 +99,6 @@ public class DashboardUI {
 		
 		Button B_Course = new Button("OK");
 		B_Course.setOnAction(e -> {
-			//	
 			if (comboCourses.getValue()==null) {
 				System.out.println("chyba");
 			}
@@ -188,13 +173,11 @@ public class DashboardUI {
 			
 			Button B_globalMessage = new Button("Oznámenie");
 			B_globalMessage.setOnAction(e -> {
-				//
 				GlobalMessageUI.show("Nastav správu");
 			});
 			
 			Button B_addUser = new Button("Pridaj usera");
 			B_addUser.setOnAction(e -> {
-				//
 				AddUserUI.show("Pridaj usera");
 			});
 			

@@ -2,18 +2,12 @@ package UI;
 
 import java.util.ArrayList;
 import epk.Logic;
-import javafx.*;
-import javafx.application.Application;
 import javafx.geometry.*;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 public class TestUI {
@@ -110,9 +104,6 @@ public class TestUI {
 		
 		Scene scene = new Scene(scrollPane, 600, 900);
 		
-		//window.setX(600);
-		//window.setY(50);
-		//window.setWidth(350);
 		window.setTitle(title);
 		window.setScene(scene);		
 		window.show();	

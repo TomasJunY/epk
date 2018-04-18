@@ -1,13 +1,8 @@
 package UI;
 
-import javafx.*;
 import javafx.application.Application;
-import javafx.geometry.*;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.image.*;
-import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -32,6 +27,7 @@ public class SplashUI extends Application {
 		public MainThread (String name) {
 			this.name = name;
 		}
+		
 		//hlavna vec - nacita userov
 		public void run () {
 			Logic.loadUsersFileToArray();

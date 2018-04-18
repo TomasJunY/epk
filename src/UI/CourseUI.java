@@ -2,16 +2,10 @@ package UI;
 
 import java.util.ArrayList;
 import epk.Logic;
-import javafx.*;
-import javafx.application.Application;
 import javafx.geometry.*;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 public class CourseUI {
@@ -50,10 +44,8 @@ public class CourseUI {
 		}
 
 		Button B_test = new Button("Test");
-		B_test.setPrefWidth(80);
-		
+		B_test.setPrefWidth(80);	
 		B_test.setOnAction(e -> {
-			//
 			TestUI.show(title, course_name, position);
 			window.close();
 		});
@@ -62,7 +54,6 @@ public class CourseUI {
 		
 		Button B_back = new Button("Back");
 		B_back.setOnAction(e -> {
-			//
 			DashboardUI.show("Dashboard");
 			window.close();
 		});

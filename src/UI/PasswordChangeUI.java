@@ -2,11 +2,9 @@ package UI;
 
 import epk.Logic;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -42,7 +40,6 @@ public class PasswordChangeUI {
 		GridPane.setConstraints(B_change, 1, 3);
 		B_change.setPrefWidth(80);
 		B_change.setOnAction(e -> {
-			//rob
 			//pokial su rovnake 2 nove hesla
 			if ( (E_new.getText().equals(E_new2.getText()) ) == true ) {
 				//pokial je rovnake povodne			
