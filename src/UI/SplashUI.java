@@ -86,7 +86,7 @@ public class SplashUI extends Application {
 
 			//System.out.println("n: " + n +" for: " + faktFor + " rek: " + faktRek);
 			
-			if (faktFor == faktRek) {
+			if (faktFor != faktRek) {
 				throw new ZleRata("zle to pocita");
 			}
 		}

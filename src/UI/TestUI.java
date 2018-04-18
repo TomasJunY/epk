@@ -110,9 +110,9 @@ public class TestUI {
 		
 		Scene scene = new Scene(scrollPane, 600, 900);
 		
-		window.setX(600);
-		window.setY(50);
-		window.setWidth(350);
+		//window.setX(600);
+		//window.setY(50);
+		//window.setWidth(350);
 		window.setTitle(title);
 		window.setScene(scene);		
 		window.show();	

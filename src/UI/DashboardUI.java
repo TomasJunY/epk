@@ -1,6 +1,7 @@
 package UI;
 
 import epk.Logic;
+import users.*;
 import javafx.*;
 import javafx.application.Application;
 import javafx.geometry.*;
@@ -62,7 +63,7 @@ public class DashboardUI {
 		String userWelcomeMessage = Logic.loggedUser.getName() + " " + Logic.loggedUser.getSurname();
 		Label L_userName = new Label(userWelcomeMessage);
 		
-		//zobraz
+		//zobraz message
 		if (Logic.loggedUser.getGlobalMessage().isNotSeen()) {
 			Label L_message = new Label();
 			L_message.setText(Logic.loggedUser.getGlobalMessage().getFormattedExpiration() + " " +Logic.loggedUser.getGlobalMessage().getMessage());
@@ -99,13 +100,6 @@ public class DashboardUI {
 				AlertUI.show("chyba", "nepodarilo sa odhlasit", 200, 100);
 			}
 		});
-		/*
-		Button B_debug = new Button("debug");
-		B_debug.setOnAction(e -> {
-			//
-			Logic.loadCoursesList();
-		});
-		*/
 		
 		Label L_courses = new Label("kurzy:");
 			
@@ -165,8 +159,6 @@ public class DashboardUI {
 			}					
 		});
 		
-		//hboxTop.getChildren().add(B_debug);
-		
 		hboxCenter.getChildren().add(L_courses);
 		hboxCenter.getChildren().add(comboCourses);
 		hboxCenter.getChildren().add(B_Course);
@@ -179,7 +171,6 @@ public class DashboardUI {
 			vboxCenter.getChildren().add(hboxMessage);
 		}
 		
-		//vboxCenter.getChildren().add(L_courses);
 		vboxCenter.getChildren().add(hboxCenter);
 		vboxCenter.getChildren().add(hboxCenter2);
 		
@@ -192,7 +183,7 @@ public class DashboardUI {
 		border.setCenter(vboxCenter);
 		
 		//admin veci
-		if(Logic.loggedUser.isAdmin()) {
+		if(Administrator.class.isInstance(Logic.loggedUser)) {
 			Label L_admin = new Label("nastroje na spravu");
 			
 			Button B_globalMessage = new Button("oznamenie");
