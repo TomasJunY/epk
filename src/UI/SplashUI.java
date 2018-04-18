@@ -24,6 +24,74 @@ public class SplashUI extends Application {
 		launch(args);
 	}
 	
+	class MainThread implements Runnable {
+		
+		String name = null;
+		
+		//konstruktor
+		public MainThread (String name) {
+			this.name = name;
+		}
+		//hlavna vec - nacita userov
+		public void run () {
+			Logic.loadUsersFileToArray();
+		}
+	}
+	
+	class SecondaryThread implements Runnable {
+		
+		//vynimka
+		class ZleRata extends Exception {
+			ZleRata(String message) {
+				super(message);
+				this.printStackTrace();
+			}
+		}
+			
+		String name = null;
+		
+		//konstruktor
+		public SecondaryThread (String name) {
+			this.name = name;
+		}
+		
+		//vedlajsia vec - faktorial
+		public void run () {
+			try {
+				Random random = new Random();
+				faktorial(random.nextInt(20)+1);
+			}
+			catch(Exception ex) {
+				System.out.println(ex);
+			}				
+		}
+		
+		long fakt(long n) {
+			if (n <=0) {
+				return 1;
+			} 
+			else {
+				return n * fakt(n-1);
+			}
+		}
+		
+		void faktorial(long n) throws ZleRata {
+						
+			long faktFor = 1; 
+			for (int a = 1; a <= n; a++) {
+				faktFor *= a;
+			}
+
+			long faktRek = fakt(n);
+
+			//System.out.println("n: " + n +" for: " + faktFor + " rek: " + faktRek);
+			
+			if (faktFor == faktRek) {
+				throw new ZleRata("zle to pocita");
+			}
+		}
+	}
+	
 	public void start(Stage primaryStage) throws Exception {
 		
 		Stage window = primaryStage;
@@ -43,73 +111,6 @@ public class SplashUI extends Application {
 		window.setScene(scene);		
 		window.show();
 				
-		class MainThread implements Runnable {
-			
-			String name = null;
-			
-			//konstruktor
-			public MainThread (String name) {
-				this.name = name;
-			}
-			//hlavna vec - nacita userov
-			public void run () {
-				Logic.loadUsersFileToArray();
-			}
-		}
-		
-		class SecondaryThread implements Runnable {
-			
-			//vynimka
-			class ZleRata extends Exception {
-				ZleRata(String message) {
-					super(message);
-					this.printStackTrace();
-				}
-			}
- 			
-			String name = null;
-			
-			//konstruktor
-			public SecondaryThread (String name) {
-				this.name = name;
-			}
-			
-			//vedlajsia vec - faktorial
-			public void run () {
-				try {
-					Random random = new Random();
-					faktorial(random.nextInt(20)+1);
-				}
-				catch(Exception ex) {
-					System.out.println(ex);
-				}				
-			}
-			
-			long fakt(long n) {
-				if (n <=0) {
-					return 1;
-				} 
-				else {
-					return n * fakt(n-1);
-				}
-			}
-			
-			void faktorial(long n) throws ZleRata {
-							
-				long faktFor = 1; 
-				for (int a = 1; a <= n; a++) {
-					faktFor *= a;
-				}
-
-				long faktRek = fakt(n);
-
-				//System.out.println("n: " + n +" for: " + faktFor + " rek: " + faktRek);
-				
-				if (faktFor != faktRek) {
-					throw new ZleRata("zle to pocita");
-				}
-			}
-		}
 		
 		new Thread(new MainThread("jozko")).start();
 		//vytvor 40 kde rataj fakorial
