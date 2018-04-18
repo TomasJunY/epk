@@ -135,10 +135,6 @@ public class Administrator implements Person {
 	 */
 	public String getPosition() {
 		return this.position;
-	}
-	
-	public boolean isAdmin() {
-		return true;
 	}	
 	
 	/**

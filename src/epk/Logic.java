@@ -123,8 +123,8 @@ public class Logic {
             	bufferedWriter.newLine();
             	bufferedWriter.write(users.get(a).getPassword());
             	bufferedWriter.newLine();
-            	//admin
-            	if(users.get(a).isAdmin()) {
+            	//adminusers.get(a).isAdmin()
+            	if(Administrator.class.isInstance(users.get(a))) {
             		bufferedWriter.write("1");                	
             	}
             	else {
@@ -164,7 +164,7 @@ public class Logic {
 	public static boolean userLogin(String loginName, String loginPassword) throws ParseException {	
 		for (int a=0; a<users.size(); a++) {			
 			if(loginName.equals(users.get(a).getUsername()) && loginPassword.equals(users.get(a).getPassword())  ) {
-				if(users.get(a).isAdmin()) {
+				if(Administrator.class.isInstance(users.get(a))) {
 					loggedUser = new Administrator(users.get(a).getUsername(),users.get(a).getPassword());
 				} 
 				else {
@@ -297,7 +297,7 @@ public class Logic {
 	}
 	
 	/**
-	 * Loads Courses List
+	 * Loads Courses List, then Materials and Test
 	 */
 	public static void loadCoursesList() {	
 		//nazov suboru

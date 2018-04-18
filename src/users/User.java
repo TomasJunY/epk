@@ -137,10 +137,6 @@ public class User implements Person {
 		return this.position;
 	}
 	
-	public boolean isAdmin() {
-		return false;
-	}	
-	
 	/**
 	 * Returns Course from array on position
 	 * 

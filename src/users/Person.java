@@ -87,8 +87,6 @@ public interface Person {
 	 */
 	String getPosition();	
 	
-	boolean isAdmin();
-	
 	/**
 	 * Returns Course from array on position
 	 * 
