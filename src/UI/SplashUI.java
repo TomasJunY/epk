@@ -118,11 +118,11 @@ public class SplashUI extends Application {
 			new Thread(new SecondaryThread("ferko " + a)).start();
 		}		
 		
-		//load udajov a zmena sceny
+		//zmena sceny
 		PauseTransition pause = new PauseTransition();
 		pause.setDuration(Duration.seconds(0));
 		pause.setOnFinished(e -> {
-			LoginUI.show("login");			
+			LoginUI.show("Login");			
 			window.close();
 			} );
 		pause.play();

@@ -9,7 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Modality;
-import javafx.stage.Stage;
+import javafx.stage.*;
 
 public class AlertUI {
 	
@@ -32,6 +32,7 @@ public class AlertUI {
 		
 		window.setScene(scene);
 		window.initModality(Modality.APPLICATION_MODAL);
+		window.initStyle(StageStyle.UTILITY);
 		window.setTitle(title);
 		window.showAndWait();
 		
