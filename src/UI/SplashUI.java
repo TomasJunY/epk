@@ -172,8 +172,7 @@ public class SplashUI extends Application {
 		window.setTitle("epk");
 		window.initStyle(StageStyle.TRANSPARENT);
 		window.setScene(scene);		
-		window.show();
-				
+		window.show();		
 		
 		new Thread(new MainThread("jozko")).start();
 		//vytvor 40 kde rataj fakorial

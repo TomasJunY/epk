@@ -111,6 +111,7 @@ public class Course {
 	
 	/**
 	 * Returns custom file form array in position
+	 * 
 	 * @param position position in array
 	 * @return file[position]
 	 */
@@ -129,6 +130,7 @@ public class Course {
 	
 	/**
 	 * Sets File on position in array
+	 * 
 	 * @param position position in array
 	 * @param file file
 	 */
@@ -138,6 +140,7 @@ public class Course {
 	
 	/**
 	 * Sets length of File array
+	 * 
 	 * @param pocet length of File array
 	 */
 	public void setFileAll(int pocet) {

@@ -107,6 +107,7 @@ public class Test {
 	
 	/**
 	 * Sets Question in array on position
+	 * 
 	 * @param position position in array
 	 * @param question question
 	 */
@@ -143,6 +144,7 @@ public class Test {
 	
 	/**
 	 * Sets achievedPoints
+	 * 
 	 * @param achievedPoints achievedPoints
 	 */
 	public void setAchievedPoints(int achievedPoints) {

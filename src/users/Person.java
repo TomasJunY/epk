@@ -138,4 +138,5 @@ public interface Person {
 	 * @param message global message
 	 */
 	void setGlobalMessage(TimeMessage message); 
+	
 }

@@ -85,6 +85,7 @@ public class CustomFile {
 	
 	/**
 	 * Sets File folder
+	 * 
 	 * @param location folder of the file
 	 */
 	public void setLocation(String location) {
