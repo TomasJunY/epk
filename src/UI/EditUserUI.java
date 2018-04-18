@@ -10,8 +10,22 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * <b>EditUserUI</b> <br>
+ * 
+ * This UI is for editing user
+ * 
+ * @author Tomas Junas
+ * @version 1.0
+ */
 public class EditUserUI {
 	
+	/**
+	 * Shows window
+	 * 
+	 * @param title title of the window
+	 * @param position position in array of users
+	 */
 	public static void show(String title, int position) {
 		Stage window = new Stage();
 		

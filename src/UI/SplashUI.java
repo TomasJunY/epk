@@ -13,45 +13,99 @@ import epk.Logic;
 import javafx.animation.*;
 import java.util.Random;
 
+/**
+ * <b>SplashUI</b> <br>
+ * 
+ * This UI is for splash screen + threads and exception
+ * 
+ * @author Tomas Junas
+ * @version 1.0
+ */
 public class SplashUI extends Application {
-
+	
+	/**
+	 * Launches the program
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}
 	
+	/**
+	 * Main thread - loads users
+	 * 
+	 * @author Tomas Junas
+	 * @version 1.0
+	 */
 	class MainThread implements Runnable {
 		
+		/**
+		 * Name of the thread
+		 */
 		String name = null;
 		
-		//konstruktor
+		/**
+		 * Constructor
+		 * 
+		 * @param name name of the thread
+		 */
 		public MainThread (String name) {
 			this.name = name;
 		}
 		
-		//hlavna vec - nacita userov
+		/**
+		 * loads users
+		 */
 		public void run () {
 			Logic.loadUsersFileToArray();
 		}
 	}
 	
+	/**
+	 * Secondary thread - counts factorial
+	 * 
+	 * @author Tomas Junas
+	 * @version 1.0
+	 */
 	class SecondaryThread implements Runnable {
 		
-		//vynimka
+		/**
+		 * Custom Exception - prints error message and stack trace
+		 * 
+		 * @author Tomas
+		 * @version 1.0
+		 */
 		class ZleRata extends Exception {
+			
+			/**
+			 * Constuctor
+			 * 
+			 * @param message error message
+			 */
 			ZleRata(String message) {
 				super(message);
 				this.printStackTrace();
 			}
 		}
 			
+		/**
+		 * Name of the thread
+		 */
 		String name = null;
 		
-		//konstruktor
+		/**
+		 * Constructor
+		 * 
+		 * @param name name of the thread
+		 */
 		public SecondaryThread (String name) {
 			this.name = name;
 		}
 		
-		//vedlajsia vec - faktorial
+		/**
+		 * counts factorial
+		 */
 		public void run () {
 			try {
 				Random random = new Random();
@@ -62,6 +116,12 @@ public class SplashUI extends Application {
 			}				
 		}
 		
+		/**
+		 * counts factorial recursively
+		 *
+		 * @param n number
+		 * @return factorial
+		 */
 		long fakt(long n) {
 			if (n <=0) {
 				return 1;
@@ -71,6 +131,12 @@ public class SplashUI extends Application {
 			}
 		}
 		
+		/**
+		 * counts factorial recursively
+		 *
+		 * @param n number
+		 * @throws ZleRata Custom Exception
+		 */
 		void faktorial(long n) throws ZleRata {
 						
 			long faktFor = 1; 
@@ -79,8 +145,6 @@ public class SplashUI extends Application {
 			}
 
 			long faktRek = fakt(n);
-
-			//System.out.println("n: " + n +" for: " + faktFor + " rek: " + faktRek);
 			
 			if (faktFor != faktRek) {
 				throw new ZleRata("Zle to pocita");
@@ -88,6 +152,9 @@ public class SplashUI extends Application {
 		}
 	}
 	
+	/**
+	 * Shows window
+	 */
 	public void start(Stage primaryStage) throws Exception {
 		
 		Stage window = primaryStage;

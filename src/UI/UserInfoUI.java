@@ -9,8 +9,21 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * <b>UserInfoUI</b> <br>
+ * 
+ * This UI is for user info
+ * 
+ * @author Tomas Junas
+ * @version 1.0
+ */
 public class UserInfoUI {
 	
+	/**
+	 * Shows window 
+	 * 
+	 * @param title title of the window
+	 */
 	public static void show(String title) {
 		Stage window = new Stage();
 		

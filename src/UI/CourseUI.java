@@ -8,8 +8,23 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
+/**
+ * <b>CourseUI</b> <br>
+ * 
+ * This UI is for Course
+ * 
+ * @author Tomas Junas
+ * @version 1.0
+ */
 public class CourseUI {
 	
+	/**
+	 * Shows window
+	 * 
+	 * @param title title of the window
+	 * @param course_name name of the course
+	 * @param position position in array of courses
+	 */
 	public static void show(String title, String course_name, int position) {
 		
 		Stage window = new Stage();	

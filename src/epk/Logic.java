@@ -318,8 +318,7 @@ public class Logic {
             
             //citaj po riadkoch
             while( (readedLine = bufferedReader.readLine() ) != null) {
-            	String location = readedLine;
-            	//nacitaj veci - zatial hovadiny, potom sa to prepise
+            	//nacitaj veci - zatial placeholder, potom sa to prepise
             	loggedUser.setCourse(CourseIndex, new Course("placeholder", "placeholder"));        	
             	loadCourseMaterial(CourseIndex, readedLine);           	
             	loadCourseTest(CourseIndex, readedLine, loggedUser.getUsername());

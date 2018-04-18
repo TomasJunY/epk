@@ -7,8 +7,24 @@ import javafx.scene.layout.*;
 import javafx.stage.Modality;
 import javafx.stage.*;
 
+/**
+ * <b>AlertUI</b> <br>
+ * 
+ * This UI is for alerts, errors, etc
+ * 
+ * @author Tomas Junas
+ * @version 1.0
+ */
 public class AlertUI {
 	
+	/**
+	 * Shows window 
+	 * 
+	 * @param title title of the window
+	 * @param message error message
+	 * @param windowX window width
+	 * @param windowY window height
+	 */
 	public static void show(String title, String message, int windowX, int windowY) {
 		Stage window = new Stage();
 		

@@ -8,8 +8,21 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * <b>PasswordChangeUI</b> <br>
+ * 
+ * This UI is for password change
+ * 
+ * @author Tomas Junas
+ * @version 1.0
+ */
 public class PasswordChangeUI {
-
+	
+	/**
+	 * Shows window 
+	 * 
+	 * @param title title of the window
+	 */
 	public static void show(String title) {
 		Stage window = new Stage();		
 		

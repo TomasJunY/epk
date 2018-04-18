@@ -8,8 +8,21 @@ import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
+/**
+ * <b>LoginUI</b> <br>
+ * 
+ * This UI is for login
+ * 
+ * @author Tomas Junas
+ * @version 1.0
+ */
 public class LoginUI {
 
+	/**
+	 * Shows window 
+	 * 
+	 * @param title title of the window
+	 */
 	public static void show(String title) {
 		Stage window = new Stage();		
 		

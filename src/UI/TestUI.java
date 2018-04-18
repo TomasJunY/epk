@@ -10,8 +10,23 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
+/**
+ * <b>TestUI</b> <br>
+ * 
+ * This UI is for Test
+ * 
+ * @author Tomas Junas
+ * @version 1.0
+ */
 public class TestUI {
 	
+	/**
+	 * Shows window
+	 * 
+	 * @param title title of the window
+	 * @param course_name name of the course
+	 * @param position position in array of courses
+	 */
 	public static void show(String title, String course_name, int position) {
 		
 		Stage window = new Stage();	

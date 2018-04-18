@@ -11,8 +11,21 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import users.*;
 
+/**
+ * <b>AddUserUI</b> <br>
+ * 
+ * This UI is for adding user
+ * 
+ * @author Tomas Junas
+ * @version 1.0
+ */
 public class AddUserUI {
 	
+	/**
+	 * Shows window 
+	 * 
+	 * @param title title of the window
+	 */
 	public static void show(String title) {
 		Stage window = new Stage();
 		

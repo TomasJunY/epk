@@ -9,8 +9,21 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import message.ManualTimeMessage;
 
+/**
+ * <b>DashboardUI</b> <br>
+ * 
+ * This UI is for dashboard
+ * 
+ * @author Tomas Junas
+ * @version 1.0
+ */
 public class DashboardUI {
 	
+	/**
+	 * Shows window 
+	 * 
+	 * @param title title of the window
+	 */
 	public static void show(String title) {
 		
 		Stage window = new Stage();	
