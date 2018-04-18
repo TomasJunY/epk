@@ -10,10 +10,29 @@ package courses;
  */
 public class Question {
 	
+	/**
+	 * name of the Question
+	 */
 	private String name;
+	
+	/**
+	 * text of the Question
+	 */
 	private String text;
+	
+	/**
+	 * point of the Question
+	 */
 	private int point;
+	
+	/**
+	 * image of the Question
+	 */
 	private String image;
+	
+	/**
+	 * Options of the Question
+	 */
 	private Option[] options;
 	
 	/**

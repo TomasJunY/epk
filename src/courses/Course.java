@@ -10,10 +10,29 @@ package courses;
  */
 public class Course {
 	
+	/**
+	 * name of the Course
+	 */
 	private String name;
+	
+	/**
+	 * text of the Course
+	 */
 	private String text;
+	
+	/**
+	 * custom files of the Course
+	 */
 	private CustomFile[] file;
+	
+	/**
+	 * Test of the Course
+	 */
 	private Test test;
+	
+	/**
+	 * finished value
+	 */
 	private boolean finished;
 	
 	/**

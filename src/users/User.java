@@ -13,14 +13,49 @@ import message.*;
  */
 public class User implements Person {
 	
+	/**
+	 * username of the User
+	 */
 	private String username;
+	
+	/**
+	 * password of the User
+	 */
 	private String password;
+	
+	/**
+	 * name of the User
+	 */
 	private String name;
+	
+	/**
+	 * surname of the User
+	 */
 	private String surname;
+	
+	/**
+	 * gender of the User
+	 */
 	private String gender;
+	
+	/**
+	 * age of the User
+	 */
 	private int age;
+	
+	/**
+	 * position of the User
+	 */
 	private String position;
+	
+	/**
+	 * courses of the User
+	 */
 	private Course course[];	
+	
+	/**
+	 * Message of the User
+	 */
 	private TimeMessage globalMessage;
 	
 	/**

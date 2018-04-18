@@ -10,8 +10,19 @@ package courses;
  */
 public class Option {
 	
+	/**
+	 * text of the Option
+	 */
 	private String text;
+	
+	/**
+	 * correct value of the Option
+	 */
 	private boolean correct;
+	
+	/**
+	 * selected value of the Option
+	 */
 	private boolean selected;
 	
 	/**

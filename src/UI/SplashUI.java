@@ -183,7 +183,7 @@ public class SplashUI extends Application {
 		
 		//zmena sceny
 		PauseTransition pause = new PauseTransition();
-		pause.setDuration(Duration.seconds(0));
+		pause.setDuration(Duration.seconds(3));
 		pause.setOnFinished(e -> {
 			LoginUI.show("Login");			
 			window.close();

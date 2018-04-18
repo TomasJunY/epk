@@ -13,14 +13,49 @@ import message.*;
  */
 public class Administrator implements Person {
 	
+	/**
+	 * username of the Administrator
+	 */
 	private String username;
+	
+	/**
+	 * password of the Administrator
+	 */
 	private String password;
+	
+	/**
+	 * name of the Administrator
+	 */
 	private String name;
+	
+	/**
+	 * surname of the Administrator
+	 */
 	private String surname;
+	
+	/**
+	 * gender of the Administrator
+	 */
 	private String gender;
+	
+	/**
+	 * age of the Administrator
+	 */
 	private int age;
+	
+	/**
+	 * position of the Administrator
+	 */
 	private String position;
+	
+	/**
+	 * courses of the Administrator
+	 */
 	private Course course[];	
+	
+	/**
+	 * Message of the Administrator
+	 */
 	private TimeMessage globalMessage;
 	
 	/**

@@ -12,8 +12,19 @@ package courses;
  */
 public class CustomFile {
 	
+	/**
+	 * name of the Custom File
+	 */
 	private String name;
+	
+	/**
+	 * folder of the Custom File
+	 */
 	private String location;
+	
+	/**
+	 * path of the Custom File
+	 */
 	private String path;
 	
 	/**

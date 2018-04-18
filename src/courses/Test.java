@@ -10,10 +10,29 @@ package courses;
  */
 public class Test {
 
+	/**
+	 * name of the Test
+	 */
 	private String name;
+	
+	/**
+	 * text of the Test
+	 */
 	private String text;
+	
+	/**
+	 * Questions of the Test
+	 */
 	private Question[] questions;	
+	
+	/**
+	 * maximum points 
+	 */
 	private int maxPoints;
+	
+	/**
+	 * achieved points
+	 */
 	private int achievedPoints;
 	
 	/**
