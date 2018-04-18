@@ -64,8 +64,7 @@ public class Logic {
         try {
             //citac
             FileReader fileReader = new FileReader(fileName);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            
+            BufferedReader bufferedReader = new BufferedReader(fileReader);            
             //citaj po riadkoch
             while( (readedUsername = bufferedReader.readLine() ) != null) {
                 readedPassword = bufferedReader.readLine();
@@ -111,6 +110,7 @@ public class Logic {
 	public static void writeUsersToFileFromArray() {
         //nazov suboru
         String fileName = "./data/users_data/list/users.txt";
+        
         //zapisuj
         try {
         	//zapisovac
@@ -203,7 +203,7 @@ public class Logic {
 		for (int a=0; a<users.size(); a++) {			
 			if(username.equals(users.get(a).getUsername())) {
 				users.get(a).setPassword(newPassword);
-				//zapis
+				//save
 				writeUsersToFileFromArray();
 			}
 		}
@@ -264,8 +264,7 @@ public class Logic {
 			newClosedMessageFile.createNewFile();
 	    } catch (IOException e) {
 	        e.printStackTrace();
-	    }
-		
+	    }		
 		//copy from original
 		Path source = Paths.get("./data/message/message.txt");
 		Path destination = Paths.get("./data/users_data/history/" + username + "/closedMessage.txt");		
@@ -306,7 +305,7 @@ public class Logic {
         String readedLine = null;
         int pocetCourses = 0;
         int CourseIndex = 0;
-
+        
         try {
             //citac
             FileReader fileReader = new FileReader(fileName);
@@ -314,8 +313,7 @@ public class Logic {
             //pocet
             readedLine = bufferedReader.readLine();   
             pocetCourses = Integer.parseInt(readedLine);
-            loggedUser.setCourseAll(pocetCourses);
-            
+            loggedUser.setCourseAll(pocetCourses);        
             //citaj po riadkoch
             while( (readedLine = bufferedReader.readLine() ) != null) {
             	//nacitaj veci - zatial placeholder, potom sa to prepise
@@ -347,7 +345,6 @@ public class Logic {
 	public static void loadCourseMaterial(int position, String location) {	
 		//nazov suboru
         String fileName = "./data/courses/" + location + "/material/course.txt";
-
         //citane udaje
         String CourseName = null;
         String readedLine = null;
@@ -391,7 +388,6 @@ public class Logic {
 	public static void loadCourseMaterialDoc(int position, String location) {	
 		//nazov suboru
         String fileName = "./data/courses/" + location + "/material/links.txt";
-
         //citane udaje
         String readedLine = null;
         String pocetLink = null;
@@ -488,10 +484,8 @@ public class Logic {
             
             loggedUser.getCourse(position).setTest(new Test(QPocetNumber, TestName, TestText));
             loggedUser.getCourse(position).setFinished(TestFinishedBool);
-            //citaj po riadkoch
-            while( (QName = bufferedReader.readLine() ) != null) {
-            	//nazov otazky
-            	
+            //citaj po riadkoch-nazov otazky  
+            while( (QName = bufferedReader.readLine() ) != null) {      	     	
             	//pocet moznosti
             	OPocet = bufferedReader.readLine();
             	OPocetNumber = Integer.parseInt(OPocet);
@@ -711,12 +705,12 @@ public class Logic {
 	 * @throws ParseException Exception
 	 */
 	public static void loadMessageFromFile() throws ParseException {
-		//
 		String fileName = "./data/message/message.txt";
         //citane udaje       
         String readedDate = null;
         String readedMessage = null;
         String readedSeen = null;
+        
         try {
             //citac
             FileReader fileReader = new FileReader(fileName);
@@ -800,6 +794,7 @@ public class Logic {
         String readedDate = null;
         String readedMessage = null;
         String readedSeen = null;
+        
         try {
             //citac
             FileReader fileReader = new FileReader(fileName);
