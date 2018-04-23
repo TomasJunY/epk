@@ -48,7 +48,7 @@ public class EditUserUI {
 		TextField E_age = new TextField(Integer.toString(Logic.users.get(position).getAge()));
 		
 		Label L_positon = new Label("pracovná pozícia");
-		TextField E_positon = new TextField(Logic.users.get(position).getPosition());;
+		TextField E_positon = new TextField(Logic.users.get(position).getPosition());
 		
 		Button B_add = new Button("Edit");
 		B_add.setPrefWidth(80);
