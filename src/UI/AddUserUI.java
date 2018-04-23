@@ -48,7 +48,7 @@ public class AddUserUI {
 		TextField E_age = new TextField();
 		
 		Label L_positon = new Label("pracovná pozícia");
-		TextField E_positon = new TextField();;
+		TextField E_positon = new TextField();
 		
 		Button B_add = new Button("Pridaj");
 		B_add.setPrefWidth(80);

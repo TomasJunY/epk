@@ -117,10 +117,10 @@ public class DashboardUI {
 			}
 			else {
 				String selectedCName = (String) comboCourses.getValue();
-				int pos = Logic.loggedUser.getCourseIndex(selectedCName);
-				CourseUI.show(selectedCName, (String) comboCourses.getValue(), pos);
+				int pos = Logic.loggedUser.getCourseIndex(selectedCName);		
 				//load max point
 				Logic.saveMaxPoints(pos);
+				CourseUI.show(selectedCName, (String) comboCourses.getValue(), pos);
 				window.close();
 			}					
 		});
@@ -141,7 +141,6 @@ public class DashboardUI {
 		
 		Button B_CourseFinished = new Button("OK");
 		B_CourseFinished.setOnAction(e -> {
-			//	
 			if (comboCoursesFinished.getValue()==null) {
 				System.out.println("chyba");
 			}
