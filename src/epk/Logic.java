@@ -123,7 +123,6 @@ public class Logic {
             	bufferedWriter.newLine();
             	bufferedWriter.write(users.get(a).getPassword());
             	bufferedWriter.newLine();
-            	//adminusers.get(a).isAdmin()
             	if(Administrator.class.isInstance(users.get(a))) {
             		bufferedWriter.write("1");                	
             	}
