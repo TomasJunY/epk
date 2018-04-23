@@ -1,0 +1,26 @@
+2_placeholder
+informacie o teste, test 2, placeholder, ukazkovy test
+0
+2
+otazka1
+2
+98
+si stastny na fiit?
+fiit_logo.png
+ano
+1
+0
+nie
+0
+0
+otazka2
+2
+2
+ktora moznost je spravna?
+$
+FIIT>FEI
+1
+0
+FIIT<FEI
+0
+0
