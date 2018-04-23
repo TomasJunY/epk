@@ -1,12 +1,12 @@
 2_placeholder
-informacie o teste, test 2
+informacie o teste, test 2, placeholder, ukazkovy test
 0
 2
 otazka1
 2
 98
-si stastny na fiit
-hehe.gif
+si stastny na fiit?
+fiit_logo.png
 ano
 1
 0
@@ -16,11 +16,11 @@ nie
 otazka2
 2
 2
-hehe
+ktora moznost je spravna?
 $
-as
-0
-0
-xd
+FIIT>FEI
 1
+0
+FIIT<FEI
+0
 0

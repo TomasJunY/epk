@@ -5,7 +5,7 @@ informacie o teste, test 1, vodicak, vyberove otazky
 otazka1
 3
 2
-Vodicom sa rozumie A
+Vodicom sa rozumie
 $
 osoba, ktora vedie vozidlo
 1
@@ -19,7 +19,7 @@ len osoba ktorá vedie motorove vozidlo
 otazka2
 3
 2
-vodic sa nesmie otacat C
+vodic sa nesmie otacat
 $
 na ceste 1.triedy
 0
@@ -33,7 +33,7 @@ na jednosmernej ceste
 otazka13
 3
 1
-ak sa pri vleceni motoroveho vozidla pouzije lano C
+ak sa pri vleceni motoroveho vozidla pouzije lano
 $
 jeho dlzka nesme byt menisa ako 1,5m
 0
@@ -47,7 +47,7 @@ nesmie byz vzidalenost medzi vozidlami mensia ako 2,5 m
 otazka16
 3
 2
-tato dopravna znacka upozornuje na C
+tato dopravna znacka upozornuje na
 q16.png
 miesto, kde priecny sklon vozovky presahuje 10% 
 0
@@ -61,7 +61,7 @@ miesto, kde stupanie cesty presahuje 10%, alebo kde miestne podmienky robia stup
 otazka27
 3
 3
-V poradi tretie prejde cez krizovatku A
+V poradi tretie prejde cez krizovatku
 q27.png
 zlte vozidlo
 1
