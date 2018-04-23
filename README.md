@@ -3,8 +3,8 @@
 Používatelia: meno/heslo
 
 admin/heslo - administrator  
-tomas/heslo - bežný  
-uz1/heslo - bežný  
+tomas/heslo - bežný používateľ  
+uz1/heslo - bežný používateľ  
 
 ## Priečinky
 
